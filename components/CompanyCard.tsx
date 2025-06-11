@@ -1,7 +1,7 @@
 import { Company } from '@/types/company';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, Users } from 'lucide-react';
+import { Star, MapPin, Users, TrendingUp, Zap, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 interface CompanyCardProps {
@@ -11,10 +11,23 @@ interface CompanyCardProps {
 export default function CompanyCard({ company }: CompanyCardProps) {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'Easy': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400';
-      case 'Medium': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400';
-      case 'Hard': return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300';
+      case 'Easy': return 'bg-gradient-to-r from-emerald-500 to-green-400 text-white border-emerald-300 shadow-lg shadow-emerald-500/25';
+      case 'Medium': return 'bg-gradient-to-r from-amber-500 to-orange-400 text-white border-amber-300 shadow-lg shadow-amber-500/25';
+      case 'Hard': return 'bg-gradient-to-r from-red-500 to-pink-400 text-white border-red-300 shadow-lg shadow-red-500/25';
+      default: return 'bg-gradient-to-r from-gray-500 to-slate-400 text-white border-gray-300 shadow-lg shadow-gray-500/25';
+    }
+  };
+
+  const getIndustryGradient = (industry: string) => {
+    switch (industry) {
+      case 'Technology': return 'from-blue-600 via-purple-600 to-cyan-500';
+      case 'E-commerce': return 'from-orange-500 via-red-500 to-pink-500';
+      case 'E-commerce/Cloud': return 'from-indigo-500 via-blue-500 to-teal-500';
+      case 'FinTech': return 'from-green-500 via-emerald-500 to-teal-500';
+      case 'Food Tech': return 'from-yellow-500 via-orange-500 to-red-500';
+      case 'Software/Creative': return 'from-purple-500 via-pink-500 to-rose-500';
+      case 'Cloud/CRM': return 'from-sky-500 via-blue-500 to-indigo-500';
+      default: return 'from-gray-500 via-slate-500 to-zinc-500';
     }
   };
 
@@ -28,70 +41,118 @@ export default function CompanyCard({ company }: CompanyCardProps) {
   const difficultyLabel = avgDifficulty <= 1.5 ? 'Easy' : avgDifficulty <= 2.5 ? 'Medium' : 'Hard';
 
   return (
-    <Link href={`/company/${company.id}`}>
-      <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-primary/20 h-full">
-        <CardHeader className="pb-3">
+    <Link href={`/company/${company.id}`} className="block group">
+      <Card className="relative overflow-hidden card-3d transform-3d bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl border-2 border-white/20 dark:border-slate-700/50 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-[1.02] h-full">
+        {/* Animated background gradient */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${getIndustryGradient(company.industry)} opacity-5 group-hover:opacity-10 transition-opacity duration-700`} />
+        
+        {/* Floating particles effect */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60" style={{ animationDelay: '0s' }} />
+          <div className="absolute top-8 left-6 w-1 h-1 bg-purple-400 rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-6 right-8 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }} />
+        </div>
+
+        {/* Shimmer effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
+        </div>
+
+        <CardHeader className="relative pb-3 z-10">
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              <div className="text-3xl">{company.logo}</div>
-              <div>
-                <h3 className="font-bold text-lg group-hover:text-primary transition-colors">
+            <div className="flex items-center gap-4">
+              {/* Company logo with glow effect */}
+              <div className="relative">
+                <div className="text-4xl p-3 rounded-2xl bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border border-white/30 dark:border-slate-600/30 shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110">
+                  {company.logo}
+                </div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </div>
+              
+              <div className="flex-1">
+                <h3 className="font-bold text-xl bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-500">
                   {company.name}
                 </h3>
-                <Badge variant="secondary" className="mt-1">
+                <Badge className={`mt-2 bg-gradient-to-r ${getIndustryGradient(company.industry)} text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}>
+                  <Sparkles className="w-3 h-3 mr-1" />
                   {company.industry}
                 </Badge>
               </div>
             </div>
-            <div className="flex items-center gap-1">
-              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">{company.rating}</span>
+            
+            {/* Rating with animated stars */}
+            <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-sm rounded-full px-3 py-1 border border-yellow-400/30">
+              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400 animate-pulse" />
+              <span className="text-sm font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
+                {company.rating}
+              </span>
             </div>
           </div>
         </CardHeader>
         
-        <CardContent className="pt-0">
-          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+        <CardContent className="relative pt-0 z-10">
+          <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2 leading-relaxed">
             {company.description}
           </p>
           
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="h-4 w-4" />
-              <span>{company.location}</span>
+          {/* Company details with icons */}
+          <div className="space-y-3 mb-4">
+            <div className="flex items-center gap-3 text-sm">
+              <div className="p-1.5 rounded-lg bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30">
+                <MapPin className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              </div>
+              <span className="text-slate-600 dark:text-slate-300 font-medium">{company.location}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Users className="h-4 w-4" />
-              <span>{company.size} employees</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div>
-              <Badge className={getDifficultyColor(difficultyLabel)}>
-                {difficultyLabel} Level
-              </Badge>
-            </div>
-            <div className="text-sm text-muted-foreground">
-              {company.experiences.length} experience{company.experiences.length !== 1 ? 's' : ''}
+            <div className="flex items-center gap-3 text-sm">
+              <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30">
+                <Users className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+              </div>
+              <span className="text-slate-600 dark:text-slate-300 font-medium">{company.size} employees</span>
             </div>
           </div>
 
-          <div className="mt-3 pt-3 border-t border-border">
-            <div className="flex flex-wrap gap-1">
+          {/* Difficulty and experience count */}
+          <div className="flex items-center justify-between mb-4">
+            <Badge className={`${getDifficultyColor(difficultyLabel)} font-semibold px-3 py-1 hover:scale-105 transition-transform duration-300`}>
+              <Zap className="w-3 h-3 mr-1" />
+              {difficultyLabel} Level
+            </Badge>
+            <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 rounded-full px-3 py-1 border border-slate-200 dark:border-slate-600">
+              <TrendingUp className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+              <span className="font-semibold text-slate-700 dark:text-slate-200">
+                {company.experiences.length} experience{company.experiences.length !== 1 ? 's' : ''}
+              </span>
+            </div>
+          </div>
+
+          {/* Role tags with enhanced styling */}
+          <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-4">
+            <div className="flex flex-wrap gap-2">
               {company.experiences.slice(0, 3).map((exp, index) => (
-                <Badge key={index} variant="outline" className="text-xs">
+                <Badge 
+                  key={index} 
+                  variant="outline" 
+                  className="text-xs bg-gradient-to-r from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105"
+                >
                   {exp.role}
                 </Badge>
               ))}
               {company.experiences.length > 3 && (
-                <Badge variant="outline" className="text-xs">
+                <Badge 
+                  variant="outline" 
+                  className="text-xs bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border-blue-300/50 dark:border-blue-600/50 text-blue-700 dark:text-blue-300 font-semibold hover:scale-105 transition-transform duration-300"
+                >
                   +{company.experiences.length - 3} more
                 </Badge>
               )}
             </div>
           </div>
         </CardContent>
+
+        {/* Hover glow effect */}
+        <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 blur-xl" />
+        </div>
       </Card>
     </Link>
   );
