@@ -1,8 +1,9 @@
 import { Company } from '@/types/company';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, Users, TrendingUp, Zap, Sparkles } from 'lucide-react';
+import { Star, MapPin, Users, TrendingUp, Zap, Sparkles, Building, Globe } from 'lucide-react';
 import Link from 'next/link';
+import { calculateSuccessRates } from '@/data/companies';
 
 interface CompanyCardProps {
   company: Company;
@@ -39,6 +40,13 @@ export default function CompanyCard({ company }: CompanyCardProps) {
     : 0;
 
   const difficultyLabel = avgDifficulty <= 1.5 ? 'Easy' : avgDifficulty <= 2.5 ? 'Medium' : 'Hard';
+  const successRates = calculateSuccessRates(company.experiences);
+
+  // Get unique experience types
+  const experienceTypes = [...new Set(company.experiences.map(exp => exp.experienceType))];
+  
+  // Get hiring locations (India offices)
+  const indiaLocations = company.locations.filter(loc => loc.country === 'India');
 
   return (
     <Link href={`/company/${company.id}`} className="block group">
@@ -99,10 +107,22 @@ export default function CompanyCard({ company }: CompanyCardProps) {
           <div className="space-y-3 mb-4">
             <div className="flex items-center gap-3 text-sm">
               <div className="p-1.5 rounded-lg bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30">
-                <MapPin className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                <Building className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
               </div>
-              <span className="text-slate-600 dark:text-slate-300 font-medium">{company.location}</span>
+              <span className="text-slate-600 dark:text-slate-300 font-medium">{company.headquarters}</span>
             </div>
+            
+            {indiaLocations.length > 0 && (
+              <div className="flex items-center gap-3 text-sm">
+                <div className="p-1.5 rounded-lg bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30">
+                  <MapPin className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <span className="text-slate-600 dark:text-slate-300 font-medium">
+                  {indiaLocations.map(loc => loc.city).join(', ')} (India)
+                </span>
+              </div>
+            )}
+            
             <div className="flex items-center gap-3 text-sm">
               <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30">
                 <Users className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
@@ -111,19 +131,45 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             </div>
           </div>
 
-          {/* Difficulty and experience count */}
+          {/* Success rates and experience info */}
           <div className="flex items-center justify-between mb-4">
-            <Badge className={`${getDifficultyColor(difficultyLabel)} font-semibold px-3 py-1 hover:scale-105 transition-transform duration-300`}>
-              <Zap className="w-3 h-3 mr-1" />
-              {difficultyLabel} Level
-            </Badge>
-            <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 rounded-full px-3 py-1 border border-slate-200 dark:border-slate-600">
-              <TrendingUp className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-              <span className="font-semibold text-slate-700 dark:text-slate-200">
+            <div className="flex flex-col gap-1">
+              <Badge className={`${getDifficultyColor(difficultyLabel)} font-semibold px-3 py-1 hover:scale-105 transition-transform duration-300`}>
+                <Zap className="w-3 h-3 mr-1" />
+                {difficultyLabel} Level*
+              </Badge>
+              <span className="text-xs text-slate-500 dark:text-slate-400">*Subjective assessment</span>
+            </div>
+            
+            <div className="text-right">
+              <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 rounded-full px-3 py-1 border border-slate-200 dark:border-slate-600 mb-1">
+                <TrendingUp className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                <span className="font-semibold text-slate-700 dark:text-slate-200">
+                  {successRates.overall}% success
+                </span>
+              </div>
+              <div className="text-xs text-slate-500 dark:text-slate-400">
                 {company.experiences.length} experience{company.experiences.length !== 1 ? 's' : ''}
-              </span>
+              </div>
             </div>
           </div>
+
+          {/* Experience types */}
+          {experienceTypes.length > 0 && (
+            <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-4 mb-4">
+              <div className="flex flex-wrap gap-2">
+                {experienceTypes.map((type, index) => (
+                  <Badge 
+                    key={index} 
+                    variant="outline" 
+                    className="text-xs bg-gradient-to-r from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105"
+                  >
+                    {type}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Role tags with enhanced styling */}
           <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-4">

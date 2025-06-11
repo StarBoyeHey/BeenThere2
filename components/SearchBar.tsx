@@ -14,7 +14,7 @@ import {
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
-  onFilterChange: (filters: { industry: string; difficulty: string; role: string }) => void;
+  onFilterChange: (filters: { industry: string; difficulty: string; role: string; experienceType: string }) => void;
 }
 
 export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) {
@@ -22,7 +22,8 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
   const [filters, setFilters] = useState({
     industry: '',
     difficulty: '',
-    role: ''
+    role: '',
+    experienceType: ''
   });
 
   const handleSearch = (value: string) => {
@@ -37,8 +38,8 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
   };
 
   const clearFilters = () => {
-    setFilters({ industry: '', difficulty: '', role: '' });
-    onFilterChange({ industry: '', difficulty: '', role: '' });
+    setFilters({ industry: '', difficulty: '', role: '', experienceType: '' });
+    onFilterChange({ industry: '', difficulty: '', role: '', experienceType: '' });
   };
 
   const hasActiveFilters = Object.values(filters).some(f => f && f !== 'all');
@@ -102,6 +103,18 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
               <SelectItem value="Food Tech">🍕 Food Tech</SelectItem>
               <SelectItem value="Software/Creative">🎨 Software/Creative</SelectItem>
               <SelectItem value="Cloud/CRM">☁️ Cloud/CRM</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select value={filters.experienceType} onValueChange={(value) => handleFilterChange('experienceType', value)}>
+            <SelectTrigger className="w-48 bg-gradient-to-r from-white/80 to-white/60  dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 transition-all duration-300">
+              <SelectValue placeholder="Experience Type" />
+            </SelectTrigger>
+            <SelectContent className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-white/30 dark:border-slate-700/50">
+              <SelectItem value="all">All Types</SelectItem>
+              <SelectItem value="Full-time">💼 Full-time</SelectItem>
+              <SelectItem value="Internship">🎓 Internship</SelectItem>
+              <SelectItem value="PPO">🏆 PPO Conversion</SelectItem>
             </SelectContent>
           </Select>
 

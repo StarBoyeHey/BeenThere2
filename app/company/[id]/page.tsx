@@ -1,10 +1,10 @@
-import { companies } from '@/data/companies';
+import { companies, calculateSuccessRates } from '@/data/companies';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import ExperienceCard from '@/components/ExperienceCard';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Star, MapPin, Users, ExternalLink, TrendingUp, Award, Clock, Target } from 'lucide-react';
+import { Star, MapPin, Users, ExternalLink, TrendingUp, Award, Clock, Target, Building, Globe, Info } from 'lucide-react';
 import Link from 'next/link';
 
 interface CompanyPageProps {
@@ -26,10 +26,8 @@ export default function CompanyPage({ params }: CompanyPageProps) {
     notFound();
   }
 
-  const totalExperiences = company.experiences.length;
-  const selectedCount = company.experiences.filter(exp => exp.selected).length;
-  const selectionRate = totalExperiences > 0 ? (selectedCount / totalExperiences * 100).toFixed(1) : '0';
-
+  const successRates = calculateSuccessRates(company.experiences);
+  
   const avgPackage = company.experiences.length > 0 
     ? company.experiences.reduce((acc, exp) => {
         const packageValue = parseFloat(exp.package.replace(/[₹LPA\s]/g, ''));
@@ -44,6 +42,15 @@ export default function CompanyPage({ params }: CompanyPageProps) {
     Medium: difficulties.filter(d => d === 'Medium').length,
     Hard: difficulties.filter(d => d === 'Hard').length
   };
+
+  // Group experiences by type
+  const experiencesByType = {
+    'Full-time': company.experiences.filter(exp => exp.experienceType === 'Full-time'),
+    'Internship': company.experiences.filter(exp => exp.experienceType === 'Internship'),
+    'PPO': company.experiences.filter(exp => exp.experienceType === 'PPO')
+  };
+
+  const totalExperiences = company.experiences.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -78,8 +85,12 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                 
                 <div className="flex flex-col gap-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
+                    <Building className="h-4 w-4" />
+                    <span>HQ: {company.headquarters}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    <span>{company.location}</span>
+                    <span>India: {company.locations.filter(loc => loc.country === 'India').map(loc => loc.city).join(', ')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
@@ -103,8 +114,8 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           <Card>
             <CardContent className="p-6 text-center">
               <TrendingUp className="h-8 w-8 text-green-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">{selectionRate}%</div>
-              <p className="text-sm text-muted-foreground">Selection Rate</p>
+              <div className="text-2xl font-bold text-foreground">{successRates.overall}%</div>
+              <p className="text-sm text-muted-foreground">Overall Success</p>
             </CardContent>
           </Card>
           
@@ -133,6 +144,51 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           </Card>
         </div>
 
+        {/* Success Rates by Type */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          <Card>
+            <CardHeader>
+              <h3 className="text-lg font-semibold">Full-time Success Rate</h3>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">{successRates.fullTime}%</div>
+                <p className="text-sm text-muted-foreground">
+                  {experiencesByType['Full-time'].length} experiences
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <h3 className="text-lg font-semibold">Internship Success Rate</h3>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-600 mb-2">{successRates.internship}%</div>
+                <p className="text-sm text-muted-foreground">
+                  {experiencesByType['Internship'].length} experiences
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <h3 className="text-lg font-semibold">PPO Conversion Rate</h3>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-600 mb-2">{successRates.ppoConversion}%</div>
+                <p className="text-sm text-muted-foreground">
+                  {experiencesByType['PPO'].length} conversions
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Roles and Difficulty Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <Card>
@@ -152,7 +208,15 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           
           <Card>
             <CardHeader>
-              <h3 className="text-lg font-semibold">Difficulty Distribution</h3>
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-semibold">Difficulty Distribution</h3>
+                <div className="group relative">
+                  <Info className="h-4 w-4 text-muted-foreground cursor-help" />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-popover text-popover-foreground text-sm rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                    Difficulty is subjective and varies by person
+                  </div>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
@@ -166,7 +230,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                             difficulty === 'Easy' ? 'bg-green-500' :
                             difficulty === 'Medium' ? 'bg-yellow-500' : 'bg-red-500'
                           }`}
-                          style={{ width: `${(count / totalExperiences) * 100}%` }}
+                          style={{ width: `${totalExperiences > 0 ? (count / totalExperiences) * 100 : 0}%` }}
                         />
                       </div>
                       <span className="text-sm font-medium">{count}</span>
@@ -178,11 +242,52 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           </Card>
         </div>
 
+        {/* Office Locations */}
+        <Card className="mb-8">
+          <CardHeader>
+            <h3 className="text-lg font-semibold flex items-center gap-2">
+              <Globe className="h-5 w-5" />
+              Office Locations & Hiring
+            </h3>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {company.locations.map((location, index) => (
+                <div key={index} className="p-4 border rounded-lg bg-muted/30">
+                  <div className="flex items-center gap-2 mb-2">
+                    <MapPin className="h-4 w-4 text-primary" />
+                    <span className="font-semibold">{location.city}, {location.country}</span>
+                    {location.isHeadquarters && (
+                      <Badge variant="secondary" className="text-xs">HQ</Badge>
+                    )}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    <p className="font-medium mb-1">Hiring for:</p>
+                    <div className="flex flex-wrap gap-1">
+                      {location.hiringFor.map((role, roleIndex) => (
+                        <Badge key={roleIndex} variant="outline" className="text-xs">
+                          {role}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Experiences */}
         <div>
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            Interview Experiences ({totalExperiences})
-          </h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-foreground">
+              Interview Experiences ({totalExperiences})
+            </h2>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Info className="h-4 w-4" />
+              <span>Experiences are subjective and may vary</span>
+            </div>
+          </div>
           
           {company.experiences.length === 0 ? (
             <Card>

@@ -9,7 +9,13 @@ export const companies: Company[] = [
     description: 'Leading technology company specializing in search, cloud computing, and AI.',
     website: 'https://google.com',
     size: '100,000+',
-    location: 'Mountain View, CA',
+    headquarters: 'Mountain View, CA, USA',
+    locations: [
+      { city: 'Mountain View', country: 'USA', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
+      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Site Reliability Engineer'] },
+      { city: 'Hyderabad', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Technical Program Manager'] },
+      { city: 'London', country: 'UK', isHeadquarters: false, hiringFor: ['Software Engineer', 'Product Manager'] }
+    ],
     rating: 4.8,
     experiences: [
       {
@@ -18,7 +24,9 @@ export const companies: Company[] = [
         batch: '2023',
         role: 'Software Engineer',
         package: '₹45 LPA',
+        experienceType: 'Full-time',
         difficulty: 'Hard',
+        difficultyNote: 'Difficulty is subjective and varies by individual preparation and background',
         process: ['Online Assessment (90 mins)', 'Technical Phone Screen (45 mins)', 'Virtual Onsite - Coding (45 mins)', 'Virtual Onsite - System Design (45 mins)', 'Virtual Onsite - Behavioral (30 mins)', 'Team Matching (30 mins)'],
         requirements: [
           {
@@ -73,6 +81,7 @@ export const companies: Company[] = [
         ],
         timeline: '6 weeks',
         selected: true,
+        location: 'Bangalore, India',
         date: '2023-09-15'
       },
       {
@@ -81,7 +90,9 @@ export const companies: Company[] = [
         batch: '2023',
         role: 'Product Manager Intern',
         package: '₹2 LPA (Internship)',
+        experienceType: 'Internship',
         difficulty: 'Medium',
+        difficultyNote: 'Difficulty perception varies based on individual background and preparation level',
         process: ['Resume Screening', 'Product Sense Case Study (60 mins)', 'Analytical Thinking Round (45 mins)', 'Final Interview with PM (45 mins)'],
         requirements: [
           {
@@ -119,7 +130,54 @@ export const companies: Company[] = [
         ],
         timeline: '4 weeks',
         selected: false,
-        date: '2023-08-20'
+        location: 'Mountain View, CA',
+        date: '2023-08-20',
+        isPPOConverted: false
+      },
+      {
+        id: '10',
+        studentName: 'Ankit V.',
+        batch: '2022',
+        role: 'Software Engineer',
+        package: '₹42 LPA',
+        experienceType: 'PPO',
+        difficulty: 'Medium',
+        difficultyNote: 'PPO conversion process was less stressful than regular hiring',
+        process: ['Internship Performance Review', 'Technical Presentation (30 mins)', 'Manager Interview (45 mins)', 'Team Fit Discussion (30 mins)'],
+        requirements: [
+          {
+            category: 'Internship Performance',
+            details: ['Excellent project delivery', 'Good peer feedback', 'Proactive communication', 'Code quality standards']
+          },
+          {
+            category: 'Technical Skills',
+            details: ['Strong coding abilities', 'System design understanding', 'Problem-solving skills']
+          }
+        ],
+        topics: [
+          {
+            subject: 'Internship Project Deep Dive',
+            importance: 'High',
+            resources: ['Project documentation', 'Code review feedback', 'Performance metrics', 'Impact analysis']
+          },
+          {
+            subject: 'System Design',
+            importance: 'Medium',
+            resources: ['System design of internship project', 'Scalability improvements', 'Architecture decisions']
+          }
+        ],
+        tips: [
+          'Maintain excellent performance throughout internship',
+          'Document your contributions and impact clearly',
+          'Build good relationships with team members',
+          'Be proactive in seeking feedback and improvement',
+          'Prepare to discuss your internship project in detail'
+        ],
+        timeline: '2 weeks',
+        selected: true,
+        location: 'Bangalore, India',
+        date: '2022-07-30',
+        isPPOConverted: true
       }
     ]
   },
@@ -131,7 +189,12 @@ export const companies: Company[] = [
     description: 'Global technology company known for Windows, Office, and Azure cloud services.',
     website: 'https://microsoft.com',
     size: '220,000+',
-    location: 'Redmond, WA',
+    headquarters: 'Redmond, WA, USA',
+    locations: [
+      { city: 'Redmond', country: 'USA', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
+      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Program Manager'] },
+      { city: 'Hyderabad', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Support Engineer'] }
+    ],
     rating: 4.6,
     experiences: [
       {
@@ -140,7 +203,9 @@ export const companies: Company[] = [
         batch: '2023',
         role: 'Software Development Engineer',
         package: '₹42 LPA',
+        experienceType: 'Full-time',
         difficulty: 'Hard',
+        difficultyNote: 'Individual experience may vary based on preparation and technical background',
         process: ['Online Assessment (3 hours)', 'Technical Phone Screen (1 hour)', 'Virtual Onsite Round 1 - Coding (1 hour)', 'Virtual Onsite Round 2 - System Design (1 hour)', 'Virtual Onsite Round 3 - Behavioral (45 mins)', 'Final Round with Hiring Manager (30 mins)'],
         requirements: [
           {
@@ -195,6 +260,7 @@ export const companies: Company[] = [
         ],
         timeline: '8 weeks',
         selected: true,
+        location: 'Hyderabad, India',
         date: '2023-10-05'
       }
     ]
@@ -207,7 +273,12 @@ export const companies: Company[] = [
     description: 'Leading e-commerce and cloud computing company with AWS.',
     website: 'https://amazon.com',
     size: '1,500,000+',
-    location: 'Seattle, WA',
+    headquarters: 'Seattle, WA, USA',
+    locations: [
+      { city: 'Seattle', country: 'USA', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
+      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Support Engineer'] },
+      { city: 'Chennai', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Operations Manager'] }
+    ],
     rating: 4.3,
     experiences: [
       {
@@ -216,7 +287,9 @@ export const companies: Company[] = [
         batch: '2023',
         role: 'Software Development Engineer',
         package: '₹40 LPA',
+        experienceType: 'Full-time',
         difficulty: 'Hard',
+        difficultyNote: 'Difficulty assessment is subjective and depends on individual preparation',
         process: ['Online Assessment (2 hours)', 'Technical Round 1 - Coding (1 hour)', 'Technical Round 2 - System Design (1 hour)', 'Behavioral Round - Bar Raiser (1 hour)', 'Final Round - Hiring Manager (45 mins)'],
         requirements: [
           {
@@ -271,6 +344,7 @@ export const companies: Company[] = [
         ],
         timeline: '10 weeks',
         selected: true,
+        location: 'Bangalore, India',
         date: '2023-09-30'
       }
     ]
@@ -283,7 +357,12 @@ export const companies: Company[] = [
     description: 'Leading Indian e-commerce platform owned by Walmart.',
     website: 'https://flipkart.com',
     size: '50,000+',
-    location: 'Bangalore, India',
+    headquarters: 'Bangalore, India',
+    locations: [
+      { city: 'Bangalore', country: 'India', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
+      { city: 'Delhi', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Business Analyst'] },
+      { city: 'Mumbai', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Operations Manager'] }
+    ],
     rating: 4.2,
     experiences: [
       {
@@ -292,7 +371,9 @@ export const companies: Company[] = [
         batch: '2023',
         role: 'Software Development Engineer',
         package: '₹24 LPA',
+        experienceType: 'Full-time',
         difficulty: 'Medium',
+        difficultyNote: 'Difficulty level can vary based on individual technical background and preparation',
         process: ['Online Coding Test (2 hours)', 'Technical Interview 1 - DSA (1 hour)', 'Technical Interview 2 - System Design (1 hour)', 'HR Round (30 mins)'],
         requirements: [
           {
@@ -342,297 +423,31 @@ export const companies: Company[] = [
         ],
         timeline: '6 weeks',
         selected: true,
+        location: 'Bangalore, India',
         date: '2023-08-15'
-      }
-    ]
-  },
-  {
-    id: '5',
-    name: 'Paytm',
-    logo: '💳',
-    industry: 'FinTech',
-    description: 'Leading digital payments and financial services company in India.',
-    website: 'https://paytm.com',
-    size: '20,000+',
-    location: 'Noida, India',
-    rating: 4.0,
-    experiences: [
-      {
-        id: '6',
-        studentName: 'Ananya S.',
-        batch: '2023',
-        role: 'Software Engineer',
-        package: '₹18 LPA',
-        difficulty: 'Medium',
-        process: ['Online Coding Test (90 mins)', 'Technical Round 1 - Coding (1 hour)', 'Technical Round 2 - System Design (45 mins)', 'HR Round (30 mins)'],
-        requirements: [
-          {
-            category: 'Technical Skills',
-            details: ['Programming proficiency', 'Understanding of payment systems', 'Database knowledge', 'API development', 'Security concepts']
-          },
-          {
-            category: 'Academic Requirements',
-            details: ['CGPA > 6.5', 'Computer Science preferred', 'Good analytical skills']
-          },
-          {
-            category: 'Domain Knowledge',
-            details: ['Fintech basics', 'Payment gateway concepts', 'Digital wallet systems', 'Financial regulations awareness']
-          }
-        ],
-        topics: [
-          {
-            subject: 'Data Structures & Algorithms',
-            importance: 'High',
-            resources: ['LeetCode medium problems', 'HackerRank', 'GeeksforGeeks', 'InterviewBit']
-          },
-          {
-            subject: 'Payment Systems',
-            importance: 'High',
-            resources: ['Payment gateway basics', 'UPI system understanding', 'Digital wallet architecture', 'Financial transaction processing']
-          },
-          {
-            subject: 'Database Management',
-            importance: 'High',
-            resources: ['SQL advanced concepts', 'Transaction management', 'ACID properties', 'Database security']
-          },
-          {
-            subject: 'System Security',
-            importance: 'Medium',
-            resources: ['Encryption concepts', 'Authentication methods', 'Secure coding practices', 'PCI DSS basics']
-          },
-          {
-            subject: 'API Development',
-            importance: 'Medium',
-            resources: ['RESTful services', 'API security', 'Rate limiting', 'Microservices basics']
-          }
-        ],
-        tips: [
-          'Understand fintech domain and payment systems',
-          'Know about digital payments and UPI',
-          'Practice system design for payment systems',
-          'Be prepared for questions about transaction security',
-          'Understand scalability challenges in fintech',
-          'Know about regulatory compliance in payments',
-          'Practice coding problems related to financial calculations',
-          'Be aware of Paytm\'s services and business model'
-        ],
-        timeline: '4 weeks',
-        selected: false,
-        date: '2023-07-20'
-      }
-    ]
-  },
-  {
-    id: '6',
-    name: 'Zomato',
-    logo: '🍕',
-    industry: 'Food Tech',
-    description: 'Leading food delivery and restaurant discovery platform.',
-    website: 'https://zomato.com',
-    size: '5,000+',
-    location: 'Gurugram, India',
-    rating: 4.1,
-    experiences: [
-      {
-        id: '7',
-        studentName: 'Rohan M.',
-        batch: '2023',
-        role: 'Backend Developer',
-        package: '₹20 LPA',
-        difficulty: 'Medium',
-        process: ['Online Assessment (2 hours)', 'Technical Round 1 - Backend (1 hour)', 'Technical Round 2 - System Design (1 hour)', 'Final Round - CTO (45 mins)'],
-        requirements: [
-          {
-            category: 'Technical Skills',
-            details: ['Backend development expertise', 'API design and development', 'Database optimization', 'Microservices architecture', 'Cloud services knowledge']
-          },
-          {
-            category: 'Academic Requirements',
-            details: ['CGPA > 7.0', 'Computer Science or IT preferred', 'Strong project portfolio']
-          },
-          {
-            category: 'Domain Knowledge',
-            details: ['Food delivery systems', 'Location-based services', 'Real-time systems', 'Mobile app backends']
-          }
-        ],
-        topics: [
-          {
-            subject: 'Backend Development',
-            importance: 'High',
-            resources: ['Node.js/Express.js', 'Python Django/Flask', 'Java Spring Boot', 'Database design patterns', 'API best practices']
-          },
-          {
-            subject: 'System Design',
-            importance: 'High',
-            resources: ['Food delivery system design', 'Location-based services', 'Real-time tracking systems', 'Microservices architecture', 'Load balancing']
-          },
-          {
-            subject: 'Database Management',
-            importance: 'High',
-            resources: ['SQL optimization', 'NoSQL databases (MongoDB)', 'Database indexing', 'Caching strategies (Redis)', 'Data modeling']
-          },
-          {
-            subject: 'Data Structures & Algorithms',
-            importance: 'Medium',
-            resources: ['LeetCode medium problems', 'Graph algorithms', 'Tree data structures', 'Sorting and searching']
-          },
-          {
-            subject: 'Cloud & DevOps',
-            importance: 'Medium',
-            resources: ['AWS/GCP basics', 'Docker containers', 'CI/CD pipelines', 'Monitoring and logging']
-          }
-        ],
-        tips: [
-          'Focus on backend technologies and frameworks',
-          'Understand food delivery system architecture',
-          'Know about location-based services and GPS',
-          'Practice API design and RESTful services',
-          'Understand real-time systems and WebSockets',
-          'Know about database optimization techniques',
-          'Be familiar with microservices patterns',
-          'Understand Zomato\'s business model and challenges'
-        ],
-        timeline: '5 weeks',
-        selected: true,
-        date: '2023-09-10'
-      }
-    ]
-  },
-  {
-    id: '7',
-    name: 'Adobe',
-    logo: '🎨',
-    industry: 'Software/Creative',
-    description: 'Leading creative software company known for Photoshop, Illustrator, and Creative Cloud.',
-    website: 'https://adobe.com',
-    size: '25,000+',
-    location: 'San Jose, CA',
-    rating: 4.5,
-    experiences: [
-      {
-        id: '8',
-        studentName: 'Kavya L.',
-        batch: '2023',
-        role: 'Software Engineer',
-        package: '₹38 LPA',
-        difficulty: 'Hard',
-        process: ['Online Assessment (2.5 hours)', 'Technical Phone Screen (1 hour)', 'Virtual Onsite - Coding (1 hour)', 'Virtual Onsite - System Design (1 hour)', 'Virtual Onsite - Behavioral (45 mins)'],
-        requirements: [
-          {
-            category: 'Technical Skills',
-            details: ['Strong programming in C++/Java', 'Computer graphics knowledge', 'Algorithm optimization', 'Software architecture', 'Performance tuning']
-          },
-          {
-            category: 'Academic Requirements',
-            details: ['CGPA > 8.0', 'Computer Science or related field', 'Strong mathematical background']
-          },
-          {
-            category: 'Creative & Technical',
-            details: ['Understanding of creative workflows', 'Image processing concepts', 'UI/UX awareness', 'Cross-platform development']
-          }
-        ],
-        topics: [
-          {
-            subject: 'Data Structures & Algorithms',
-            importance: 'High',
-            resources: ['LeetCode hard problems', 'Competitive programming', 'Algorithm optimization', 'Mathematical algorithms']
-          },
-          {
-            subject: 'Computer Graphics',
-            importance: 'High',
-            resources: ['Computer Graphics principles', 'Image processing algorithms', 'Rendering techniques', 'Color theory']
-          },
-          {
-            subject: 'System Design',
-            importance: 'High',
-            resources: ['Large-scale software architecture', 'Performance optimization', 'Memory management', 'Cross-platform design']
-          },
-          {
-            subject: 'Software Engineering',
-            importance: 'Medium',
-            resources: ['Design patterns', 'Clean code practices', 'Testing methodologies', 'Version control']
-          }
-        ],
-        tips: [
-          'Master advanced algorithms and data structures',
-          'Understand computer graphics and image processing',
-          'Know Adobe products and their technical challenges',
-          'Practice performance optimization problems',
-          'Understand creative software requirements',
-          'Be prepared for mathematical and logical reasoning',
-          'Know about cross-platform development challenges',
-          'Understand user experience in creative tools'
-        ],
-        timeline: '8 weeks',
-        selected: true,
-        date: '2023-10-12'
-      }
-    ]
-  },
-  {
-    id: '8',
-    name: 'Salesforce',
-    logo: '☁️',
-    industry: 'Cloud/CRM',
-    description: 'Leading customer relationship management (CRM) software company.',
-    website: 'https://salesforce.com',
-    size: '70,000+',
-    location: 'San Francisco, CA',
-    rating: 4.4,
-    experiences: [
-      {
-        id: '9',
-        studentName: 'Arjun T.',
-        batch: '2023',
-        role: 'Software Engineer',
-        package: '₹35 LPA',
-        difficulty: 'Medium',
-        process: ['Online Assessment (2 hours)', 'Technical Round 1 (1 hour)', 'Technical Round 2 (1 hour)', 'Hiring Manager Round (45 mins)'],
-        requirements: [
-          {
-            category: 'Technical Skills',
-            details: ['Java/Python proficiency', 'Web development', 'Database knowledge', 'Cloud computing', 'API development']
-          },
-          {
-            category: 'Academic Requirements',
-            details: ['CGPA > 7.5', 'Any engineering branch', 'Good communication skills']
-          }
-        ],
-        topics: [
-          {
-            subject: 'Data Structures & Algorithms',
-            importance: 'High',
-            resources: ['LeetCode medium problems', 'GeeksforGeeks', 'HackerRank']
-          },
-          {
-            subject: 'Web Development',
-            importance: 'High',
-            resources: ['JavaScript fundamentals', 'REST APIs', 'Web frameworks', 'Frontend basics']
-          },
-          {
-            subject: 'Database Management',
-            importance: 'Medium',
-            resources: ['SQL queries', 'Database design', 'SOQL (Salesforce)', 'Data modeling']
-          },
-          {
-            subject: 'Cloud Computing',
-            importance: 'Medium',
-            resources: ['Salesforce platform basics', 'Cloud architecture', 'SaaS concepts']
-          }
-        ],
-        tips: [
-          'Understand CRM and business software concepts',
-          'Know Salesforce platform basics',
-          'Practice web development problems',
-          'Understand enterprise software challenges',
-          'Know about multi-tenant architecture',
-          'Practice SQL and database design',
-          'Understand API design principles'
-        ],
-        timeline: '6 weeks',
-        selected: true,
-        date: '2023-09-25'
       }
     ]
   }
 ];
+
+// Helper function to calculate success rates
+export const calculateSuccessRates = (experiences: any[]) => {
+  const total = experiences.length;
+  if (total === 0) return { overall: 0, internship: 0, fullTime: 0, ppoConversion: 0 };
+
+  const selected = experiences.filter(exp => exp.selected).length;
+  const internships = experiences.filter(exp => exp.experienceType === 'Internship');
+  const fullTime = experiences.filter(exp => exp.experienceType === 'Full-time');
+  const ppoExperiences = experiences.filter(exp => exp.experienceType === 'PPO');
+  
+  const internshipSelected = internships.filter(exp => exp.selected).length;
+  const fullTimeSelected = fullTime.filter(exp => exp.selected).length;
+  const ppoSelected = ppoExperiences.filter(exp => exp.selected).length;
+
+  return {
+    overall: total > 0 ? Math.round((selected / total) * 100) : 0,
+    internship: internships.length > 0 ? Math.round((internshipSelected / internships.length) * 100) : 0,
+    fullTime: fullTime.length > 0 ? Math.round((fullTimeSelected / fullTime.length) * 100) : 0,
+    ppoConversion: ppoExperiences.length > 0 ? Math.round((ppoSelected / ppoExperiences.length) * 100) : 0
+  };
+};

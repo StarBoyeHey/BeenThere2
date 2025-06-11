@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { companies } from '@/data/companies';
+import { companies, calculateSuccessRates } from '@/data/companies';
 import CompanyCard from '@/components/CompanyCard';
 import SearchBar from '@/components/SearchBar';
 import Header from '@/components/Header';
@@ -13,7 +13,8 @@ export default function Home() {
   const [filters, setFilters] = useState({
     industry: '',
     difficulty: '',
-    role: ''
+    role: '',
+    experienceType: ''
   });
 
   const filteredCompanies = useMemo(() => {
@@ -41,9 +42,27 @@ export default function Home() {
       const matchesDifficulty = filters.difficulty === '' || filters.difficulty === 'all' || 
         company.experiences.some(exp => exp.difficulty === filters.difficulty);
 
-      return matchesSearch && matchesIndustry && matchesRole && matchesDifficulty;
+      // Experience type filter
+      const matchesExperienceType = filters.experienceType === '' || filters.experienceType === 'all' ||
+        company.experiences.some(exp => exp.experienceType === filters.experienceType);
+
+      return matchesSearch && matchesIndustry && matchesRole && matchesDifficulty && matchesExperienceType;
     });
   }, [searchQuery, filters]);
+
+  // Calculate overall statistics
+  const totalExperiences = companies.reduce((acc, company) => acc + company.experiences.length, 0);
+  const totalInternships = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.experienceType === 'Internship').length, 0);
+  const totalFullTime = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.experienceType === 'Full-time').length, 0);
+  const totalPPO = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.experienceType === 'PPO').length, 0);
+
+  const overallSuccessRate = companies.reduce((acc, company) => {
+    const rates = calculateSuccessRates(company.experiences);
+    return acc + rates.overall;
+  }, 0) / companies.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 relative overflow-hidden">
@@ -79,7 +98,7 @@ export default function Home() {
               preparation tips, and real experiences to ace your campus placements.
             </p>
 
-            {/* Stats cards */}
+            {/* Enhanced stats cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
               <div className="bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-2xl p-4 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
                 <div className="flex items-center justify-center mb-2">
@@ -100,7 +119,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  {companies.reduce((acc, company) => acc + company.experiences.length, 0)}
+                  {totalExperiences}
                 </div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Experiences</div>
               </div>
@@ -112,11 +131,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  {Math.round(companies.reduce((acc, company) => {
-                    const selected = company.experiences.filter(exp => exp.selected).length;
-                    const total = company.experiences.length;
-                    return acc + (total > 0 ? (selected / total) * 100 : 0);
-                  }, 0) / companies.length)}%
+                  {Math.round(overallSuccessRate)}%
                 </div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Success Rate</div>
               </div>
@@ -131,6 +146,22 @@ export default function Home() {
                   {(companies.reduce((acc, company) => acc + company.rating, 0) / companies.length).toFixed(1)}
                 </div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Avg Rating</div>
+              </div>
+            </div>
+
+            {/* Experience type breakdown */}
+            <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+              <div className="text-center">
+                <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{totalFullTime}</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Full-time</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-purple-600 dark:text-purple-400">{totalInternships}</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Internships</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{totalPPO}</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">PPO Conversions</div>
               </div>
             </div>
           </div>
