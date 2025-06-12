@@ -45,24 +45,24 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 222 84% 4.9%;
+    --background: 240 15% 6%;
     --foreground: 210 40% 98%;
-    --card: 222 84% 4.9%;
+    --card: 240 15% 8%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 84% 4.9%;
+    --popover: 240 15% 8%;
     --popover-foreground: 210 40% 98%;
     --primary: 217 91% 60%;
-    --primary-foreground: 222 84% 4.9%;
-    --secondary: 217 32% 17.5%;
+    --primary-foreground: 240 15% 6%;
+    --secondary: 240 10% 15%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217 32% 17.5%;
+    --muted: 240 10% 15%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217 32% 17.5%;
+    --accent: 240 10% 15%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 32% 17.5%;
-    --input: 217 32% 17.5%;
+    --border: 240 10% 18%;
+    --input: 240 10% 18%;
     --ring: 224.3 76.3% 94.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -116,6 +116,51 @@
   100% { background-position: 0% 50%; }
 }
 
+@keyframes morphing-blob {
+  0%, 100% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% { 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% { 
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+    transform: rotate(180deg) scale(0.9);
+  }
+  75% { 
+    border-radius: 60% 40% 60% 40% / 70% 30% 50% 60%;
+    transform: rotate(270deg) scale(1.05);
+  }
+}
+
+@keyframes card-hover {
+  0% { 
+    transform: translateY(0) rotateX(0) rotateY(0);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  100% { 
+    transform: translateY(-8px) rotateX(5deg) rotateY(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 5px currentColor,
+                 0 0 10px currentColor,
+                 0 0 15px currentColor,
+                 0 0 20px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 2px currentColor,
+                 0 0 5px currentColor,
+                 0 0 8px currentColor,
+                 0 0 12px currentColor;
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -139,6 +184,18 @@
   animation: gradient-shift 8s ease infinite;
 }
 
+.animate-morphing-blob {
+  animation: morphing-blob 20s ease-in-out infinite;
+}
+
+.animate-card-hover {
+  animation: card-hover 0.3s ease-out forwards;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
 /* Glass morphism effect */
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
@@ -152,7 +209,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Neon glow effects */
+/* Enhanced neon glow effects */
 .neon-blue {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
               0 0 40px rgba(59, 130, 246, 0.3),
@@ -169,6 +226,12 @@
   box-shadow: 0 0 20px rgba(16, 185, 129, 0.5),
               0 0 40px rgba(16, 185, 129, 0.3),
               0 0 60px rgba(16, 185, 129, 0.1);
+}
+
+.neon-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5),
+              0 0 40px rgba(236, 72, 153, 0.3),
+              0 0 60px rgba(236, 72, 153, 0.1);
 }
 
 /* Holographic effect */
@@ -190,10 +253,51 @@
 
 .card-3d {
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  transform-origin: center;
 }
 
 .card-3d:hover {
-  transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+  transform: rotateY(5deg) rotateX(5deg) translateZ(20px) scale(1.02);
+}
+
+/* Enhanced card effects */
+.card-surreal {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-surreal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.card-surreal:hover::before {
+  left: 100%;
+}
+
+.card-surreal:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Floating elements */
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.floating-element:nth-child(3) {
+  animation-delay: -4s;
 }
 
 /* Smooth scrolling */
@@ -219,9 +323,105 @@ html {
   background: linear-gradient(45deg, #2563eb, #7c3aed);
 }
 
+/* Dark theme improvements */
+.dark {
+  background: radial-gradient(ellipse at top, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+}
+
+.dark .card-surreal {
+  background: linear-gradient(135deg, 
+    rgba(51, 65, 85, 0.8) 0%, 
+    rgba(30, 41, 59, 0.9) 50%, 
+    rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.dark .card-surreal:hover {
+  background: linear-gradient(135deg, 
+    rgba(71, 85, 105, 0.9) 0%, 
+    rgba(51, 65, 85, 0.95) 50%, 
+    rgba(30, 41, 59, 1) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
 /* Responsive utilities */
 @media (max-width: 768px) {
   .card-3d:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
   }
+  
+  .card-surreal:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+}
+
+/* Loading animations */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200px 100%;
+}
+
+/* Particle effects */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: particle-float 8s infinite ease-in-out;
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Enhanced button effects */
+.btn-surreal {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-surreal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-surreal:hover::before {
+  left: 100%;
+}
+
+.btn-surreal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }

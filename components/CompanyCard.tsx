@@ -1,7 +1,7 @@
 import { Company } from '@/types/company';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, Users, TrendingUp, Zap, Sparkles, Building, Globe } from 'lucide-react';
+import { Star, MapPin, Users, TrendingUp, Zap, Sparkles, Building, Globe, Award, Target, Rocket } from 'lucide-react';
 import Link from 'next/link';
 import { calculateSuccessRates, calculateAveragePackage } from '@/data/companies';
 
@@ -54,46 +54,50 @@ export default function CompanyCard({ company }: CompanyCardProps) {
 
   return (
     <Link href={`/company/${company.id}`} className="block group">
-      <Card className="relative overflow-hidden card-3d transform-3d bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl border-2 border-white/20 dark:border-slate-700/50 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-[1.02] h-full">
+      <Card className="relative overflow-hidden card-surreal transform-3d bg-gradient-to-br from-white/95 to-white/80 dark:from-slate-800/95 dark:to-slate-900/80 backdrop-blur-xl border-2 border-white/30 dark:border-slate-700/30 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out h-full">
         {/* Animated background gradient */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${getIndustryGradient(company.industry)} opacity-5 group-hover:opacity-10 transition-opacity duration-700`} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${getIndustryGradient(company.industry)} opacity-5 group-hover:opacity-15 transition-opacity duration-700`} />
+        
+        {/* Morphing blob background */}
+        <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full animate-morphing-blob opacity-60" />
         
         {/* Floating particles effect */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-8 left-6 w-1 h-1 bg-purple-400 rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-6 right-8 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }} />
+          <div className="particle absolute top-4 right-4 w-2 h-2 bg-blue-400 animate-float" style={{ animationDelay: '0s' }} />
+          <div className="particle absolute top-8 left-6 w-1 h-1 bg-purple-400 animate-float" style={{ animationDelay: '1s' }} />
+          <div className="particle absolute bottom-6 right-8 w-1.5 h-1.5 bg-cyan-400 animate-float" style={{ animationDelay: '2s' }} />
+          <div className="particle absolute bottom-10 left-10 w-1 h-1 bg-pink-400 animate-float" style={{ animationDelay: '3s' }} />
         </div>
 
         {/* Shimmer effect on hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent animate-shimmer" />
         </div>
 
         <CardHeader className="relative pb-3 z-10">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
-              {/* Company logo with glow effect */}
+              {/* Company logo with enhanced glow effect */}
               <div className="relative">
-                <div className="text-4xl p-3 rounded-2xl bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border border-white/30 dark:border-slate-600/30 shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110">
+                <div className="text-4xl p-4 rounded-2xl bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-sm border border-white/40 dark:border-slate-600/40 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110 neon-blue">
                   {company.logo}
                 </div>
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-glow" />
               </div>
               
               <div className="flex-1">
-                <h3 className="font-bold text-xl bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-500">
+                <h3 className="font-bold text-xl bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-500 animate-neon-pulse">
                   {company.name}
                 </h3>
-                <Badge className={`mt-2 bg-gradient-to-r ${getIndustryGradient(company.industry)} text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}>
+                <Badge className={`mt-2 bg-gradient-to-r ${getIndustryGradient(company.industry)} text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 neon-purple`}>
                   <Sparkles className="w-3 h-3 mr-1" />
                   {company.industry}
                 </Badge>
               </div>
             </div>
             
-            {/* Rating with animated stars */}
-            <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-sm rounded-full px-3 py-1 border border-yellow-400/30">
+            {/* Rating with enhanced animation */}
+            <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 backdrop-blur-sm rounded-full px-3 py-1 border border-yellow-400/40 neon-pink">
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400 animate-pulse" />
               <span className="text-sm font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
                 {company.rating}
@@ -107,10 +111,10 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             {company.description}
           </p>
           
-          {/* Company details with icons */}
+          {/* Company details with enhanced icons */}
           <div className="space-y-3 mb-4">
             <div className="flex items-center gap-3 text-sm">
-              <div className="p-1.5 rounded-lg bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30">
+              <div className="p-1.5 rounded-lg bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 neon-blue">
                 <Building className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
               </div>
               <span className="text-slate-600 dark:text-slate-300 font-medium">{company.headquarters}</span>
@@ -118,7 +122,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             
             {indiaLocations.length > 0 && (
               <div className="flex items-center gap-3 text-sm">
-                <div className="p-1.5 rounded-lg bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30">
+                <div className="p-1.5 rounded-lg bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 neon-green">
                   <MapPin className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <span className="text-slate-600 dark:text-slate-300 font-medium">
@@ -128,17 +132,17 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             )}
             
             <div className="flex items-center gap-3 text-sm">
-              <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30">
+              <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 neon-purple">
                 <Users className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
               </div>
               <span className="text-slate-600 dark:text-slate-300 font-medium">{company.size} employees</span>
             </div>
           </div>
 
-          {/* Success rates and package info */}
+          {/* Success rates and package info with enhanced styling */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex flex-col gap-1">
-              <Badge className={`${getDifficultyColor(difficultyLabel)} font-semibold px-3 py-1 hover:scale-105 transition-transform duration-300`}>
+              <Badge className={`${getDifficultyColor(difficultyLabel)} font-semibold px-3 py-1 hover:scale-105 transition-transform duration-300 neon-pink`}>
                 <Zap className="w-3 h-3 mr-1" />
                 {difficultyLabel} Level*
               </Badge>
@@ -146,7 +150,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             </div>
             
             <div className="text-right">
-              <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 rounded-full px-3 py-1 border border-slate-200 dark:border-slate-600 mb-1">
+              <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-slate-100/80 to-slate-50/80 dark:from-slate-800/80 dark:to-slate-700/80 rounded-full px-3 py-1 border border-slate-200/50 dark:border-slate-600/50 mb-1 neon-green">
                 <TrendingUp className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 <span className="font-semibold text-slate-700 dark:text-slate-200">
                   {successRates.overall}% success
@@ -158,10 +162,10 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             </div>
           </div>
 
-          {/* Average package (excluding internships) */}
+          {/* Average package with enhanced design */}
           {avgPackage > 0 && (
             <div className="mb-4">
-              <div className="text-center bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200/50 dark:border-green-700/50">
+              <div className="text-center bg-gradient-to-r from-green-50/80 to-emerald-50/80 dark:from-green-900/30 dark:to-emerald-900/30 rounded-lg p-3 border border-green-200/50 dark:border-green-700/50 neon-green">
                 <div className="text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                   ₹{avgPackage.toFixed(1)} LPA
                 </div>
@@ -170,7 +174,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             </div>
           )}
 
-          {/* Experience types */}
+          {/* Experience types with enhanced badges */}
           {experienceTypes.length > 0 && (
             <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-4 mb-4">
               <div className="flex flex-wrap gap-2">
@@ -178,8 +182,11 @@ export default function CompanyCard({ company }: CompanyCardProps) {
                   <Badge 
                     key={index} 
                     variant="outline" 
-                    className="text-xs bg-gradient-to-r from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105"
+                    className="text-xs bg-gradient-to-r from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105 neon-blue"
                   >
+                    {type === 'Full-time' && <Rocket className="w-3 h-3 mr-1" />}
+                    {type === 'Internship' && <Target className="w-3 h-3 mr-1" />}
+                    {type === 'PPO' && <Award className="w-3 h-3 mr-1" />}
                     {type}
                   </Badge>
                 ))}
@@ -194,7 +201,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
                 <Badge 
                   key={index} 
                   variant="outline" 
-                  className="text-xs bg-gradient-to-r from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105"
+                  className="text-xs bg-gradient-to-r from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-purple-400/50 hover:bg-purple-50/50 dark:hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 neon-purple"
                 >
                   {role}
                 </Badge>
@@ -202,7 +209,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
               {allRoles.length > 3 && (
                 <Badge 
                   variant="outline" 
-                  className="text-xs bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border-blue-300/50 dark:border-blue-600/50 text-blue-700 dark:text-blue-300 font-semibold hover:scale-105 transition-transform duration-300"
+                  className="text-xs bg-gradient-to-r from-blue-50/80 to-purple-50/80 dark:from-blue-900/40 dark:to-purple-900/40 border-blue-300/50 dark:border-blue-600/50 text-blue-700 dark:text-blue-300 font-semibold hover:scale-105 transition-transform duration-300 neon-blue"
                 >
                   +{allRoles.length - 3} more
                 </Badge>
@@ -211,10 +218,14 @@ export default function CompanyCard({ company }: CompanyCardProps) {
           </div>
         </CardContent>
 
-        {/* Hover glow effect */}
+        {/* Enhanced hover glow effect */}
         <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 blur-xl" />
+          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 blur-xl animate-pulse-glow" />
         </div>
+
+        {/* Corner accent */}
+        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-bl-3xl" />
+        <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-purple-500/10 to-transparent rounded-tr-3xl" />
       </Card>
     </Link>
   );
