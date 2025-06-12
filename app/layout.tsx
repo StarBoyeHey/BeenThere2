@@ -6,9 +6,9 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Campus Connect - Interview Insights Platform',
-  description: 'Get valuable interview insights from seniors. Prepare better for campus placements with real experiences, tips, and preparation guides.',
-  keywords: 'campus placement, interview preparation, student insights, career guidance',
+  title: 'BeigNa - Bridge • Inspire • Guide • Navigate • Achieve',
+  description: 'Bridge the gap between students and opportunities. Get valuable interview insights from seniors, preparation tips, and real experiences to navigate your career journey.',
+  keywords: 'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences',
 };
 
 export default function RootLayout({

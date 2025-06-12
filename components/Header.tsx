@@ -16,11 +16,11 @@ export default function Header() {
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                Campus Connect
+                BeigNa
               </h1>
               <p className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
-                Interview Insights Platform
+                Bridge • Inspire • Guide • Navigate • Achieve
               </p>
             </div>
           </Link>

@@ -22,6 +22,7 @@ export const companies: Company[] = [
         id: '1',
         studentName: 'Rahul S.',
         batch: '2023',
+        college: 'IIT Delhi',
         role: 'SDE-1',
         package: '₹45 LPA',
         experienceType: 'Full-time',
@@ -82,12 +83,14 @@ export const companies: Company[] = [
         timeline: '6 weeks',
         selected: true,
         location: 'Bangalore, India',
-        date: '2023-09-15'
+        date: '2023-09-15',
+        isOffCampus: false
       },
       {
         id: '2',
         studentName: 'Priya M.',
         batch: '2023',
+        college: 'IIIT Hyderabad',
         role: 'Product Manager Intern',
         package: '₹80,000/month',
         experienceType: 'Internship',
@@ -132,12 +135,14 @@ export const companies: Company[] = [
         selected: false,
         location: 'Mountain View, CA',
         date: '2023-08-20',
-        isPPOConverted: false
+        isPPOConverted: false,
+        isOffCampus: false
       },
       {
         id: '10',
         studentName: 'Ankit V.',
         batch: '2022',
+        college: 'IIT Bombay',
         role: 'SDE-1',
         package: '₹42 LPA',
         experienceType: 'PPO',
@@ -177,7 +182,54 @@ export const companies: Company[] = [
         selected: true,
         location: 'Bangalore, India',
         date: '2022-07-30',
-        isPPOConverted: true
+        isPPOConverted: true,
+        isOffCampus: false
+      },
+      {
+        id: '12',
+        studentName: 'Arjun K.',
+        batch: '2023',
+        college: 'Off-campus',
+        role: 'SDE-1',
+        package: '₹38 LPA',
+        experienceType: 'Full-time',
+        difficulty: 'Hard',
+        difficultyNote: 'Off-campus applications require extra effort and persistence',
+        process: ['Online Application', 'Resume Screening', 'Online Assessment (2 hours)', 'Technical Phone Screen (1 hour)', 'Virtual Onsite - 4 rounds (3 hours)', 'Final HR Round (30 mins)'],
+        requirements: [
+          {
+            category: 'Technical Skills',
+            details: ['Exceptional coding skills', 'Strong system design knowledge', 'Open source contributions', 'Personal projects portfolio']
+          },
+          {
+            category: 'Self-Learning',
+            details: ['Continuous learning mindset', 'Strong online presence', 'Technical blog writing', 'Community involvement']
+          }
+        ],
+        topics: [
+          {
+            subject: 'Advanced Data Structures & Algorithms',
+            importance: 'High',
+            resources: ['LeetCode Premium', 'Competitive Programming 3', 'Advanced algorithms courses', 'Google interview prep']
+          },
+          {
+            subject: 'Portfolio Development',
+            importance: 'High',
+            resources: ['GitHub profile optimization', 'Personal website', 'Technical blog', 'Open source contributions']
+          }
+        ],
+        tips: [
+          'Build an exceptional online portfolio',
+          'Contribute to open source projects regularly',
+          'Network with Google employees on LinkedIn',
+          'Apply through multiple channels (referrals, direct applications)',
+          'Be persistent - off-campus hiring takes longer'
+        ],
+        timeline: '12 weeks',
+        selected: true,
+        location: 'Bangalore, India',
+        date: '2023-11-10',
+        isOffCampus: true
       }
     ]
   },
@@ -201,6 +253,7 @@ export const companies: Company[] = [
         id: '3',
         studentName: 'Amit K.',
         batch: '2023',
+        college: 'IIT Kanpur',
         role: 'SDE-1',
         package: '₹42 LPA',
         experienceType: 'Full-time',
@@ -261,12 +314,14 @@ export const companies: Company[] = [
         timeline: '8 weeks',
         selected: true,
         location: 'Hyderabad, India',
-        date: '2023-10-05'
+        date: '2023-10-05',
+        isOffCampus: false
       },
       {
         id: '11',
         studentName: 'Kavya R.',
         batch: '2023',
+        college: 'NIT Trichy',
         role: 'Data Scientist Intern',
         package: '₹75,000/month',
         experienceType: 'Internship',
@@ -305,7 +360,8 @@ export const companies: Company[] = [
         selected: true,
         location: 'Bangalore, India',
         date: '2023-07-15',
-        isPPOConverted: false
+        isPPOConverted: false,
+        isOffCampus: false
       }
     ]
   },
@@ -329,6 +385,7 @@ export const companies: Company[] = [
         id: '4',
         studentName: 'Sneha P.',
         batch: '2023',
+        college: 'BITS Pilani',
         role: 'SDE-1',
         package: '₹40 LPA',
         experienceType: 'Full-time',
@@ -389,7 +446,8 @@ export const companies: Company[] = [
         timeline: '10 weeks',
         selected: true,
         location: 'Bangalore, India',
-        date: '2023-09-30'
+        date: '2023-09-30',
+        isOffCampus: false
       }
     ]
   },
@@ -413,6 +471,7 @@ export const companies: Company[] = [
         id: '5',
         studentName: 'Vikash R.',
         batch: '2023',
+        college: 'VIT Vellore',
         role: 'SDE-1',
         package: '₹24 LPA',
         experienceType: 'Full-time',
@@ -468,7 +527,53 @@ export const companies: Company[] = [
         timeline: '6 weeks',
         selected: true,
         location: 'Bangalore, India',
-        date: '2023-08-15'
+        date: '2023-08-15',
+        isOffCampus: false
+      },
+      {
+        id: '13',
+        studentName: 'Ravi M.',
+        batch: '2023',
+        college: 'DTU',
+        role: 'SDE-1',
+        package: '₹22 LPA',
+        experienceType: 'Full-time',
+        difficulty: 'Medium',
+        difficultyNote: 'Standard difficulty for tier-2 college placements',
+        process: ['Campus Pre-placement Talk', 'Online Assessment (90 mins)', 'Technical Interview 1 (45 mins)', 'Technical Interview 2 (45 mins)', 'HR Round (20 mins)'],
+        requirements: [
+          {
+            category: 'Technical Skills',
+            details: ['Solid programming fundamentals', 'DSA proficiency', 'Basic system design', 'Database knowledge']
+          },
+          {
+            category: 'Academic',
+            details: ['CGPA > 6.5', 'No active backlogs', 'Relevant projects']
+          }
+        ],
+        topics: [
+          {
+            subject: 'Core Programming',
+            importance: 'High',
+            resources: ['Java/Python fundamentals', 'OOP concepts', 'Problem solving', 'Code optimization']
+          },
+          {
+            subject: 'Data Structures',
+            importance: 'High',
+            resources: ['Arrays, Strings, LinkedList', 'Trees, Graphs', 'Dynamic Programming', 'Greedy algorithms']
+          }
+        ],
+        tips: [
+          'Focus on fundamentals rather than advanced topics',
+          'Practice explaining your code clearly',
+          'Know your resume projects thoroughly',
+          'Be honest about what you know and don\'t know'
+        ],
+        timeline: '4 weeks',
+        selected: true,
+        location: 'Bangalore, India',
+        date: '2023-09-05',
+        isOffCampus: false
       }
     ]
   }

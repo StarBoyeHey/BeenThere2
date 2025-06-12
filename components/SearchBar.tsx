@@ -14,7 +14,7 @@ import {
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
-  onFilterChange: (filters: { industry: string; difficulty: string; role: string; experienceType: string }) => void;
+  onFilterChange: (filters: { industry: string; difficulty: string; role: string; experienceType: string; college: string }) => void;
 }
 
 export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) {
@@ -23,7 +23,8 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
     industry: '',
     difficulty: '',
     role: '',
-    experienceType: ''
+    experienceType: '',
+    college: ''
   });
 
   const handleSearch = (value: string) => {
@@ -38,8 +39,8 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
   };
 
   const clearFilters = () => {
-    setFilters({ industry: '', difficulty: '', role: '', experienceType: '' });
-    onFilterChange({ industry: '', difficulty: '', role: '', experienceType: '' });
+    setFilters({ industry: '', difficulty: '', role: '', experienceType: '', college: '' });
+    onFilterChange({ industry: '', difficulty: '', role: '', experienceType: '', college: '' });
   };
 
   const hasActiveFilters = Object.values(filters).some(f => f && f !== 'all');
@@ -56,7 +57,7 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
             </div>
             <Input
               type="text"
-              placeholder="Search companies, roles, technologies, or anything..."
+              placeholder="Search companies, roles, colleges, technologies, or anything..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               className="flex-1 border-0 bg-transparent text-lg placeholder:text-slate-500 dark:placeholder:text-slate-400 focus-visible:ring-0 focus-visible:ring-offset-0 h-16"
@@ -115,6 +116,24 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
               <SelectItem value="Full-time">💼 Full-time</SelectItem>
               <SelectItem value="Internship">🎓 Internship</SelectItem>
               <SelectItem value="PPO">🏆 PPO Conversion</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select value={filters.college} onValueChange={(value) => handleFilterChange('college', value)}>
+            <SelectTrigger className="w-48 bg-gradient-to-r from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 transition-all duration-300">
+              <SelectValue placeholder="College" />
+            </SelectTrigger>
+            <SelectContent className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-white/30 dark:border-slate-700/50">
+              <SelectItem value="all">All Colleges</SelectItem>
+              <SelectItem value="IIT Delhi">🏛️ IIT Delhi</SelectItem>
+              <SelectItem value="IIT Bombay">🏛️ IIT Bombay</SelectItem>
+              <SelectItem value="IIT Kanpur">🏛️ IIT Kanpur</SelectItem>
+              <SelectItem value="IIIT Hyderabad">🏫 IIIT Hyderabad</SelectItem>
+              <SelectItem value="NIT Trichy">🏫 NIT Trichy</SelectItem>
+              <SelectItem value="BITS Pilani">🏫 BITS Pilani</SelectItem>
+              <SelectItem value="VIT Vellore">🏫 VIT Vellore</SelectItem>
+              <SelectItem value="DTU">🏫 DTU</SelectItem>
+              <SelectItem value="Off-campus">🌐 Off-campus</SelectItem>
             </SelectContent>
           </Select>
 

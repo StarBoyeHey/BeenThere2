@@ -14,7 +14,8 @@ export default function Home() {
     industry: '',
     difficulty: '',
     role: '',
-    experienceType: ''
+    experienceType: '',
+    college: ''
   });
 
   const filteredCompanies = useMemo(() => {
@@ -26,6 +27,7 @@ export default function Home() {
         company.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         company.experiences.some(exp => 
           exp.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          exp.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
           exp.topics.some(topic => 
             topic.subject.toLowerCase().includes(searchQuery.toLowerCase())
           )
@@ -46,7 +48,11 @@ export default function Home() {
       const matchesExperienceType = filters.experienceType === '' || filters.experienceType === 'all' ||
         company.experiences.some(exp => exp.experienceType === filters.experienceType);
 
-      return matchesSearch && matchesIndustry && matchesRole && matchesDifficulty && matchesExperienceType;
+      // College filter
+      const matchesCollege = filters.college === '' || filters.college === 'all' ||
+        company.experiences.some(exp => exp.college === filters.college);
+
+      return matchesSearch && matchesIndustry && matchesRole && matchesDifficulty && matchesExperienceType && matchesCollege;
     });
   }, [searchQuery, filters]);
 
@@ -84,8 +90,8 @@ export default function Home() {
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed mb-8">
-              Connect with seniors who've been through the interview process. Get valuable insights, 
-              preparation tips, and real experiences to ace your campus placements.
+              Bridge the gap between students and opportunities. Get valuable insights, 
+              preparation tips, and real experiences to navigate your career journey and achieve your goals.
             </p>
 
             {/* Enhanced stats cards with dynamic data */}

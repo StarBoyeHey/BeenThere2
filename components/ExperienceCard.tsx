@@ -1,7 +1,7 @@
 import { Experience } from '@/types/company';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, DollarSign, Clock, CheckCircle, XCircle, Lightbulb, BookOpen, MapPin, Info, Award } from 'lucide-react';
+import { Calendar, DollarSign, Clock, CheckCircle, XCircle, Lightbulb, BookOpen, MapPin, Info, Award, GraduationCap, Globe } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface ExperienceCardProps {
@@ -51,8 +51,19 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
               {experience.isPPOConverted && (
                 <Award className="h-5 w-5 text-purple-600" title="PPO Converted" />
               )}
+              {experience.isOffCampus && (
+                <Globe className="h-5 w-5 text-blue-600" title="Off-campus Placement" />
+              )}
             </div>
-            <p className="text-muted-foreground">Shared by <span className="font-medium">{experience.studentName}</span> (Batch {experience.batch})</p>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1">
+                Shared by <span className="font-medium">{experience.studentName}</span> (Batch {experience.batch})
+              </span>
+              <span className="flex items-center gap-1">
+                <GraduationCap className="h-4 w-4" />
+                <span className="font-medium">{experience.college}</span>
+              </span>
+            </div>
           </div>
           
           <div className="flex flex-wrap gap-2">
@@ -73,6 +84,11 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             <Badge variant={experience.selected ? 'default' : 'secondary'}>
               {experience.selected ? 'Selected' : 'Not Selected'}
             </Badge>
+            {experience.isOffCampus && (
+              <Badge className="bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800">
+                Off-campus
+              </Badge>
+            )}
           </div>
         </div>
 

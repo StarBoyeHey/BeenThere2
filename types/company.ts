@@ -23,6 +23,7 @@ export interface Experience {
   id: string;
   studentName: string;
   batch: string;
+  college: string; // College name or "Off-campus" for off-campus placements
   role: string;
   package: string;
   experienceType: 'Internship' | 'Full-time' | 'PPO'; // PPO = Pre-Placement Offer (intern converted)
@@ -37,6 +38,7 @@ export interface Experience {
   location: string; // which office location
   date: string;
   isPPOConverted?: boolean; // if internship was converted to PPO
+  isOffCampus: boolean; // whether this was an off-campus placement
 }
 
 export interface Requirement {
