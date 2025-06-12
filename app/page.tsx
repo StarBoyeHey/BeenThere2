@@ -6,7 +6,7 @@ import CompanyCard from '@/components/CompanyCard';
 import SearchBar from '@/components/SearchBar';
 import Header from '@/components/Header';
 import { Company } from '@/types/company';
-import { Sparkles, Rocket, Target, Users, TrendingUp, Star } from 'lucide-react';
+import { Sparkles, Rocket, Target, Users, TrendingUp, Star, Zap, Globe, Award } from 'lucide-react';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -54,30 +54,31 @@ export default function Home() {
   const stats = getDynamicStats();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 relative overflow-hidden">
-      {/* Animated background elements */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30 relative overflow-hidden">
+      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-float animate-morphing-blob" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-3xl animate-float animate-morphing-blob" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-float animate-morphing-blob" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-gradient-to-r from-emerald-400/15 to-teal-400/15 rounded-full blur-3xl animate-float animate-morphing-blob" style={{ animationDelay: '6s' }} />
       </div>
 
       <Header />
       
       <main className="container mx-auto px-4 py-8 relative z-10">
-        {/* Hero Section with enhanced styling */}
+        {/* Enhanced Hero Section */}
         <div className="text-center mb-16 relative">
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
-            <Sparkles className="w-96 h-96 text-blue-500 animate-pulse" />
+            <Sparkles className="w-96 h-96 text-blue-500 animate-pulse animate-morphing-blob" />
           </div>
           
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent animate-gradient holographic">
                 Get Interview Insights
               </span>
               <br />
-              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 bg-clip-text text-transparent animate-gradient holographic">
                 from Seniors
               </span>
             </h1>
@@ -89,7 +90,7 @@ export default function Home() {
 
             {/* Enhanced stats cards with dynamic data */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
-              <div className="bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-2xl p-4 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 card-surreal neon-blue">
                 <div className="flex items-center justify-center mb-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500/20 to-cyan-500/20">
                     <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
@@ -101,7 +102,7 @@ export default function Home() {
                 <div className="text-sm text-slate-600 dark:text-slate-400">Companies</div>
               </div>
 
-              <div className="bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-2xl p-4 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 card-surreal neon-purple">
                 <div className="flex items-center justify-center mb-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20">
                     <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
@@ -113,7 +114,7 @@ export default function Home() {
                 <div className="text-sm text-slate-600 dark:text-slate-400">Experiences</div>
               </div>
 
-              <div className="bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-2xl p-4 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 card-surreal neon-green">
                 <div className="flex items-center justify-center mb-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-emerald-500/20 to-teal-500/20">
                     <TrendingUp className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
@@ -125,7 +126,7 @@ export default function Home() {
                 <div className="text-sm text-slate-600 dark:text-slate-400">Success Rate</div>
               </div>
 
-              <div className="bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-2xl p-4 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 card-surreal neon-pink">
                 <div className="flex items-center justify-center mb-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-500/20 to-orange-500/20">
                     <Star className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
@@ -138,17 +139,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Experience type breakdown with dynamic data */}
+            {/* Experience type breakdown with enhanced styling */}
             <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
-              <div className="text-center">
+              <div className="text-center bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-xl p-3 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 neon-blue">
                 <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{stats.fullTimeCount}</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Full-time</div>
               </div>
-              <div className="text-center">
+              <div className="text-center bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-xl p-3 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 neon-purple">
                 <div className="text-lg font-bold text-purple-600 dark:text-purple-400">{stats.internshipCount}</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Internships</div>
               </div>
-              <div className="text-center">
+              <div className="text-center bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-xl rounded-xl p-3 border border-white/30 dark:border-slate-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 neon-green">
                 <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{stats.ppoCount}</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">PPO Conversions</div>
               </div>
@@ -173,7 +174,7 @@ export default function Home() {
             </div>
             
             {(searchQuery || Object.values(filters).some(f => f && f !== 'all')) && (
-              <div className="text-sm bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full px-4 py-2 border border-blue-200 dark:border-blue-700">
+              <div className="text-sm bg-gradient-to-r from-blue-50/80 to-purple-50/80 dark:from-blue-900/40 dark:to-purple-900/40 rounded-full px-4 py-2 border border-blue-200/50 dark:border-blue-700/50 neon-blue">
                 {searchQuery && (
                   <span className="text-slate-700 dark:text-slate-300">
                     Searching for: <strong className="text-blue-600 dark:text-blue-400">"{searchQuery}"</strong>
@@ -188,7 +189,7 @@ export default function Home() {
               <div className="relative mb-8">
                 <div className="text-8xl mb-4 animate-float">🔍</div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-2xl animate-pulse" />
+                  <div className="w-32 h-32 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-2xl animate-pulse animate-morphing-blob" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">No companies found</h3>
@@ -212,16 +213,16 @@ export default function Home() {
         {/* Enhanced CTA Section */}
         <div className="mt-20 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-cyan-600/10 rounded-3xl blur-3xl" />
-          <div className="relative bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl rounded-3xl p-12 shadow-2xl border border-white/20 dark:border-slate-700/50">
+          <div className="relative bg-gradient-to-br from-white/95 to-white/80 dark:from-slate-900/95 dark:to-slate-800/80 backdrop-blur-xl rounded-3xl p-12 shadow-2xl border border-white/30 dark:border-slate-700/30 card-surreal">
             <div className="text-center">
               <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 neon-blue">
                   <Rocket className="w-12 h-12 text-blue-600 dark:text-blue-400" />
                 </div>
               </div>
               
               <h2 className="text-4xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent holographic">
                   Want to Share Your Experience?
                 </span>
               </h2>
@@ -232,19 +233,19 @@ export default function Home() {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div className="group bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105">
+                <div className="group bg-gradient-to-br from-blue-50/80 to-blue-100/60 dark:from-blue-900/40 dark:to-blue-800/30 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-blue">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">📝</div>
                   <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Share Experience</p>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Add your interview story</p>
                 </div>
                 
-                <div className="group bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-900/30 dark:to-purple-800/20 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105">
+                <div className="group bg-gradient-to-br from-purple-50/80 to-purple-100/60 dark:from-purple-900/40 dark:to-purple-800/30 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-purple">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">💡</div>
                   <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Give Tips</p>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Help others prepare better</p>
                 </div>
                 
-                <div className="group bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-900/30 dark:to-emerald-800/20 rounded-2xl p-6 border border-emerald-200/50 dark:border-emerald-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105">
+                <div className="group bg-gradient-to-br from-emerald-50/80 to-emerald-100/60 dark:from-emerald-900/40 dark:to-emerald-800/30 rounded-2xl p-6 border border-emerald-200/50 dark:border-emerald-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-green">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">🤝</div>
                   <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Mentor Juniors</p>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Guide the next batch</p>
