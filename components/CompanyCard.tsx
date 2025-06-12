@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, Users, TrendingUp, Zap, Sparkles, Building, Globe } from 'lucide-react';
 import Link from 'next/link';
-import { calculateSuccessRates } from '@/data/companies';
+import { calculateSuccessRates, calculateAveragePackage } from '@/data/companies';
 
 interface CompanyCardProps {
   company: Company;
@@ -41,12 +41,16 @@ export default function CompanyCard({ company }: CompanyCardProps) {
 
   const difficultyLabel = avgDifficulty <= 1.5 ? 'Easy' : avgDifficulty <= 2.5 ? 'Medium' : 'Hard';
   const successRates = calculateSuccessRates(company.experiences);
+  const avgPackage = calculateAveragePackage(company.experiences);
 
   // Get unique experience types
   const experienceTypes = [...new Set(company.experiences.map(exp => exp.experienceType))];
   
   // Get hiring locations (India offices)
   const indiaLocations = company.locations.filter(loc => loc.country === 'India');
+
+  // Get unique roles being hired
+  const allRoles = [...new Set(company.locations.flatMap(loc => loc.hiringFor))];
 
   return (
     <Link href={`/company/${company.id}`} className="block group">
@@ -131,7 +135,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             </div>
           </div>
 
-          {/* Success rates and experience info */}
+          {/* Success rates and package info */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex flex-col gap-1">
               <Badge className={`${getDifficultyColor(difficultyLabel)} font-semibold px-3 py-1 hover:scale-105 transition-transform duration-300`}>
@@ -154,6 +158,18 @@ export default function CompanyCard({ company }: CompanyCardProps) {
             </div>
           </div>
 
+          {/* Average package (excluding internships) */}
+          {avgPackage > 0 && (
+            <div className="mb-4">
+              <div className="text-center bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200/50 dark:border-green-700/50">
+                <div className="text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                  ₹{avgPackage.toFixed(1)} LPA
+                </div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">Avg Package (Full-time/PPO)</div>
+              </div>
+            </div>
+          )}
+
           {/* Experience types */}
           {experienceTypes.length > 0 && (
             <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-4 mb-4">
@@ -174,21 +190,21 @@ export default function CompanyCard({ company }: CompanyCardProps) {
           {/* Role tags with enhanced styling */}
           <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-4">
             <div className="flex flex-wrap gap-2">
-              {company.experiences.slice(0, 3).map((exp, index) => (
+              {allRoles.slice(0, 3).map((role, index) => (
                 <Badge 
                   key={index} 
                   variant="outline" 
                   className="text-xs bg-gradient-to-r from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border-slate-300/50 dark:border-slate-600/50 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105"
                 >
-                  {exp.role}
+                  {role}
                 </Badge>
               ))}
-              {company.experiences.length > 3 && (
+              {allRoles.length > 3 && (
                 <Badge 
                   variant="outline" 
                   className="text-xs bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border-blue-300/50 dark:border-blue-600/50 text-blue-700 dark:text-blue-300 font-semibold hover:scale-105 transition-transform duration-300"
                 >
-                  +{company.experiences.length - 3} more
+                  +{allRoles.length - 3} more
                 </Badge>
               )}
             </div>

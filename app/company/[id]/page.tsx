@@ -1,4 +1,4 @@
-import { companies, calculateSuccessRates } from '@/data/companies';
+import { companies, calculateSuccessRates, calculateAveragePackage } from '@/data/companies';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import ExperienceCard from '@/components/ExperienceCard';
@@ -27,15 +27,10 @@ export default function CompanyPage({ params }: CompanyPageProps) {
   }
 
   const successRates = calculateSuccessRates(company.experiences);
-  
-  const avgPackage = company.experiences.length > 0 
-    ? company.experiences.reduce((acc, exp) => {
-        const packageValue = parseFloat(exp.package.replace(/[₹LPA\s]/g, ''));
-        return acc + packageValue;
-      }, 0) / company.experiences.length
-    : 0;
+  const avgPackage = calculateAveragePackage(company.experiences);
 
-  const roles = [...new Set(company.experiences.map(exp => exp.role))];
+  // Get unique roles being hired
+  const allRoles = [...new Set(company.locations.flatMap(loc => loc.hiringFor))];
   const difficulties = company.experiences.map(exp => exp.difficulty);
   const difficultyCount = {
     Easy: difficulties.filter(d => d === 'Easy').length,
@@ -122,15 +117,17 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           <Card>
             <CardContent className="p-6 text-center">
               <Award className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">₹{avgPackage.toFixed(1)} LPA</div>
-              <p className="text-sm text-muted-foreground">Avg Package</p>
+              <div className="text-2xl font-bold text-foreground">
+                {avgPackage > 0 ? `₹${avgPackage.toFixed(1)} LPA` : 'N/A'}
+              </div>
+              <p className="text-sm text-muted-foreground">Avg Package (FT/PPO)</p>
             </CardContent>
           </Card>
           
           <Card>
             <CardContent className="p-6 text-center">
               <Target className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">{roles.length}</div>
+              <div className="text-2xl font-bold text-foreground">{allRoles.length}</div>
               <p className="text-sm text-muted-foreground">Different Roles</p>
             </CardContent>
           </Card>
@@ -197,7 +194,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-                {roles.map((role, index) => (
+                {allRoles.map((role, index) => (
                   <Badge key={index} variant="outline" className="text-sm">
                     {role}
                   </Badge>

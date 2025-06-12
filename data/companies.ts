@@ -11,10 +11,10 @@ export const companies: Company[] = [
     size: '100,000+',
     headquarters: 'Mountain View, CA, USA',
     locations: [
-      { city: 'Mountain View', country: 'USA', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
-      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Site Reliability Engineer'] },
-      { city: 'Hyderabad', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Technical Program Manager'] },
-      { city: 'London', country: 'UK', isHeadquarters: false, hiringFor: ['Software Engineer', 'Product Manager'] }
+      { city: 'Mountain View', country: 'USA', isHeadquarters: true, hiringFor: ['SDE-1', 'SDE-2', 'Product Manager', 'Data Scientist', 'DevOps Engineer'] },
+      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'SDE-2', 'Site Reliability Engineer', 'ML Engineer'] },
+      { city: 'Hyderabad', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'Technical Program Manager', 'Cloud Engineer'] },
+      { city: 'London', country: 'UK', isHeadquarters: false, hiringFor: ['SDE-2', 'Product Manager', 'Security Engineer'] }
     ],
     rating: 4.8,
     experiences: [
@@ -22,7 +22,7 @@ export const companies: Company[] = [
         id: '1',
         studentName: 'Rahul S.',
         batch: '2023',
-        role: 'Software Engineer',
+        role: 'SDE-1',
         package: '₹45 LPA',
         experienceType: 'Full-time',
         difficulty: 'Hard',
@@ -89,7 +89,7 @@ export const companies: Company[] = [
         studentName: 'Priya M.',
         batch: '2023',
         role: 'Product Manager Intern',
-        package: '₹2 LPA (Internship)',
+        package: '₹80,000/month',
         experienceType: 'Internship',
         difficulty: 'Medium',
         difficultyNote: 'Difficulty perception varies based on individual background and preparation level',
@@ -138,7 +138,7 @@ export const companies: Company[] = [
         id: '10',
         studentName: 'Ankit V.',
         batch: '2022',
-        role: 'Software Engineer',
+        role: 'SDE-1',
         package: '₹42 LPA',
         experienceType: 'PPO',
         difficulty: 'Medium',
@@ -191,9 +191,9 @@ export const companies: Company[] = [
     size: '220,000+',
     headquarters: 'Redmond, WA, USA',
     locations: [
-      { city: 'Redmond', country: 'USA', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
-      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Program Manager'] },
-      { city: 'Hyderabad', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Support Engineer'] }
+      { city: 'Redmond', country: 'USA', isHeadquarters: true, hiringFor: ['SDE-1', 'SDE-2', 'Product Manager', 'Data Scientist', 'Cloud Architect'] },
+      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'SDE-2', 'Program Manager', 'DevOps Engineer'] },
+      { city: 'Hyderabad', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'Support Engineer', 'Security Engineer'] }
     ],
     rating: 4.6,
     experiences: [
@@ -201,7 +201,7 @@ export const companies: Company[] = [
         id: '3',
         studentName: 'Amit K.',
         batch: '2023',
-        role: 'Software Development Engineer',
+        role: 'SDE-1',
         package: '₹42 LPA',
         experienceType: 'Full-time',
         difficulty: 'Hard',
@@ -262,6 +262,50 @@ export const companies: Company[] = [
         selected: true,
         location: 'Hyderabad, India',
         date: '2023-10-05'
+      },
+      {
+        id: '11',
+        studentName: 'Kavya R.',
+        batch: '2023',
+        role: 'Data Scientist Intern',
+        package: '₹75,000/month',
+        experienceType: 'Internship',
+        difficulty: 'Medium',
+        difficultyNote: 'Requires strong analytical and statistical background',
+        process: ['Online Assessment - ML/Stats (2 hours)', 'Technical Interview - ML Concepts (1 hour)', 'Case Study Presentation (45 mins)', 'Final Round (30 mins)'],
+        requirements: [
+          {
+            category: 'Technical Skills',
+            details: ['Machine Learning algorithms', 'Statistics and Probability', 'Python/R programming', 'Data visualization', 'SQL proficiency']
+          },
+          {
+            category: 'Academic',
+            details: ['CGPA > 8.0', 'Mathematics/Statistics/CS background', 'Research experience preferred']
+          }
+        ],
+        topics: [
+          {
+            subject: 'Machine Learning',
+            importance: 'High',
+            resources: ['Andrew Ng ML Course', 'Hands-On ML by Aurélien Géron', 'Scikit-learn documentation', 'Kaggle Learn']
+          },
+          {
+            subject: 'Statistics',
+            importance: 'High',
+            resources: ['Think Stats', 'Statistical Learning (ISLR)', 'Khan Academy Statistics', 'Probability concepts']
+          }
+        ],
+        tips: [
+          'Strong foundation in statistics is crucial',
+          'Practice ML problems on Kaggle',
+          'Know when to use which algorithm',
+          'Be able to explain complex concepts simply'
+        ],
+        timeline: '5 weeks',
+        selected: true,
+        location: 'Bangalore, India',
+        date: '2023-07-15',
+        isPPOConverted: false
       }
     ]
   },
@@ -275,9 +319,9 @@ export const companies: Company[] = [
     size: '1,500,000+',
     headquarters: 'Seattle, WA, USA',
     locations: [
-      { city: 'Seattle', country: 'USA', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
-      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Support Engineer'] },
-      { city: 'Chennai', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Operations Manager'] }
+      { city: 'Seattle', country: 'USA', isHeadquarters: true, hiringFor: ['SDE-1', 'SDE-2', 'Product Manager', 'Data Scientist', 'Solutions Architect'] },
+      { city: 'Bangalore', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'SDE-2', 'Support Engineer', 'DevOps Engineer'] },
+      { city: 'Chennai', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'Operations Manager', 'Financial Analyst'] }
     ],
     rating: 4.3,
     experiences: [
@@ -285,7 +329,7 @@ export const companies: Company[] = [
         id: '4',
         studentName: 'Sneha P.',
         batch: '2023',
-        role: 'Software Development Engineer',
+        role: 'SDE-1',
         package: '₹40 LPA',
         experienceType: 'Full-time',
         difficulty: 'Hard',
@@ -359,9 +403,9 @@ export const companies: Company[] = [
     size: '50,000+',
     headquarters: 'Bangalore, India',
     locations: [
-      { city: 'Bangalore', country: 'India', isHeadquarters: true, hiringFor: ['Software Engineer', 'Product Manager', 'Data Scientist'] },
-      { city: 'Delhi', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Business Analyst'] },
-      { city: 'Mumbai', country: 'India', isHeadquarters: false, hiringFor: ['Software Engineer', 'Operations Manager'] }
+      { city: 'Bangalore', country: 'India', isHeadquarters: true, hiringFor: ['SDE-1', 'SDE-2', 'Product Manager', 'Data Scientist', 'DevOps Engineer'] },
+      { city: 'Delhi', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'Business Analyst', 'Financial Analyst'] },
+      { city: 'Mumbai', country: 'India', isHeadquarters: false, hiringFor: ['SDE-1', 'Operations Manager', 'Supply Chain Analyst'] }
     ],
     rating: 4.2,
     experiences: [
@@ -369,7 +413,7 @@ export const companies: Company[] = [
         id: '5',
         studentName: 'Vikash R.',
         batch: '2023',
-        role: 'Software Development Engineer',
+        role: 'SDE-1',
         package: '₹24 LPA',
         experienceType: 'Full-time',
         difficulty: 'Medium',
@@ -430,7 +474,7 @@ export const companies: Company[] = [
   }
 ];
 
-// Helper function to calculate success rates
+// Helper function to calculate success rates (excluding internship stipends from average package)
 export const calculateSuccessRates = (experiences: any[]) => {
   const total = experiences.length;
   if (total === 0) return { overall: 0, internship: 0, fullTime: 0, ppoConversion: 0 };
@@ -449,5 +493,51 @@ export const calculateSuccessRates = (experiences: any[]) => {
     internship: internships.length > 0 ? Math.round((internshipSelected / internships.length) * 100) : 0,
     fullTime: fullTime.length > 0 ? Math.round((fullTimeSelected / fullTime.length) * 100) : 0,
     ppoConversion: ppoExperiences.length > 0 ? Math.round((ppoSelected / ppoExperiences.length) * 100) : 0
+  };
+};
+
+// Helper function to calculate average package (excluding internships)
+export const calculateAveragePackage = (experiences: any[]) => {
+  const fullTimeAndPPO = experiences.filter(exp => 
+    exp.experienceType === 'Full-time' || exp.experienceType === 'PPO'
+  );
+  
+  if (fullTimeAndPPO.length === 0) return 0;
+  
+  const totalPackage = fullTimeAndPPO.reduce((acc, exp) => {
+    const packageValue = parseFloat(exp.package.replace(/[₹LPA\s]/g, ''));
+    return acc + packageValue;
+  }, 0);
+  
+  return totalPackage / fullTimeAndPPO.length;
+};
+
+// Helper function to get dynamic statistics
+export const getDynamicStats = () => {
+  const totalCompanies = companies.length;
+  const totalExperiences = companies.reduce((acc, company) => acc + company.experiences.length, 0);
+  const totalSelected = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.selected).length, 0);
+  const overallSuccessRate = totalExperiences > 0 ? Math.round((totalSelected / totalExperiences) * 100) : 0;
+  
+  // Calculate average rating
+  const avgRating = companies.reduce((acc, company) => acc + company.rating, 0) / companies.length;
+  
+  // Count different experience types
+  const fullTimeCount = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.experienceType === 'Full-time').length, 0);
+  const internshipCount = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.experienceType === 'Internship').length, 0);
+  const ppoCount = companies.reduce((acc, company) => 
+    acc + company.experiences.filter(exp => exp.experienceType === 'PPO').length, 0);
+  
+  return {
+    totalCompanies,
+    totalExperiences,
+    overallSuccessRate,
+    avgRating: avgRating.toFixed(1),
+    fullTimeCount,
+    internshipCount,
+    ppoCount
   };
 };
