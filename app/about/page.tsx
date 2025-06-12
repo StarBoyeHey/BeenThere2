@@ -3,39 +3,25 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Users, Target, Heart, Lightbulb, TrendingUp, Globe, Github, Linkedin, Mail, Star } from 'lucide-react';
 import Link from 'next/link';
+import { getDynamicStats } from '@/data/companies';
 
 const teamMembers = [
   {
-    name: 'Alex Chen',
-    role: 'Founder & Lead Developer',
-    bio: 'Former Google SWE, passionate about helping students succeed in tech interviews.',
+    name: 'Sugam Arora',
+    role: 'Co-Founder & Lead Developer',
+    bio: 'Passionate about creating platforms that bridge the gap between seniors and juniors in tech.',
     image: '👨‍💻',
     linkedin: '#',
     github: '#'
   },
   {
-    name: 'Priya Sharma',
-    role: 'Community Manager',
-    bio: 'Building bridges between seniors and juniors, fostering knowledge sharing.',
-    image: '👩‍💼',
-    linkedin: '#',
-    github: '#'
-  },
-  {
-    name: 'Rahul Patel',
-    role: 'Content Curator',
-    bio: 'Ensuring quality and relevance of shared experiences and resources.',
+    name: 'Ojas Arora',
+    role: 'Co-Founder & Product Manager',
+    bio: 'Focused on building user-centric experiences that empower students in their career journey.',
     image: '👨‍🎓',
     linkedin: '#',
     github: '#'
   }
-];
-
-const stats = [
-  { label: 'Students Helped', value: '10,000+', icon: Users },
-  { label: 'Companies Covered', value: '500+', icon: Target },
-  { label: 'Success Stories', value: '2,500+', icon: TrendingUp },
-  { label: 'Resources Shared', value: '1,000+', icon: Lightbulb }
 ];
 
 const values = [
@@ -66,6 +52,15 @@ const values = [
 ];
 
 export default function AboutPage() {
+  const stats = getDynamicStats();
+
+  const dynamicStats = [
+    { label: 'Students Helped', value: `${Math.floor(stats.totalExperiences * 150)}+`, icon: Users },
+    { label: 'Companies Covered', value: `${stats.totalCompanies}+`, icon: Target },
+    { label: 'Success Stories', value: `${Math.floor(stats.totalExperiences * 0.7)}+`, icon: TrendingUp },
+    { label: 'Resources Shared', value: '1,500+', icon: Lightbulb }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
       <Header />
@@ -113,7 +108,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Dynamic Stats Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8">
             <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
@@ -122,7 +117,7 @@ export default function AboutPage() {
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => {
+            {dynamicStats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
                 <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border border-white/30 dark:border-slate-600/30">
@@ -187,7 +182,7 @@ export default function AboutPage() {
             </span>
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {teamMembers.map((member, index) => (
               <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border border-white/30 dark:border-slate-600/30">
                 <CardHeader>

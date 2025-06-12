@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Code, Database, Globe, Lightbulb, Target, Users, Video, FileText, ExternalLink } from 'lucide-react';
+import { BookOpen, Code, Database, Globe, Lightbulb, Target, Users, Video, FileText, ExternalLink, Brain, Shield, BarChart3, Cloud, Cpu, Palette, Server, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 const resourceCategories = [
@@ -50,6 +50,14 @@ const resourceCategories = [
         type: 'Platform',
         difficulty: 'All Levels',
         tags: ['Coding', 'Practice', 'Contests']
+      },
+      {
+        name: 'CodeChef',
+        description: 'Competitive programming platform with contests',
+        url: 'https://codechef.com',
+        type: 'Platform',
+        difficulty: 'All Levels',
+        tags: ['Competitive Programming', 'Contests', 'Practice']
       }
     ]
   },
@@ -90,23 +98,23 @@ const resourceCategories = [
         type: 'Blog',
         difficulty: 'Intermediate to Advanced',
         tags: ['Case Studies', 'Scalability', 'Architecture']
+      },
+      {
+        name: 'ByteByteGo',
+        description: 'System design newsletter and visual explanations',
+        url: 'https://bytebytego.com',
+        type: 'Newsletter',
+        difficulty: 'Intermediate',
+        tags: ['System Design', 'Visual Learning', 'Newsletter']
       }
     ]
   },
   {
-    id: 'web-development',
-    title: 'Web Development',
-    icon: Globe,
-    description: 'Frontend and backend development skills',
+    id: 'frontend',
+    title: 'Frontend Development',
+    icon: Palette,
+    description: 'Modern frontend frameworks and UI/UX development',
     resources: [
-      {
-        name: 'MDN Web Docs',
-        description: 'Comprehensive web development documentation',
-        url: 'https://developer.mozilla.org',
-        type: 'Documentation',
-        difficulty: 'All Levels',
-        tags: ['Web Dev', 'JavaScript', 'CSS', 'HTML']
-      },
       {
         name: 'React Documentation',
         description: 'Official React.js documentation and tutorials',
@@ -116,6 +124,54 @@ const resourceCategories = [
         tags: ['React', 'Frontend', 'JavaScript']
       },
       {
+        name: 'Next.js Learn',
+        description: 'Interactive Next.js tutorial and documentation',
+        url: 'https://nextjs.org/learn',
+        type: 'Course',
+        difficulty: 'Intermediate',
+        tags: ['Next.js', 'React', 'Full Stack']
+      },
+      {
+        name: 'Vue.js Guide',
+        description: 'Progressive JavaScript framework documentation',
+        url: 'https://vuejs.org/guide',
+        type: 'Documentation',
+        difficulty: 'Beginner to Advanced',
+        tags: ['Vue.js', 'Frontend', 'JavaScript']
+      },
+      {
+        name: 'Tailwind CSS',
+        description: 'Utility-first CSS framework documentation',
+        url: 'https://tailwindcss.com/docs',
+        type: 'Documentation',
+        difficulty: 'Beginner',
+        tags: ['CSS', 'Styling', 'Framework']
+      },
+      {
+        name: 'Frontend Masters',
+        description: 'Advanced frontend engineering courses',
+        url: 'https://frontendmasters.com',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Courses', 'Advanced', 'Frontend']
+      },
+      {
+        name: 'Figma Academy',
+        description: 'Learn UI/UX design with Figma',
+        url: 'https://figma.com/academy',
+        type: 'Course',
+        difficulty: 'Beginner',
+        tags: ['Design', 'UI/UX', 'Figma']
+      }
+    ]
+  },
+  {
+    id: 'backend',
+    title: 'Backend Development',
+    icon: Server,
+    description: 'Server-side development and API design',
+    resources: [
+      {
         name: 'Node.js Documentation',
         description: 'Server-side JavaScript development',
         url: 'https://nodejs.org/docs',
@@ -124,76 +180,372 @@ const resourceCategories = [
         tags: ['Node.js', 'Backend', 'JavaScript']
       },
       {
-        name: 'The Odin Project',
-        description: 'Free full-stack web development curriculum',
-        url: 'https://theodinproject.com',
-        type: 'Course',
+        name: 'Express.js Guide',
+        description: 'Fast, unopinionated web framework for Node.js',
+        url: 'https://expressjs.com',
+        type: 'Documentation',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Full Stack', 'Free', 'Curriculum']
+        tags: ['Express.js', 'Node.js', 'API']
+      },
+      {
+        name: 'Django Documentation',
+        description: 'High-level Python web framework',
+        url: 'https://docs.djangoproject.com',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Django', 'Python', 'Web Framework']
+      },
+      {
+        name: 'Spring Boot',
+        description: 'Java-based framework for microservices',
+        url: 'https://spring.io/projects/spring-boot',
+        type: 'Documentation',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Java', 'Spring', 'Microservices']
+      },
+      {
+        name: 'FastAPI',
+        description: 'Modern, fast web framework for building APIs with Python',
+        url: 'https://fastapi.tiangolo.com',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Python', 'API', 'FastAPI']
+      },
+      {
+        name: 'GraphQL',
+        description: 'Query language and runtime for APIs',
+        url: 'https://graphql.org/learn',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['GraphQL', 'API', 'Query Language']
       }
     ]
   },
   {
-    id: 'behavioral',
-    title: 'Behavioral Interviews',
-    icon: Users,
-    description: 'Soft skills and behavioral interview preparation',
+    id: 'devops',
+    title: 'DevOps & Cloud',
+    icon: Cloud,
+    description: 'Infrastructure, deployment, and cloud technologies',
     resources: [
       {
-        name: 'STAR Method Guide',
-        description: 'Structure your behavioral interview responses',
-        url: '#',
-        type: 'Guide',
-        difficulty: 'All Levels',
-        tags: ['Behavioral', 'Interview', 'Communication']
+        name: 'Docker Documentation',
+        description: 'Containerization platform and tools',
+        url: 'https://docs.docker.com',
+        type: 'Documentation',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Docker', 'Containers', 'DevOps']
       },
       {
-        name: 'Amazon Leadership Principles',
-        description: 'Understanding Amazon\'s 16 leadership principles',
-        url: 'https://amazon.jobs/principles',
+        name: 'Kubernetes Documentation',
+        description: 'Container orchestration platform',
+        url: 'https://kubernetes.io/docs',
+        type: 'Documentation',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Kubernetes', 'Orchestration', 'DevOps']
+      },
+      {
+        name: 'AWS Documentation',
+        description: 'Amazon Web Services cloud platform',
+        url: 'https://docs.aws.amazon.com',
         type: 'Documentation',
         difficulty: 'All Levels',
-        tags: ['Amazon', 'Leadership', 'Behavioral']
+        tags: ['AWS', 'Cloud', 'Infrastructure']
       },
       {
-        name: 'Behavioral Interview Questions',
-        description: 'Common behavioral questions and how to answer them',
-        url: '#',
-        type: 'Guide',
-        difficulty: 'All Levels',
-        tags: ['Questions', 'Preparation', 'Examples']
+        name: 'Terraform Documentation',
+        description: 'Infrastructure as Code tool',
+        url: 'https://terraform.io/docs',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Terraform', 'IaC', 'Infrastructure']
+      },
+      {
+        name: 'Jenkins Documentation',
+        description: 'Open source automation server',
+        url: 'https://jenkins.io/doc',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Jenkins', 'CI/CD', 'Automation']
+      },
+      {
+        name: 'Azure DevOps',
+        description: 'Microsoft cloud DevOps services',
+        url: 'https://docs.microsoft.com/azure/devops',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Azure', 'DevOps', 'Microsoft']
       }
     ]
   },
   {
-    id: 'career-guidance',
-    title: 'Career Guidance',
-    icon: Target,
-    description: 'Resume building, career planning, and industry insights',
+    id: 'ai-ml',
+    title: 'AI & Machine Learning',
+    icon: Brain,
+    description: 'Artificial Intelligence and Machine Learning resources',
     resources: [
       {
-        name: 'Resume Templates',
-        description: 'ATS-friendly resume templates for tech roles',
-        url: '#',
-        type: 'Template',
-        difficulty: 'All Levels',
-        tags: ['Resume', 'Template', 'ATS']
+        name: 'Andrew Ng ML Course',
+        description: 'Comprehensive machine learning course by Andrew Ng',
+        url: 'https://coursera.org/learn/machine-learning',
+        type: 'Course',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Machine Learning', 'Andrew Ng', 'Coursera']
       },
       {
-        name: 'LinkedIn Learning',
-        description: 'Professional development and skill building',
-        url: 'https://linkedin.com/learning',
-        type: 'Platform',
-        difficulty: 'All Levels',
-        tags: ['Professional', 'Skills', 'Networking']
+        name: 'Fast.ai',
+        description: 'Practical deep learning for coders',
+        url: 'https://fast.ai',
+        type: 'Course',
+        difficulty: 'Intermediate',
+        tags: ['Deep Learning', 'Practical', 'Python']
       },
       {
-        name: 'Glassdoor',
-        description: 'Company reviews, salaries, and interview experiences',
-        url: 'https://glassdoor.com',
+        name: 'Hugging Face',
+        description: 'Open source ML platform and model hub',
+        url: 'https://huggingface.co',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['NLP', 'Transformers', 'Models']
+      },
+      {
+        name: 'OpenAI Documentation',
+        description: 'GPT and AI API documentation',
+        url: 'https://platform.openai.com/docs',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['OpenAI', 'GPT', 'API']
+      },
+      {
+        name: 'Kaggle Learn',
+        description: 'Free micro-courses on data science topics',
+        url: 'https://kaggle.com/learn',
+        type: 'Course',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Data Science', 'Kaggle', 'Free']
+      },
+      {
+        name: 'Papers With Code',
+        description: 'Latest ML research papers with code implementations',
+        url: 'https://paperswithcode.com',
+        type: 'Repository',
+        difficulty: 'Advanced',
+        tags: ['Research', 'Papers', 'Code']
+      },
+      {
+        name: 'LangChain',
+        description: 'Framework for developing LLM applications',
+        url: 'https://langchain.com',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['LLM', 'Framework', 'AI Apps']
+      }
+    ]
+  },
+  {
+    id: 'data-science',
+    title: 'Data Science & Analytics',
+    icon: BarChart3,
+    description: 'Data analysis, visualization, and business intelligence',
+    resources: [
+      {
+        name: 'Pandas Documentation',
+        description: 'Python data manipulation and analysis library',
+        url: 'https://pandas.pydata.org/docs',
+        type: 'Documentation',
+        difficulty: 'Beginner to Advanced',
+        tags: ['Python', 'Data Analysis', 'Pandas']
+      },
+      {
+        name: 'Tableau Learning',
+        description: 'Data visualization and business intelligence',
+        url: 'https://tableau.com/learn',
+        type: 'Course',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Visualization', 'BI', 'Tableau']
+      },
+      {
+        name: 'Power BI Learning',
+        description: 'Microsoft business analytics solution',
+        url: 'https://docs.microsoft.com/power-bi',
+        type: 'Documentation',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Power BI', 'Microsoft', 'Analytics']
+      },
+      {
+        name: 'SQL for Data Science',
+        description: 'Database querying for data analysis',
+        url: 'https://mode.com/sql-tutorial',
+        type: 'Tutorial',
+        difficulty: 'Beginner',
+        tags: ['SQL', 'Database', 'Data Analysis']
+      },
+      {
+        name: 'R for Data Science',
+        description: 'Comprehensive guide to R programming',
+        url: 'https://r4ds.had.co.nz',
+        type: 'Book',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['R', 'Statistics', 'Data Science']
+      },
+      {
+        name: 'Apache Spark',
+        description: 'Unified analytics engine for big data processing',
+        url: 'https://spark.apache.org/docs/latest',
+        type: 'Documentation',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Big Data', 'Spark', 'Analytics']
+      }
+    ]
+  },
+  {
+    id: 'cybersecurity',
+    title: 'Cybersecurity',
+    icon: Shield,
+    description: 'Information security and ethical hacking',
+    resources: [
+      {
+        name: 'OWASP Top 10',
+        description: 'Top 10 web application security risks',
+        url: 'https://owasp.org/www-project-top-ten',
+        type: 'Guide',
+        difficulty: 'Intermediate',
+        tags: ['Web Security', 'OWASP', 'Vulnerabilities']
+      },
+      {
+        name: 'Cybrary',
+        description: 'Free cybersecurity training platform',
+        url: 'https://cybrary.it',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Company Info', 'Salaries', 'Reviews']
+        tags: ['Training', 'Certification', 'Free']
+      },
+      {
+        name: 'TryHackMe',
+        description: 'Hands-on cybersecurity learning platform',
+        url: 'https://tryhackme.com',
+        type: 'Platform',
+        difficulty: 'Beginner to Advanced',
+        tags: ['Hands-on', 'CTF', 'Learning']
+      },
+      {
+        name: 'HackTheBox',
+        description: 'Penetration testing labs and challenges',
+        url: 'https://hackthebox.com',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Penetration Testing', 'Labs', 'CTF']
+      },
+      {
+        name: 'SANS Training',
+        description: 'Professional cybersecurity training',
+        url: 'https://sans.org',
+        type: 'Training',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Professional', 'Certification', 'SANS']
+      },
+      {
+        name: 'Metasploit',
+        description: 'Penetration testing framework',
+        url: 'https://metasploit.com',
+        type: 'Tool',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Penetration Testing', 'Framework', 'Tool']
+      }
+    ]
+  },
+  {
+    id: 'mobile',
+    title: 'Mobile Development',
+    icon: Cpu,
+    description: 'iOS, Android, and cross-platform mobile development',
+    resources: [
+      {
+        name: 'React Native',
+        description: 'Cross-platform mobile development with React',
+        url: 'https://reactnative.dev',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['React Native', 'Cross-platform', 'Mobile']
+      },
+      {
+        name: 'Flutter Documentation',
+        description: 'Google\'s UI toolkit for mobile, web, and desktop',
+        url: 'https://flutter.dev/docs',
+        type: 'Documentation',
+        difficulty: 'Beginner to Advanced',
+        tags: ['Flutter', 'Dart', 'Cross-platform']
+      },
+      {
+        name: 'Swift Documentation',
+        description: 'Apple\'s programming language for iOS development',
+        url: 'https://swift.org/documentation',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Swift', 'iOS', 'Apple']
+      },
+      {
+        name: 'Android Developers',
+        description: 'Official Android development documentation',
+        url: 'https://developer.android.com',
+        type: 'Documentation',
+        difficulty: 'Beginner to Advanced',
+        tags: ['Android', 'Kotlin', 'Java']
+      },
+      {
+        name: 'Ionic Framework',
+        description: 'Cross-platform mobile app development',
+        url: 'https://ionicframework.com/docs',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['Ionic', 'Cross-platform', 'Web Technologies']
+      }
+    ]
+  },
+  {
+    id: 'blockchain',
+    title: 'Blockchain & Web3',
+    icon: Zap,
+    description: 'Blockchain development and cryptocurrency',
+    resources: [
+      {
+        name: 'Ethereum Documentation',
+        description: 'Decentralized platform for smart contracts',
+        url: 'https://ethereum.org/developers',
+        type: 'Documentation',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Ethereum', 'Smart Contracts', 'Blockchain']
+      },
+      {
+        name: 'Solidity Documentation',
+        description: 'Programming language for Ethereum smart contracts',
+        url: 'https://docs.soliditylang.org',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Solidity', 'Smart Contracts', 'Programming']
+      },
+      {
+        name: 'Web3.js',
+        description: 'JavaScript library for interacting with Ethereum',
+        url: 'https://web3js.readthedocs.io',
+        type: 'Library',
+        difficulty: 'Intermediate',
+        tags: ['Web3', 'JavaScript', 'Ethereum']
+      },
+      {
+        name: 'OpenZeppelin',
+        description: 'Secure smart contract development framework',
+        url: 'https://openzeppelin.com/contracts',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['Security', 'Smart Contracts', 'Framework']
+      },
+      {
+        name: 'Hardhat',
+        description: 'Ethereum development environment',
+        url: 'https://hardhat.org/docs',
+        type: 'Tool',
+        difficulty: 'Intermediate',
+        tags: ['Development Environment', 'Ethereum', 'Testing']
       }
     ]
   },
@@ -228,7 +580,23 @@ const resourceCategories = [
         tags: ['Practical', 'Programming', 'Technology']
       },
       {
-        name: 'YouTube Channels',
+        name: 'Pluralsight',
+        description: 'Technology skills platform for developers',
+        url: 'https://pluralsight.com',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Technology', 'Skills', 'Professional']
+      },
+      {
+        name: 'LinkedIn Learning',
+        description: 'Professional development and skill building',
+        url: 'https://linkedin.com/learning',
+        type: 'Platform',
+        difficulty: 'All Levels',
+        tags: ['Professional', 'Skills', 'Networking']
+      },
+      {
+        name: 'YouTube Tech Channels',
         description: 'Free educational content from tech creators',
         url: '#',
         type: 'Video',
@@ -276,6 +644,18 @@ const getTypeColor = (type: string) => {
       return 'bg-pink-100 text-pink-800 border-pink-200 dark:bg-pink-900/30 dark:text-pink-400';
     case 'Video':
       return 'bg-rose-100 text-rose-800 border-rose-200 dark:bg-rose-900/30 dark:text-rose-400';
+    case 'Framework':
+      return 'bg-violet-100 text-violet-800 border-violet-200 dark:bg-violet-900/30 dark:text-violet-400';
+    case 'Tool':
+      return 'bg-teal-100 text-teal-800 border-teal-200 dark:bg-teal-900/30 dark:text-teal-400';
+    case 'Library':
+      return 'bg-lime-100 text-lime-800 border-lime-200 dark:bg-lime-900/30 dark:text-lime-400';
+    case 'Training':
+      return 'bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400';
+    case 'Newsletter':
+      return 'bg-sky-100 text-sky-800 border-sky-200 dark:bg-sky-900/30 dark:text-sky-400';
+    case 'Tutorial':
+      return 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200 dark:bg-fuchsia-900/30 dark:text-fuchsia-400';
     default:
       return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300';
   }
@@ -302,8 +682,8 @@ export default function ResourcesPage() {
           </h1>
           
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Curated collection of the best resources to help you prepare for technical interviews, 
-            build your skills, and advance your career in technology.
+            Comprehensive collection of the latest resources across all tech domains - from AI/ML to cybersecurity, 
+            frontend to blockchain. Stay ahead with cutting-edge learning materials.
           </p>
         </div>
 
@@ -411,7 +791,7 @@ export default function ResourcesPage() {
               </h2>
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-                Know of an amazing resource that helped you in your interview preparation? 
+                Know of an amazing resource that helped you in your learning journey? 
                 Share it with the community to help future candidates succeed!
               </p>
               

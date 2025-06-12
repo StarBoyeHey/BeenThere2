@@ -136,11 +136,13 @@ export default function SearchBar({ onSearch, onFilterChange }: SearchBarProps) 
             </SelectTrigger>
             <SelectContent className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-white/30 dark:border-slate-700/50">
               <SelectItem value="all">All Roles</SelectItem>
-              <SelectItem value="Software Engineer">👨‍💻 Software Engineer</SelectItem>
+              <SelectItem value="SDE-1">👨‍💻 SDE-1</SelectItem>
+              <SelectItem value="SDE-2">🚀 SDE-2</SelectItem>
               <SelectItem value="Product Manager">📊 Product Manager</SelectItem>
-              <SelectItem value="Backend Developer">⚙️ Backend Developer</SelectItem>
-              <SelectItem value="Frontend Developer">🎨 Frontend Developer</SelectItem>
-              <SelectItem value="Software Development Engineer">🚀 SDE</SelectItem>
+              <SelectItem value="Data Scientist">📈 Data Scientist</SelectItem>
+              <SelectItem value="DevOps Engineer">⚙️ DevOps Engineer</SelectItem>
+              <SelectItem value="ML Engineer">🤖 ML Engineer</SelectItem>
+              <SelectItem value="Financial Analyst">💰 Financial Analyst</SelectItem>
             </SelectContent>
           </Select>
 
