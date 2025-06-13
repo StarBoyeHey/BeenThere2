@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Code, Database, Globe, Lightbulb, Target, Users, Video, FileText, ExternalLink, Brain, Shield, BarChart3, Cloud, Cpu, Palette, Server, Zap } from 'lucide-react';
+import { BookOpen, Code, Database, Globe, Lightbulb, Target, Users, Video, FileText, ExternalLink, Brain, Shield, BarChart3, Cloud, Cpu, Palette, Server, Zap, Eye } from 'lucide-react';
 import Link from 'next/link';
 
 const resourceCategories = [
@@ -11,6 +11,14 @@ const resourceCategories = [
     icon: Code,
     description: 'Master data structures, algorithms, and competitive programming',
     resources: [
+      {
+        name: 'TakeUForward (Striver)',
+        description: 'Complete DSA course by Striver with A2Z DSA sheet and interview preparation',
+        url: 'https://takeuforward.org',
+        type: 'Platform',
+        difficulty: 'All Levels',
+        tags: ['DSA', 'Striver', 'A2Z Sheet', 'Interview Prep']
+      },
       {
         name: 'LeetCode',
         description: 'Practice coding problems with company-specific tags',
@@ -26,6 +34,14 @@ const resourceCategories = [
         type: 'Platform',
         difficulty: 'Beginner to Advanced',
         tags: ['DSA', 'Tutorials', 'Practice']
+      },
+      {
+        name: 'InterviewBit',
+        description: 'Structured programming interview preparation with guided paths',
+        url: 'https://interviewbit.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Interview', 'DSA', 'Guided Learning']
       },
       {
         name: 'Cracking the Coding Interview',
@@ -338,6 +354,30 @@ const resourceCategories = [
         type: 'Framework',
         difficulty: 'Intermediate',
         tags: ['LLM', 'Framework', 'AI Apps']
+      },
+      {
+        name: 'DeepLearning.AI',
+        description: 'Specialized courses in deep learning and AI',
+        url: 'https://deeplearning.ai',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Deep Learning', 'AI', 'Specialization']
+      },
+      {
+        name: 'TensorFlow',
+        description: 'Open source machine learning framework',
+        url: 'https://tensorflow.org',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['TensorFlow', 'ML Framework', 'Google']
+      },
+      {
+        name: 'PyTorch',
+        description: 'Dynamic neural network framework',
+        url: 'https://pytorch.org',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['PyTorch', 'Neural Networks', 'Facebook']
       }
     ]
   },
@@ -394,6 +434,78 @@ const resourceCategories = [
         type: 'Documentation',
         difficulty: 'Intermediate to Advanced',
         tags: ['Big Data', 'Spark', 'Analytics']
+      },
+      {
+        name: 'Jupyter Notebooks',
+        description: 'Interactive computing environment for data science',
+        url: 'https://jupyter.org',
+        type: 'Tool',
+        difficulty: 'Beginner',
+        tags: ['Jupyter', 'Interactive', 'Data Science']
+      },
+      {
+        name: 'Plotly',
+        description: 'Interactive data visualization library',
+        url: 'https://plotly.com',
+        type: 'Library',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Visualization', 'Interactive', 'Plotly']
+      }
+    ]
+  },
+  {
+    id: 'data-analyst',
+    title: 'Data Analyst Track',
+    icon: BarChart3,
+    description: 'Specialized resources for aspiring data analysts',
+    resources: [
+      {
+        name: 'Google Data Analytics Certificate',
+        description: 'Professional certificate program for data analytics',
+        url: 'https://coursera.org/professional-certificates/google-data-analytics',
+        type: 'Certificate',
+        difficulty: 'Beginner',
+        tags: ['Google', 'Certificate', 'Data Analytics']
+      },
+      {
+        name: 'Excel for Data Analysis',
+        description: 'Master Excel for data analysis and visualization',
+        url: 'https://support.microsoft.com/excel',
+        type: 'Tutorial',
+        difficulty: 'Beginner',
+        tags: ['Excel', 'Data Analysis', 'Microsoft']
+      },
+      {
+        name: 'SQL for Data Analysts',
+        description: 'Complete SQL course for data analysis',
+        url: 'https://sqlbolt.com',
+        type: 'Course',
+        difficulty: 'Beginner',
+        tags: ['SQL', 'Data Analysis', 'Database']
+      },
+      {
+        name: 'Tableau Public',
+        description: 'Free data visualization tool and community',
+        url: 'https://public.tableau.com',
+        type: 'Tool',
+        difficulty: 'Beginner',
+        tags: ['Tableau', 'Visualization', 'Free']
+      },
+      {
+        name: 'Python for Data Analysis',
+        description: 'Learn Python specifically for data analysis',
+        url: 'https://wesmckinney.com/book',
+        type: 'Book',
+        difficulty: 'Intermediate',
+        tags: ['Python', 'Data Analysis', 'Pandas']
+      },
+      {
+        name: 'Statistics for Data Science',
+        description: 'Essential statistics concepts for data analysts',
+        url: 'https://khan-academy.org/math/statistics-probability',
+        type: 'Course',
+        difficulty: 'Beginner',
+        tags: ['Statistics', 'Probability', 'Math']
       }
     ]
   },
@@ -656,6 +768,8 @@ const getTypeColor = (type: string) => {
       return 'bg-sky-100 text-sky-800 border-sky-200 dark:bg-sky-900/30 dark:text-sky-400';
     case 'Tutorial':
       return 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200 dark:bg-fuchsia-900/30 dark:text-fuchsia-400';
+    case 'Certificate':
+      return 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400';
     default:
       return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300';
   }
@@ -683,7 +797,7 @@ export default function ResourcesPage() {
           
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Comprehensive collection of the latest resources across all tech domains - from AI/ML to cybersecurity, 
-            frontend to blockchain. Stay ahead with cutting-edge learning materials.
+            frontend to blockchain. Stay ahead with cutting-edge learning materials and reveal the scene in your field.
           </p>
         </div>
 

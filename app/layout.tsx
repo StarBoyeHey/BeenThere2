@@ -6,9 +6,9 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'BeigNa - Bridge • Inspire • Guide • Navigate • Achieve',
-  description: 'Bridge the gap between students and opportunities. Get valuable interview insights from seniors, preparation tips, and real experiences to navigate your career journey.',
-  keywords: 'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences',
+  title: 'KyaSeen - Kya Scene Hai? Your Career Insights Hub',
+  description: 'Discover the real scene behind tech interviews! Get authentic insights, preparation tips, and experiences from seniors across all colleges. Kya scene hai in your dream company?',
+  keywords: 'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences, tech interviews',
 };
 
 export default function RootLayout({
