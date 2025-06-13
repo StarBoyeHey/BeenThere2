@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GraduationCap, Users, TrendingUp, BookOpen, Sparkles } from 'lucide-react';
+import { GraduationCap, Users, TrendingUp, BookOpen, Sparkles, Eye } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 export default function Header() {
@@ -10,17 +10,17 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-4 group">
             <div className="relative">
               <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 p-3 rounded-2xl group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                <GraduationCap className="h-7 w-7 text-white" />
+                <Eye className="h-7 w-7 text-white" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 rounded-2xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                BeigNa
+                KyaSeen
               </h1>
               <p className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
-                Bridge • Inspire • Guide • Navigate • Achieve
+                Kya Scene Hai? Your Career Insights Hub
               </p>
             </div>
           </Link>

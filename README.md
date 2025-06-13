@@ -1,18 +1,19 @@
-# BeigNa - Bridge • Inspire • Guide • Navigate • Achieve
+# KyaSeen - Kya Scene Hai? Your Career Insights Hub
 
-BeigNa is a comprehensive platform that bridges the gap between students and career opportunities by providing authentic interview experiences, preparation resources, and insights from seniors across all colleges and backgrounds.
+KyaSeen is a comprehensive platform that reveals the real scene behind tech interviews and career opportunities by providing authentic experiences, preparation resources, and insights from seniors across all colleges and backgrounds.
 
 ## 🎯 Mission
 
-To democratize access to high-quality interview preparation resources and create a platform where students from all colleges - from IITs to tier-3 institutions and off-campus candidates - can learn from authentic experiences of their seniors.
+To reveal the real scene behind tech interviews and democratize access to authentic career insights. We believe every student deserves to know "kya scene hai" in their target companies - from IITs to tier-3 institutions and off-campus candidates.
 
-## ✨ What BeigNa Stands For
+## ✨ What KyaSeen Stands For
 
-- **Bridge**: Connect students across colleges and experiences, creating a unified support network
-- **Inspire**: Real stories from real students to motivate and guide others
-- **Guide**: Provide comprehensive insights to help students make informed career choices
-- **Navigate**: Help students overcome interview challenges with proven strategies
-- **Achieve**: Empower every student to reach their career goals, regardless of background
+- **Reveal the Scene**: Show students the real picture behind company interviews and hiring processes
+- **Connect Communities**: Bridge students across colleges and experiences, creating a unified support network
+- **Inspire Growth**: Real stories from real students to motivate and guide others
+- **Guide Decisions**: Provide comprehensive insights to help students make informed career choices
+- **Navigate Challenges**: Help students overcome interview challenges with proven strategies
+- **Global Access**: Free and accessible to all students worldwide, breaking geographical barriers
 
 ## 🚀 Features
 
@@ -20,7 +21,7 @@ To democratize access to high-quality interview preparation resources and create
 - Detailed company profiles with multiple office locations
 - Success rates broken down by experience type (Full-time, Internship, PPO)
 - Real interview experiences from students across different colleges
-- Salary information and package details
+- Salary information and package details (excluding internship stipends from averages)
 
 ### 🎓 College-Inclusive Approach
 - Experiences from students across all college tiers
@@ -33,16 +34,20 @@ To democratize access to high-quality interview preparation resources and create
 - Search across companies, technologies, and student experiences
 - Smart filtering to find the most relevant insights
 
-### 📚 Learning Resources
-- Curated resources across multiple domains:
-  - Data Structures & Algorithms
-  - System Design
-  - Frontend & Backend Development
-  - AI/ML and Data Science
-  - DevOps & Cloud Computing
-  - Cybersecurity
-  - Mobile Development
-  - Blockchain & Web3
+### 📚 Comprehensive Learning Resources
+- **12+ Major Categories** covering all tech domains:
+  - **Coding & DSA** - TakeUForward (Striver), LeetCode, GeeksforGeeks, InterviewBit
+  - **System Design** - Scalability, architecture, distributed systems
+  - **Frontend Development** - React, Vue, Next.js, Tailwind CSS, Figma
+  - **Backend Development** - Node.js, Django, Spring Boot, FastAPI, GraphQL
+  - **DevOps & Cloud** - Docker, Kubernetes, AWS, Terraform, Jenkins
+  - **AI & Machine Learning** - Andrew Ng, Fast.ai, Hugging Face, OpenAI, LangChain
+  - **Data Science & Analytics** - Pandas, Tableau, Power BI, Apache Spark
+  - **Data Analyst Track** - Specialized resources for aspiring data analysts
+  - **Cybersecurity** - OWASP, TryHackMe, HackTheBox, penetration testing
+  - **Mobile Development** - React Native, Flutter, Swift, Android
+  - **Blockchain & Web3** - Ethereum, Solidity, smart contracts
+  - **Learning Platforms** - Coursera, edX, Udemy, Pluralsight
 
 ### 💡 Experience Types
 - **Full-time Placements**: Regular campus and off-campus hiring
@@ -55,6 +60,7 @@ To democratize access to high-quality interview preparation resources and create
 - Success tips from students who got selected
 - Resource recommendations for each topic
 - Timeline information for preparation planning
+- Dynamic statistics that update automatically
 
 ## 🛠️ Technology Stack
 
@@ -68,7 +74,7 @@ To democratize access to high-quality interview preparation resources and create
 ## 📁 Project Structure
 
 ```
-beigna/
+kyaseen/
 ├── app/                    # Next.js app directory
 │   ├── about/             # About page
 │   ├── company/[id]/      # Dynamic company pages
@@ -104,8 +110,8 @@ beigna/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/sugamarora/beigna.git
-cd beigna
+git clone https://github.com/sugamarora/kyaseen.git
+cd kyaseen
 ```
 
 2. Install dependencies:
@@ -128,24 +134,43 @@ npm run build
 
 The project is configured for static export and can be deployed to any static hosting service.
 
-## 📊 Data Structure
+## 📊 Enhanced Logic & Features
 
-### Company Information
-- Basic details (name, logo, industry, description)
-- Multiple office locations with hiring information
-- Rating and size information
-- Website and headquarters details
+### **Fixed Average Package Calculation**
+- ✅ **Excludes internship stipends** - Only counts Full-time and PPO packages
+- ✅ **Proper calculation** - Shows "N/A" when no full-time/PPO data available
+- ✅ **Clear labeling** - "Avg Package (FT/PPO)" to indicate what's included
 
-### Experience Data
-- Student information (name, batch, college)
-- Role and package details
-- Experience type (Full-time/Internship/PPO)
-- Interview process breakdown
-- Requirements and expectations
-- Study topics with resources
-- Pro tips and advice
-- Timeline and location information
-- Off-campus vs on-campus distinction
+### **Improved Success Rate Logic**
+- ✅ **Unified calculation** - Internship rejections and placement rejections are treated equally
+- ✅ **Separate tracking** - Individual success rates for Full-time, Internship, and PPO
+- ✅ **Overall success** - Combined metric across all experience types
+
+### **Dynamic Statistics**
+- ✅ **Real-time calculations** based on actual data
+- ✅ **Auto-updating** as new data is added
+- ✅ **Responsive metrics** that reflect current platform state
+
+## 🎯 **Detailed Role Information**
+- ✅ **Specific role titles**: SDE-1, SDE-2, DevOps Engineer, Financial Analyst, ML Engineer, etc.
+- ✅ **Location-based hiring** - Shows which roles are hired at which offices
+- ✅ **Enhanced filtering** - Filter by specific role types
+- ✅ **Role distribution** - Clear visibility of available positions
+
+## 📚 **Latest Learning Resources**
+
+### **Featured Platforms:**
+- ✅ **TakeUForward (Striver)** - Complete DSA course with A2Z DSA sheet
+- ✅ **GeeksforGeeks** - Comprehensive tutorials and practice
+- ✅ **InterviewBit** - Structured interview preparation
+- ✅ **OpenAI Documentation** - GPT and AI APIs
+- ✅ **LangChain** - LLM application framework
+- ✅ **Hugging Face** - Transformer models and NLP
+
+### **Specialized Tracks:**
+- ✅ **Data Analyst Track** - Google Data Analytics Certificate, Excel, SQL, Tableau
+- ✅ **AI Engineer Track** - Latest AI/ML frameworks and tools
+- ✅ **Modern Tech Stack** - Next.js 13+, TypeScript, Docker, Kubernetes
 
 ## 🤝 Contributing
 
@@ -169,12 +194,6 @@ We welcome contributions from the community! Here's how you can help:
 2. Add new categories or resources as needed
 3. Ensure proper categorization and difficulty levels
 
-### Code Contributions
-1. Follow the existing code style
-2. Add TypeScript types for new features
-3. Test your changes thoroughly
-4. Update documentation as needed
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -186,16 +205,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-- Email: hello@beigna.com
-- Website: [beigna.com](https://beigna.com)
+- Email: hello@kyaseen.com
+- Website: [kyaseen.com](https://kyaseen.com)
 
 ## 🙏 Acknowledgments
 
-- All the students who shared their experiences
+- All the students who shared their experiences and revealed the real scene
 - The open-source community for amazing tools and libraries
 - Educational institutions for supporting student growth
 - Companies that provide opportunities to students from all backgrounds
 
 ---
 
-**BeigNa** - Empowering every student to achieve their career dreams, one experience at a time.
+**KyaSeen** - Revealing the real scene behind tech interviews, one experience at a time. Kya scene hai in your dream company? 👁️

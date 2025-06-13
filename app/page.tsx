@@ -6,7 +6,8 @@ import CompanyCard from '@/components/CompanyCard';
 import SearchBar from '@/components/SearchBar';
 import Header from '@/components/Header';
 import { Company } from '@/types/company';
-import { Sparkles, Rocket, Target, Users, TrendingUp, Star, Zap, Globe, Award } from 'lucide-react';
+import { Sparkles, Rocket, Target, Users, TrendingUp, Star, Zap, Globe, Award, Eye } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -75,23 +76,23 @@ export default function Home() {
         {/* Enhanced Hero Section */}
         <div className="text-center mb-16 relative">
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
-            <Sparkles className="w-96 h-96 text-blue-500 animate-pulse animate-morphing-blob" />
+            <Eye className="w-96 h-96 text-blue-500 animate-pulse animate-morphing-blob" />
           </div>
           
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent animate-gradient holographic">
-                Get Interview Insights
+                Kya Scene Hai?
               </span>
               <br />
               <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 bg-clip-text text-transparent animate-gradient holographic">
-                from Seniors
+                In Your Dream Company
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed mb-8">
-              Bridge the gap between students and opportunities. Get valuable insights, 
-              preparation tips, and real experiences to navigate your career journey and achieve your goals.
+              Discover the real scene behind tech interviews! Get authentic insights, preparation tips, 
+              and experiences from seniors across all colleges to navigate your career journey.
             </p>
 
             {/* Enhanced stats cards with dynamic data */}
@@ -229,20 +230,20 @@ export default function Home() {
               
               <h2 className="text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent holographic">
-                  Want to Share Your Experience?
+                  Want to Share Your Scene?
                 </span>
               </h2>
               
               <p className="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Help future batches by sharing your interview experience. Your insights could be the key 
-                to someone's success story.
+                Help future batches by revealing the real scene behind your interview experience. 
+                Your insights could be the key to someone's success story.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
                 <div className="group bg-gradient-to-br from-blue-50/80 to-blue-100/60 dark:from-blue-900/40 dark:to-blue-800/30 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-blue">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">📝</div>
                   <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Share Experience</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Add your interview story</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Reveal the real interview scene</p>
                 </div>
                 
                 <div className="group bg-gradient-to-br from-purple-50/80 to-purple-100/60 dark:from-purple-900/40 dark:to-purple-800/30 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-purple">
@@ -257,6 +258,14 @@ export default function Home() {
                   <p className="text-sm text-slate-600 dark:text-slate-400">Guide the next batch</p>
                 </div>
               </div>
+
+              <Link 
+                href="/contribute" 
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg text-lg"
+              >
+                <Eye className="w-6 h-6" />
+                Share Your Scene
+              </Link>
             </div>
           </div>
         </div>
