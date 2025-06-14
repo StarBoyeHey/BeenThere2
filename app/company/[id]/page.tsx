@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import ExperienceCard from '@/components/ExperienceCard';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Star, MapPin, Users, ExternalLink, TrendingUp, Award, Clock, Target, Building, Globe, Info } from 'lucide-react';
+import { Star, MapPin, Users, ExternalLink, TrendingUp, Award, Clock, Target, Building, Globe, Info, Eye } from 'lucide-react';
 import Link from 'next/link';
 
 interface CompanyPageProps {
@@ -301,6 +301,39 @@ export default function CompanyPage({ params }: CompanyPageProps) {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-16">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-cyan-600/10 rounded-3xl blur-3xl" />
+            <div className="relative bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl rounded-3xl p-12 shadow-2xl border border-white/20 dark:border-slate-700/50 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+                  <Eye className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                </div>
+              </div>
+              
+              <h2 className="text-3xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
+                  Want to Share Your Scene?
+                </span>
+              </h2>
+              
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
+                Help future candidates by revealing the real scene behind your {company.name} interview experience. 
+                Your insights could be the key to someone's success story.
+              </p>
+              
+              <Link 
+                href="/contribute" 
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg text-lg"
+              >
+                <Eye className="w-6 h-6" />
+                Share Your Scene
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
     </div>

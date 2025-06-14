@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Users, Target, Heart, Lightbulb, TrendingUp, Globe, Github, Linkedin, Mail, Star, Eye } from 'lucide-react';
+import { Users, Target, Heart, Lightbulb, TrendingUp, Globe, Github, Linkedin, Mail, Star, Eye, Search, Zap, Brain } from 'lucide-react';
 import Link from 'next/link';
 import { getDynamicStats } from '@/data/companies';
 
@@ -63,6 +63,33 @@ const values = [
   }
 ];
 
+const brandStory = [
+  {
+    title: 'The Name "KyaSeen"',
+    description: 'A clever fusion of "Kya Scene Hai?" - the quintessential question every student asks before interviews.',
+    icon: Search,
+    color: 'from-blue-500 to-purple-500'
+  },
+  {
+    title: 'The Vision Behind',
+    description: 'Born from the frustration of not knowing what really happens inside company interviews.',
+    icon: Eye,
+    color: 'from-purple-500 to-pink-500'
+  },
+  {
+    title: 'The Power of Insight',
+    description: 'Transforming anxiety into confidence by revealing the authentic interview experience.',
+    icon: Zap,
+    color: 'from-pink-500 to-orange-500'
+  },
+  {
+    title: 'The Community Impact',
+    description: 'Creating a knowledge-sharing ecosystem where every student\'s experience becomes wisdom for others.',
+    icon: Brain,
+    color: 'from-orange-500 to-red-500'
+  }
+];
+
 export default function AboutPage() {
   const stats = getDynamicStats();
 
@@ -93,13 +120,47 @@ export default function AboutPage() {
           </h1>
           
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed mb-6">
-            <strong>Kya Scene Hai?</strong> - Your ultimate career insights hub
+            <strong>Kya Scene Hai?</strong> - The question that sparked a revolution in career insights
           </p>
           
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Revealing the real scene behind tech interviews and career opportunities. 
-            Get authentic insights from seniors across all colleges and backgrounds to understand what really happens in your dream company.
+            KyaSeen transforms the age-old student anxiety of "What's the real scene in interviews?" into a powerful platform 
+            that reveals authentic experiences, preparation strategies, and insider insights from students across all colleges.
           </p>
+        </div>
+
+        {/* Brand Story Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
+              The Story Behind KyaSeen
+            </span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {brandStory.map((story, index) => {
+              const IconComponent = story.icon;
+              return (
+                <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br from-white/80 to-white/60 dark:from-slate-800/80 dark:to-slate-700/60 backdrop-blur-sm border border-white/30 dark:border-slate-600/30">
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 rounded-2xl bg-gradient-to-r ${story.color} bg-opacity-20 border border-opacity-30`}>
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
+                        {story.title}
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {story.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
 
         {/* Mission Statement */}
@@ -114,9 +175,10 @@ export default function AboutPage() {
                   </span>
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl mx-auto">
-                  To reveal the real scene behind tech interviews and democratize access to authentic career insights. 
+                  To democratize access to authentic career insights by revealing the real scene behind tech interviews. 
                   We believe every student deserves to know "kya scene hai" in their target companies - from IITs to tier-3 institutions 
-                  and off-campus candidates. No more guessing, just real experiences from real people.
+                  and off-campus candidates. No more guessing, just real experiences from real people, creating a transparent 
+                  ecosystem where knowledge flows freely across all educational backgrounds.
                 </p>
               </div>
             </div>
