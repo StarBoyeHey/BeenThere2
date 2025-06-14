@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Code, Database, Globe, Lightbulb, Target, Users, Video, FileText, ExternalLink, Brain, Shield, BarChart3, Cloud, Cpu, Palette, Server, Zap, Eye } from 'lucide-react';
+import { BookOpen, Code, Database, Globe, Lightbulb, Target, Users, Video, FileText, ExternalLink, Brain, Shield, BarChart3, Cloud, Cpu, Palette, Server, Zap, Eye, Smartphone, Lock, Wifi, Monitor, HardDrive, Activity } from 'lucide-react';
 import Link from 'next/link';
 
 const resourceCategories = [
@@ -20,28 +20,28 @@ const resourceCategories = [
         tags: ['DSA', 'Striver', 'A2Z Sheet', 'Interview Prep']
       },
       {
+        name: 'GeeksforGeeks DSA Self Paced',
+        description: 'Comprehensive DSA course with practice problems and interview preparation',
+        url: 'https://geeksforgeeks.org',
+        type: 'Platform',
+        difficulty: 'Beginner to Advanced',
+        tags: ['DSA', 'Tutorials', 'Practice', 'Interview']
+      },
+      {
+        name: 'InterviewBit Programming',
+        description: 'Structured programming interview preparation with guided paths',
+        url: 'https://interviewbit.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Interview', 'DSA', 'Guided Learning']
+      },
+      {
         name: 'LeetCode',
         description: 'Practice coding problems with company-specific tags',
         url: 'https://leetcode.com',
         type: 'Platform',
         difficulty: 'All Levels',
         tags: ['DSA', 'Coding', 'Interview Prep']
-      },
-      {
-        name: 'GeeksforGeeks',
-        description: 'Comprehensive DSA tutorials and practice problems',
-        url: 'https://geeksforgeeks.org',
-        type: 'Platform',
-        difficulty: 'Beginner to Advanced',
-        tags: ['DSA', 'Tutorials', 'Practice']
-      },
-      {
-        name: 'InterviewBit',
-        description: 'Structured programming interview preparation with guided paths',
-        url: 'https://interviewbit.com',
-        type: 'Platform',
-        difficulty: 'Intermediate',
-        tags: ['Interview', 'DSA', 'Guided Learning']
       },
       {
         name: 'Cracking the Coding Interview',
@@ -74,6 +74,22 @@ const resourceCategories = [
         type: 'Platform',
         difficulty: 'All Levels',
         tags: ['Competitive Programming', 'Contests', 'Practice']
+      },
+      {
+        name: 'Codeforces',
+        description: 'Competitive programming contests and practice',
+        url: 'https://codeforces.com',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Competitive Programming', 'Contests', 'Rating']
+      },
+      {
+        name: 'AtCoder',
+        description: 'Japanese competitive programming platform with quality problems',
+        url: 'https://atcoder.jp',
+        type: 'Platform',
+        difficulty: 'All Levels',
+        tags: ['Competitive Programming', 'Quality Problems', 'Contests']
       }
     ]
   },
@@ -122,6 +138,14 @@ const resourceCategories = [
         type: 'Newsletter',
         difficulty: 'Intermediate',
         tags: ['System Design', 'Visual Learning', 'Newsletter']
+      },
+      {
+        name: 'System Design Interview by Alex Xu',
+        description: 'Popular system design interview preparation book',
+        url: '#',
+        type: 'Book',
+        difficulty: 'Intermediate',
+        tags: ['System Design', 'Interview', 'Preparation']
       }
     ]
   },
@@ -178,6 +202,22 @@ const resourceCategories = [
         type: 'Course',
         difficulty: 'Beginner',
         tags: ['Design', 'UI/UX', 'Figma']
+      },
+      {
+        name: 'Angular Documentation',
+        description: 'Comprehensive Angular framework guide',
+        url: 'https://angular.io/docs',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Angular', 'TypeScript', 'Framework']
+      },
+      {
+        name: 'Svelte Tutorial',
+        description: 'Modern reactive framework with great performance',
+        url: 'https://svelte.dev/tutorial',
+        type: 'Tutorial',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Svelte', 'Reactive', 'Performance']
       }
     ]
   },
@@ -234,6 +274,22 @@ const resourceCategories = [
         type: 'Documentation',
         difficulty: 'Intermediate',
         tags: ['GraphQL', 'API', 'Query Language']
+      },
+      {
+        name: 'Ruby on Rails',
+        description: 'Web application framework written in Ruby',
+        url: 'https://rubyonrails.org',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['Ruby', 'Rails', 'Web Framework']
+      },
+      {
+        name: 'ASP.NET Core',
+        description: 'Cross-platform framework for building web applications',
+        url: 'https://docs.microsoft.com/aspnet/core',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['C#', '.NET', 'Microsoft']
       }
     ]
   },
@@ -290,6 +346,38 @@ const resourceCategories = [
         type: 'Documentation',
         difficulty: 'Intermediate',
         tags: ['Azure', 'DevOps', 'Microsoft']
+      },
+      {
+        name: 'Google Cloud Platform',
+        description: 'Google\'s cloud computing services',
+        url: 'https://cloud.google.com/docs',
+        type: 'Documentation',
+        difficulty: 'All Levels',
+        tags: ['GCP', 'Cloud', 'Google']
+      },
+      {
+        name: 'Ansible Documentation',
+        description: 'IT automation and configuration management',
+        url: 'https://docs.ansible.com',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Ansible', 'Automation', 'Configuration']
+      },
+      {
+        name: 'GitLab CI/CD',
+        description: 'Continuous integration and deployment',
+        url: 'https://docs.gitlab.com/ee/ci',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['GitLab', 'CI/CD', 'DevOps']
+      },
+      {
+        name: 'Prometheus Monitoring',
+        description: 'Open-source monitoring and alerting toolkit',
+        url: 'https://prometheus.io/docs',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Monitoring', 'Prometheus', 'Observability']
       }
     ]
   },
@@ -378,6 +466,22 @@ const resourceCategories = [
         type: 'Framework',
         difficulty: 'Intermediate',
         tags: ['PyTorch', 'Neural Networks', 'Facebook']
+      },
+      {
+        name: 'Anthropic Claude',
+        description: 'AI assistant and API documentation',
+        url: 'https://anthropic.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Claude', 'AI Assistant', 'API']
+      },
+      {
+        name: 'Stability AI',
+        description: 'Generative AI models and tools',
+        url: 'https://stability.ai',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Generative AI', 'Stable Diffusion', 'Models']
       }
     ]
   },
@@ -450,13 +554,29 @@ const resourceCategories = [
         type: 'Library',
         difficulty: 'Beginner to Intermediate',
         tags: ['Visualization', 'Interactive', 'Plotly']
+      },
+      {
+        name: 'Databricks',
+        description: 'Unified analytics platform for big data and ML',
+        url: 'https://databricks.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Big Data', 'ML', 'Analytics']
+      },
+      {
+        name: 'Snowflake',
+        description: 'Cloud data platform for analytics',
+        url: 'https://snowflake.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Cloud', 'Data Warehouse', 'Analytics']
       }
     ]
   },
   {
     id: 'data-analyst',
     title: 'Data Analyst Track',
-    icon: BarChart3,
+    icon: Activity,
     description: 'Specialized resources for aspiring data analysts',
     resources: [
       {
@@ -506,6 +626,22 @@ const resourceCategories = [
         type: 'Course',
         difficulty: 'Beginner',
         tags: ['Statistics', 'Probability', 'Math']
+      },
+      {
+        name: 'Looker Studio (Google Data Studio)',
+        description: 'Free data visualization and reporting tool',
+        url: 'https://datastudio.google.com',
+        type: 'Tool',
+        difficulty: 'Beginner',
+        tags: ['Google', 'Visualization', 'Reporting']
+      },
+      {
+        name: 'Microsoft Power Platform',
+        description: 'Low-code platform for data analysis and automation',
+        url: 'https://powerplatform.microsoft.com',
+        type: 'Platform',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Microsoft', 'Low-code', 'Analytics']
       }
     ]
   },
@@ -562,13 +698,45 @@ const resourceCategories = [
         type: 'Tool',
         difficulty: 'Intermediate to Advanced',
         tags: ['Penetration Testing', 'Framework', 'Tool']
+      },
+      {
+        name: 'Burp Suite',
+        description: 'Web application security testing platform',
+        url: 'https://portswigger.net/burp',
+        type: 'Tool',
+        difficulty: 'Intermediate',
+        tags: ['Web Security', 'Testing', 'Tool']
+      },
+      {
+        name: 'Wireshark',
+        description: 'Network protocol analyzer',
+        url: 'https://wireshark.org',
+        type: 'Tool',
+        difficulty: 'Intermediate',
+        tags: ['Network', 'Analysis', 'Protocol']
+      },
+      {
+        name: 'Kali Linux',
+        description: 'Penetration testing and security auditing platform',
+        url: 'https://kali.org',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Linux', 'Penetration Testing', 'Security']
+      },
+      {
+        name: 'CompTIA Security+',
+        description: 'Entry-level cybersecurity certification',
+        url: 'https://comptia.org/certifications/security',
+        type: 'Certification',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['CompTIA', 'Certification', 'Security']
       }
     ]
   },
   {
     id: 'mobile',
     title: 'Mobile Development',
-    icon: Cpu,
+    icon: Smartphone,
     description: 'iOS, Android, and cross-platform mobile development',
     resources: [
       {
@@ -610,13 +778,37 @@ const resourceCategories = [
         type: 'Framework',
         difficulty: 'Intermediate',
         tags: ['Ionic', 'Cross-platform', 'Web Technologies']
+      },
+      {
+        name: 'Xamarin',
+        description: 'Microsoft\'s cross-platform mobile development',
+        url: 'https://docs.microsoft.com/xamarin',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['Xamarin', 'Microsoft', 'Cross-platform']
+      },
+      {
+        name: 'Kotlin Multiplatform',
+        description: 'Share code between Android and iOS',
+        url: 'https://kotlinlang.org/lp/mobile',
+        type: 'Framework',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Kotlin', 'Multiplatform', 'JetBrains']
+      },
+      {
+        name: 'Firebase',
+        description: 'Google\'s mobile and web application development platform',
+        url: 'https://firebase.google.com/docs',
+        type: 'Platform',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Firebase', 'Backend', 'Google']
       }
     ]
   },
   {
     id: 'blockchain',
     title: 'Blockchain & Web3',
-    icon: Zap,
+    icon: Lock,
     description: 'Blockchain development and cryptocurrency',
     resources: [
       {
@@ -658,6 +850,22 @@ const resourceCategories = [
         type: 'Tool',
         difficulty: 'Intermediate',
         tags: ['Development Environment', 'Ethereum', 'Testing']
+      },
+      {
+        name: 'Polygon Documentation',
+        description: 'Ethereum scaling and infrastructure development',
+        url: 'https://docs.polygon.technology',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Polygon', 'Scaling', 'Layer 2']
+      },
+      {
+        name: 'Chainlink',
+        description: 'Decentralized oracle networks',
+        url: 'https://docs.chain.link',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['Oracles', 'Chainlink', 'Data']
       }
     ]
   },
@@ -714,6 +922,22 @@ const resourceCategories = [
         type: 'Video',
         difficulty: 'All Levels',
         tags: ['Free', 'Video', 'Tutorials']
+      },
+      {
+        name: 'freeCodeCamp',
+        description: 'Free coding bootcamp with certifications',
+        url: 'https://freecodecamp.org',
+        type: 'Platform',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Free', 'Coding', 'Certification']
+      },
+      {
+        name: 'Khan Academy',
+        description: 'Free educational platform with computer science courses',
+        url: 'https://khanacademy.org',
+        type: 'Platform',
+        difficulty: 'Beginner',
+        tags: ['Free', 'Education', 'Computer Science']
       }
     ]
   }
@@ -769,6 +993,7 @@ const getTypeColor = (type: string) => {
     case 'Tutorial':
       return 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200 dark:bg-fuchsia-900/30 dark:text-fuchsia-400';
     case 'Certificate':
+    case 'Certification':
       return 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400';
     default:
       return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300';
