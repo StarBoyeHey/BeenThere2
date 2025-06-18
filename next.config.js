@@ -6,6 +6,7 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   optimizeFonts: false,
+  swcMinify: false,
 };
 
 module.exports = nextConfig;
