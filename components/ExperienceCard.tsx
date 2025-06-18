@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, DollarSign, Clock, CheckCircle, XCircle, Lightbulb, BookOpen, MapPin, Info, Award, GraduationCap, Globe } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import CommentSection from './CommentSection';
 
 interface ExperienceCardProps {
   experience: Experience;
@@ -207,6 +208,9 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+
+        {/* Comments Section */}
+        <CommentSection experienceId={experience.id} />
       </CardContent>
     </Card>
   );

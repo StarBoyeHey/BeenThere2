@@ -1,8 +1,27 @@
+'use client';
+
 import Link from 'next/link';
-import { GraduationCap, Users, TrendingUp, BookOpen, Sparkles, Eye } from 'lucide-react';
+import { GraduationCap, Users, TrendingUp, BookOpen, Sparkles, Eye, LogIn, LogOut, User } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Badge } from '@/components/ui/badge';
 
 export default function Header() {
+  const { user, isAuthenticated, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-white/20 dark:border-slate-700/50 sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4 py-4">
@@ -46,7 +65,64 @@ export default function Header() {
                 <span className="font-medium">About</span>
               </Link>
             </div>
-            <ThemeToggle />
+
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              
+              {isAuthenticated && user ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-800">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
+                        {user.name.charAt(0).toUpperCase()}
+                      </div>
+                      <div className="hidden sm:block text-left">
+                        <div className="text-sm font-medium">{user.name}</div>
+                        <div className="flex items-center gap-1">
+                          <Badge className={`text-xs ${
+                            user.userType === 'admin' 
+                              ? 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400'
+                              : user.userType === 'contributor'
+                              ? 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400'
+                              : 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300'
+                          }`}>
+                            {user.userType === 'admin' ? 'Admin' : user.userType === 'contributor' ? 'Contributor' : 'Viewer'}
+                          </Badge>
+                        </div>
+                      </div>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel>
+                      <div>
+                        <div className="font-medium">{user.name}</div>
+                        <div className="text-sm text-muted-foreground">{user.email}</div>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleLogout} className="text-red-600 dark:text-red-400">
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Link href="/auth/login">
+                    <Button variant="ghost" className="flex items-center gap-2">
+                      <LogIn className="w-4 h-4" />
+                      <span className="hidden sm:inline">Sign In</span>
+                    </Button>
+                  </Link>
+                  <Link href="/auth/signup">
+                    <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
+                      <User className="w-4 h-4 mr-2" />
+                      <span className="hidden sm:inline">Sign Up</span>
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </div>
           </nav>
         </div>
       </div>
