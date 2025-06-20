@@ -30,7 +30,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
   const avgPackage = calculateAveragePackage(company.experiences);
 
   // Get unique roles being hired
-  const allRoles = [...new Set(company.locations.flatMap(loc => loc.hiringFor))];
+  const allRoles = Array.from(new Set(company.locations.flatMap(loc => loc.hiringFor)));
   const difficulties = company.experiences.map(exp => exp.difficulty);
   const difficultyCount = {
     Easy: difficulties.filter(d => d === 'Easy').length,
@@ -322,7 +322,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
                 Help future candidates by revealing the real scene behind your {company.name} interview experience. 
-                Your insights could be the key to someone's success story.
+                Your insights could be the key to someone&#39;s success story.
               </p>
               
               <Link 

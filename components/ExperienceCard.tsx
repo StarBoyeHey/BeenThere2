@@ -50,10 +50,14 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                 <XCircle className="h-5 w-5 text-red-500" />
               )}
               {experience.isPPOConverted && (
-                <Award className="h-5 w-5 text-purple-600" title="PPO Converted" />
+                <span title="PPO Converted">
+                  <Award className="h-5 w-5 text-purple-600" />
+                </span>
               )}
               {experience.isOffCampus && (
-                <Globe className="h-5 w-5 text-blue-600" title="Off-campus Placement" />
+                <span title="Off-campus Placement">
+                  <Globe className="h-5 w-5 text-blue-600" />
+                </span>
               )}
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">

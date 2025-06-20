@@ -184,7 +184,7 @@ export default function Home() {
               <div className="text-sm bg-gradient-to-r from-blue-50/80 to-purple-50/80 dark:from-blue-900/40 dark:to-purple-900/40 rounded-full px-4 py-2 border border-blue-200/50 dark:border-blue-700/50 neon-blue">
                 {searchQuery && (
                   <span className="text-slate-700 dark:text-slate-300">
-                    Searching for: <strong className="text-blue-600 dark:text-blue-400">"{searchQuery}"</strong>
+                    Searching for: <strong className="text-blue-600 dark:text-blue-400">&quot;{searchQuery}&quot;</strong>
                   </span>
                 )}
               </div>
@@ -236,7 +236,7 @@ export default function Home() {
               
               <p className="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Help future batches by revealing the real scene behind your interview experience. 
-                Your insights could be the key to someone's success story.
+                Your insights could be the key to someone&#39;s success story.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">

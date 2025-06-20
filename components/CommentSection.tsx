@@ -284,32 +284,32 @@ export default function CommentSection({ experienceId }: CommentSectionProps) {
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-2">
-                  {user.userType === 'admin' ? (
+                  {user?.userType === 'admin' ? (
                     <Shield className="w-4 h-4 text-red-600" />
-                  ) : user.userType === 'contributor' ? (
+                  ) : user?.userType === 'contributor' ? (
                     <UserCheck className="w-4 h-4 text-blue-600" />
                   ) : (
                     <User className="w-4 h-4 text-gray-600" />
                   )}
                   <span className="font-medium text-slate-900 dark:text-slate-100">
-                    {user.name}
+                    {user?.name}
                   </span>
                 </div>
                 <Badge className={`text-xs ${
-                  user.userType === 'admin' 
+                  user?.userType === 'admin' 
                     ? 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400'
-                    : user.userType === 'contributor'
+                    : user?.userType === 'contributor'
                     ? 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400'
                     : 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300'
                 }`}>
-                  {user.userType === 'admin' ? 'Admin' : user.userType === 'contributor' ? 'Contributor' : 'Viewer'}
+                  {user?.userType === 'admin' ? 'Admin' : user?.userType === 'contributor' ? 'Contributor' : 'Viewer'}
                 </Badge>
               </div>
               
               <Textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder={user.userType === 'admin' 
+                placeholder={user && user.userType === 'admin' 
                   ? "Respond to questions and provide guidance..." 
                   : "Ask a question about this experience..."}
                 className="bg-white dark:bg-slate-800"
@@ -329,7 +329,7 @@ export default function CommentSection({ experienceId }: CommentSectionProps) {
                 ) : (
                   <>
                     <Send className="w-4 h-4 mr-2" />
-                    {user.userType === 'admin' ? 'Post Response' : 'Ask Question'}
+                    {user?.userType === 'admin' ? 'Post Response' : 'Ask Question'}
                   </>
                 )}
               </Button>

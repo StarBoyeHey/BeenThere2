@@ -106,7 +106,7 @@ export default function ContributePage() {
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               Join thousands of students and professionals who are revealing the real scene behind tech interviews. 
-              Your contribution can change someone's career trajectory.
+              Your contribution can change someone&#39;s career trajectory.
             </p>
 
             {/* Impact Stats */}
@@ -246,7 +246,7 @@ export default function ContributePage() {
                   </h2>
                   
                   <p className="text-lg text-slate-600 dark:text-slate-300">
-                    Fill out the form below and we'll get back to you within 24 hours.
+                    Fill out the form below and we&#39;ll get back to you within 24 hours.
                   </p>
 
                   <Button 

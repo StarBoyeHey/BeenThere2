@@ -44,13 +44,13 @@ export default function CompanyCard({ company }: CompanyCardProps) {
   const avgPackage = calculateAveragePackage(company.experiences);
 
   // Get unique experience types
-  const experienceTypes = [...new Set(company.experiences.map(exp => exp.experienceType))];
+  const experienceTypes = Array.from(new Set(company.experiences.map(exp => exp.experienceType)));
   
   // Get hiring locations (India offices)
   const indiaLocations = company.locations.filter(loc => loc.country === 'India');
 
   // Get unique roles being hired
-  const allRoles = [...new Set(company.locations.flatMap(loc => loc.hiringFor))];
+  const allRoles = Array.from(new Set(company.locations.flatMap(loc => loc.hiringFor)));
 
   return (
     <Link href={`/company/${company.id}`} className="block group">
