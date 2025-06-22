@@ -22,7 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Check for stored user data on mount
-    const storedUser = localStorage.getItem('kyaseen_user');
+    const storedUser = localStorage.getItem('beenthere_user');
     if (storedUser) {
       try {
         const user = JSON.parse(storedUser);
@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           isLoading: false,
         });
       } catch (error) {
-        localStorage.removeItem('kyaseen_user');
+        localStorage.removeItem('beenthere_user');
         setAuthState(prev => ({ ...prev, isLoading: false }));
       }
     } else {
@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Mock validation
-      if (credentials.email === 'admin@kyaseen.com' && credentials.password === 'admin123') {
+      if (credentials.email === 'admin@beenthere.com' && credentials.password === 'admin123') {
         const user: User = {
           id: 'admin-1',
           email: credentials.email,
@@ -56,7 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           isVerified: true,
         };
         
-        localStorage.setItem('kyaseen_user', JSON.stringify(user));
+        localStorage.setItem('beenthere_user', JSON.stringify(user));
         setAuthState({
           user,
           isAuthenticated: true,
@@ -76,7 +76,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isVerified: true,
       };
       
-      localStorage.setItem('kyaseen_user', JSON.stringify(user));
+      localStorage.setItem('beenthere_user', JSON.stringify(user));
       setAuthState({
         user,
         isAuthenticated: true,
@@ -112,7 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isVerified: true,
       };
       
-      localStorage.setItem('kyaseen_user', JSON.stringify(user));
+      localStorage.setItem('beenthere_user', JSON.stringify(user));
       setAuthState({
         user,
         isAuthenticated: true,
@@ -126,7 +126,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('kyaseen_user');
+    localStorage.removeItem('beenthere_user');
     setAuthState({
       user: null,
       isAuthenticated: false,

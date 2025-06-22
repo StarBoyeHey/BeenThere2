@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Mail, ArrowLeft, Loader2, CheckCircle } from 'lucide-react';
+import { Mail, ArrowLeft, Loader2, CheckCircle, GraduationCap } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 export default function ForgotPasswordPage() {
@@ -70,7 +70,7 @@ export default function ForgotPasswordPage() {
                 </h1>
                 
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  We've sent password reset instructions to <strong>{email}</strong>
+                  We&apos;ve sent password reset instructions to <strong>{email}</strong>
                 </p>
                 
                 <div className="space-y-4">

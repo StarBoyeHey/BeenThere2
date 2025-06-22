@@ -8,9 +8,9 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'KyaSeen - Kya Scene Hai? Your Career Insights Hub',
-  description: 'Discover the real scene behind tech interviews! Get authentic insights, preparation tips, and experiences from seniors across all colleges. Kya scene hai in your dream company?',
-  keywords: 'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences, tech interviews',
+  title: 'BeenThere - Learn from Those Who\'ve Been There',
+  description: 'Discover authentic career insights from seniors who\'ve been there! Get real interview experiences, preparation tips, and career guidance from those who\'ve walked the path before you.',
+  keywords: 'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences, tech interviews, senior advice',
 };
 
 export default function RootLayout({

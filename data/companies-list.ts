@@ -2030,7 +2030,7 @@ export const companiesBasicInfo: CompanyBasicInfo[] = [
     logo: '🏢',
     industry: 'Automotive',
     description: 'Maruti Suzuki India is a key player in the Automotive industry.',
-    website: 'https://marutisuzukiindia.com',
+    website: 'https://marutisuzuki.com',
     size: '2464+',
     headquarters: 'Bangalore, India',
     locations: [
@@ -2065,7 +2065,7 @@ export const companiesBasicInfo: CompanyBasicInfo[] = [
     logo: '🏢',
     industry: 'Technology',
     description: 'Growth Jockey Private Limited is a key player in the Technology industry.',
-    website: 'https://growthjockeyprivatelimited.com',
+    website: 'https://growthjockey.com',
     size: '7345+',
     headquarters: 'Bangalore, India',
     locations: [

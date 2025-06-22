@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Eye, EyeOff, UserPlus, Users, UserCheck, Loader2, CheckCircle } from 'lucide-react';
+import { Eye, EyeOff, UserPlus, Users, UserCheck, Loader2, CheckCircle, GraduationCap } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 export default function SignupPage() {
@@ -49,7 +49,7 @@ export default function SignupPage() {
       if (result.success) {
         toast({
           title: 'Account created successfully!',
-          description: 'Welcome to KyaSeen. You can now start exploring.',
+          description: 'Welcome to BeenThere. You can now start exploring.',
         });
         router.push('/');
       } else {
@@ -84,7 +84,7 @@ export default function SignupPage() {
             </div>
             <h1 className="text-3xl font-bold mb-2">
               <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-500 bg-clip-text text-transparent">
-                Join KyaSeen
+                Join BeenThere
               </span>
             </h1>
             <p className="text-slate-600 dark:text-slate-300">
@@ -108,13 +108,13 @@ export default function SignupPage() {
                       <SelectItem value="viewer">
                         <div className="flex items-center gap-2">
                           <Users className="w-4 h-4" />
-                          <span>Viewer - Browse reviews and ask questions</span>
+                          <span>Viewer - Browse experiences and ask questions</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="contributor">
                         <div className="flex items-center gap-2">
                           <UserCheck className="w-4 h-4" />
-                          <span>Contributor - Share interview experiences</span>
+                          <span>Contributor - Share experiences and insights</span>
                         </div>
                       </SelectItem>
                     </SelectContent>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { GraduationCap, Users, TrendingUp, BookOpen, Sparkles, Eye, LogIn, LogOut, User } from 'lucide-react';
+import { GraduationCap, Users, TrendingUp, BookOpen, Sparkles, Eye, LogIn, LogOut, User, Lightbulb } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -29,17 +29,17 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-4 group">
             <div className="relative">
               <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 p-3 rounded-2xl group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                <Eye className="h-7 w-7 text-white" />
+                <GraduationCap className="h-7 w-7 text-white" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 rounded-2xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                KyaSeen
+                BeenThere
               </h1>
               <p className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
-                Kya Scene Hai? Your Career Insights Hub
+                Learn from Those Who&#39;ve Been There
               </p>
             </div>
           </Link>
@@ -52,14 +52,20 @@ export default function Header() {
                 </div>
                 <span className="font-medium">Companies</span>
               </Link>
+              <Link href="/insights" className="group flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300">
+                <div className="p-1.5 rounded-lg bg-gradient-to-r from-emerald-500/0 to-teal-500/0 group-hover:from-emerald-500/20 group-hover:to-teal-500/20 transition-all duration-300">
+                  <Lightbulb className="h-4 w-4" />
+                </div>
+                <span className="font-medium">Insights</span>
+              </Link>
               <Link href="/resources" className="group flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">
                 <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300">
                   <BookOpen className="h-4 w-4" />
                 </div>
                 <span className="font-medium">Resources</span>
               </Link>
-              <Link href="/about" className="group flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300">
-                <div className="p-1.5 rounded-lg bg-gradient-to-r from-emerald-500/0 to-teal-500/0 group-hover:from-emerald-500/20 group-hover:to-teal-500/20 transition-all duration-300">
+              <Link href="/about" className="group flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300">
+                <div className="p-1.5 rounded-lg bg-gradient-to-r from-orange-500/0 to-red-500/0 group-hover:from-orange-500/20 group-hover:to-red-500/20 transition-all duration-300">
                   <Users className="h-4 w-4" />
                 </div>
                 <span className="font-medium">About</span>

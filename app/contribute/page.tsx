@@ -25,7 +25,7 @@ import {
   MessageSquare,
   FileText,
   Globe,
-  Eye
+  GraduationCap
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -33,10 +33,18 @@ const contributionTypes = [
   {
     id: 'experience',
     title: 'Share Interview Experience',
-    description: 'Help others by revealing the real scene behind your interview experience',
+    description: 'Help others by sharing your authentic interview experience and preparation journey',
     icon: MessageSquare,
     color: 'from-blue-500 to-cyan-500',
     benefits: ['Help future candidates', 'Build your reputation', 'Give back to community']
+  },
+  {
+    id: 'insight',
+    title: 'Share Career Insight',
+    description: 'Provide general career advice, industry insights, or life lessons from your journey',
+    icon: Lightbulb,
+    color: 'from-emerald-500 to-teal-500',
+    benefits: ['Share valuable wisdom', 'Guide career decisions', 'Inspire others']
   },
   {
     id: 'resource',
@@ -51,15 +59,15 @@ const contributionTypes = [
     title: 'Add New Company',
     description: 'Add a company that\'s not yet covered on our platform',
     icon: Building,
-    color: 'from-emerald-500 to-teal-500',
+    color: 'from-orange-500 to-red-500',
     benefits: ['Expand company coverage', 'Help job seekers', 'Improve platform completeness']
   },
   {
     id: 'feedback',
     title: 'Platform Feedback',
-    description: 'Share suggestions to improve KyaSeen',
-    icon: Lightbulb,
-    color: 'from-orange-500 to-red-500',
+    description: 'Share suggestions to improve BeenThere',
+    icon: Target,
+    color: 'from-indigo-500 to-blue-500',
     benefits: ['Shape the platform', 'Improve user experience', 'Drive innovation']
   }
 ];
@@ -88,25 +96,25 @@ export default function ContributePage() {
         {/* Hero Section */}
         <div className="text-center mb-16 relative">
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
-            <Eye className="w-96 h-96 text-pink-500 animate-pulse" />
+            <GraduationCap className="w-96 h-96 text-pink-500 animate-pulse" />
           </div>
           
           <div className="relative z-10">
             <div className="flex justify-center mb-6">
               <div className="p-4 rounded-2xl bg-gradient-to-r from-pink-500/20 to-rose-500/20 border border-pink-500/30">
-                <Eye className="w-12 h-12 text-pink-600 dark:text-pink-400" />
+                <GraduationCap className="w-12 h-12 text-pink-600 dark:text-pink-400" />
               </div>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-pink-600 via-rose-600 to-orange-500 bg-clip-text text-transparent animate-gradient">
-                Contribute to KyaSeen
+                Contribute to BeenThere
               </span>
             </h1>
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Join thousands of students and professionals who are revealing the real scene behind tech interviews. 
-              Your contribution can change someone&#39;s career trajectory.
+              Join thousands of students and professionals who are sharing their experiences and insights. 
+              Your contribution can guide someone&#39;s career journey and help them succeed.
             </p>
 
             {/* Impact Stats */}
@@ -197,13 +205,13 @@ export default function ContributePage() {
                   
                   <h2 className="text-3xl font-bold mb-4">
                     <span className="bg-gradient-to-r from-yellow-600 via-orange-600 to-red-500 bg-clip-text text-transparent">
-                      Recognition & Rewards
+                      Recognition & Impact
                     </span>
                   </h2>
                   
                   <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
                     Top contributors get featured on our platform, receive exclusive badges, 
-                    and get early access to new features. Join our hall of fame!
+                    and get early access to new features. Join our community of mentors!
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -284,6 +292,7 @@ export default function ContributePage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="experience">Interview Experience</SelectItem>
+                        <SelectItem value="insight">Career Insight</SelectItem>
                         <SelectItem value="resource">Learning Resource</SelectItem>
                         <SelectItem value="company">New Company</SelectItem>
                         <SelectItem value="feedback">Platform Feedback</SelectItem>

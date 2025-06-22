@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Users, Target, Heart, Lightbulb, TrendingUp, Globe, Github, Linkedin, Mail, Star, Eye, Search, Zap, Brain } from 'lucide-react';
+import { Users, Target, Heart, Lightbulb, TrendingUp, Globe, Github, Linkedin, Mail, Star, GraduationCap, Search, Zap, Brain } from 'lucide-react';
 import Link from 'next/link';
 import { getDynamicStats } from '@/data/companies';
 
@@ -9,7 +9,7 @@ const teamMembers = [
   {
     name: 'Sugam Arora',
     role: 'Co-Founder & Lead Developer',
-    bio: 'Passionate about creating platforms that reveal the real scene behind tech interviews and career opportunities.',
+    bio: 'Passionate about creating platforms that connect students with authentic career experiences and guidance.',
     image: '👨‍💻',
     linkedin: '#',
     github: '#'
@@ -17,7 +17,7 @@ const teamMembers = [
   {
     name: 'Ojas Arora',
     role: 'Co-Founder & Product Manager',
-    bio: 'Focused on building user-centric experiences that show students what the actual scene is in their career journey.',
+    bio: 'Focused on building user-centric experiences that help students learn from those who\'ve been there.',
     image: '👨‍🎓',
     linkedin: '#',
     github: '#'
@@ -26,9 +26,9 @@ const teamMembers = [
 
 const values = [
   {
-    title: 'Reveal the Scene',
-    description: 'Show students the real picture behind company interviews and hiring processes.',
-    icon: Eye,
+    title: 'Learn from Experience',
+    description: 'Connect students with authentic experiences from those who\'ve walked the path before.',
+    icon: GraduationCap,
     color: 'from-blue-500 to-cyan-500'
   },
   {
@@ -65,26 +65,26 @@ const values = [
 
 const brandStory = [
   {
-    title: 'The Name "KyaSeen"',
-    description: 'A clever fusion of "Kya Scene Hai?" - the quintessential question every student asks before interviews.',
+    title: 'The Name "BeenThere"',
+    description: 'Inspired by the phrase "I\'ve been there" - connecting you with those who\'ve experienced your journey.',
     icon: Search,
     color: 'from-blue-500 to-purple-500'
   },
   {
     title: 'The Vision Behind',
-    description: 'Born from the frustration of not knowing what really happens inside company interviews.',
-    icon: Eye,
+    description: 'Born from the need to learn from authentic experiences rather than theoretical advice.',
+    icon: GraduationCap,
     color: 'from-purple-500 to-pink-500'
   },
   {
-    title: 'The Power of Insight',
-    description: 'Transforming anxiety into confidence by revealing the authentic interview experience.',
+    title: 'The Power of Experience',
+    description: 'Transforming anxiety into confidence by learning from those who\'ve walked the path.',
     icon: Zap,
     color: 'from-pink-500 to-orange-500'
   },
   {
     title: 'The Community Impact',
-    description: 'Creating a knowledge-sharing ecosystem where every student\'s experience becomes wisdom for others.',
+    description: 'Creating a knowledge-sharing ecosystem where every experience becomes wisdom for others.',
     icon: Brain,
     color: 'from-orange-500 to-red-500'
   }
@@ -109,23 +109,23 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
             <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
-              <Eye className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+              <GraduationCap className="w-12 h-12 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-              About KyaSeen
+              About BeenThere
             </span>
           </h1>
           
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed mb-6">
-            <strong>Kya Scene Hai?</strong> - The question that sparked a revolution in career insights
+            <strong>Learn from Those Who&#39;ve Been There</strong> - The platform that connects you with authentic experiences
           </p>
           
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            KyaSeen transforms the age-old student anxiety of "What's the real scene in interviews?" into a powerful platform 
-            that reveals authentic experiences, preparation strategies, and insider insights from students across all colleges.
+            BeenThere transforms the way students prepare for their careers by connecting them with authentic experiences, 
+            insights, and guidance from seniors who&#39;ve walked the path before them.
           </p>
         </div>
 
@@ -133,7 +133,7 @@ export default function AboutPage() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
-              The Story Behind KyaSeen
+              The Story Behind BeenThere
             </span>
           </h2>
           
@@ -175,8 +175,8 @@ export default function AboutPage() {
                   </span>
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl mx-auto">
-                  To democratize access to authentic career insights by revealing the real scene behind tech interviews. 
-                  We believe every student deserves to know "kya scene hai" in their target companies - from IITs to tier-3 institutions 
+                  To democratize access to authentic career insights by connecting students with those who&#39;ve been there. 
+                  We believe every student deserves to learn from real experiences - from IITs to tier-3 institutions 
                   and off-campus candidates. No more guessing, just real experiences from real people, creating a transparent 
                   ecosystem where knowledge flows freely across all educational backgrounds.
                 </p>
@@ -221,7 +221,7 @@ export default function AboutPage() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
-              What KyaSeen Stands For
+              What BeenThere Stands For
             </span>
           </h2>
           
@@ -305,7 +305,7 @@ export default function AboutPage() {
                   </span>
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-slate-300">
-                  Our community thrives on revealing the authentic scene with mutual respect and helpfulness across all colleges.
+                  Our community thrives on authentic experiences shared with mutual respect and helpfulness across all colleges.
                 </p>
               </div>
               
@@ -317,7 +317,7 @@ export default function AboutPage() {
                   </h3>
                   <ul className="space-y-2 text-slate-600 dark:text-slate-300">
                     <li>• Share authentic and detailed experiences from all colleges</li>
-                    <li>• Reveal the real scene behind interview processes</li>
+                    <li>• Provide genuine career insights and guidance</li>
                     <li>• Help fellow students regardless of their college tier</li>
                     <li>• Maintain confidentiality of sensitive information</li>
                     <li>• Be respectful and supportive to all backgrounds</li>
@@ -328,7 +328,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                     <Target className="w-5 h-5 text-red-600" />
-                    What We Don't Allow
+                    What We Don&#39;t Allow
                   </h3>
                   <ul className="space-y-2 text-slate-600 dark:text-slate-300">
                     <li>• Sharing false or misleading information</li>
@@ -362,12 +362,12 @@ export default function AboutPage() {
               </h2>
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-                Have questions, suggestions, or want to reveal the scene at your company? We'd love to hear from you!
+                Have questions, suggestions, or want to share your experience? We&#39;d love to hear from you!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="mailto:hello@kyaseen.com" 
+                  href="mailto:hello@beenthere.com" 
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg"
                 >
                   <Mail className="w-5 h-5" />

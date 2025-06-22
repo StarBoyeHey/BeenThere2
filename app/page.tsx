@@ -6,7 +6,7 @@ import CompanyCard from '@/components/CompanyCard';
 import SearchBar from '@/components/SearchBar';
 import Header from '@/components/Header';
 import { Company } from '@/types/company';
-import { Sparkles, Rocket, Target, Users, TrendingUp, Star, Zap, Globe, Award, Eye } from 'lucide-react';
+import { Sparkles, Rocket, Target, Users, TrendingUp, Star, Zap, Globe, Award, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -76,23 +76,23 @@ export default function Home() {
         {/* Enhanced Hero Section */}
         <div className="text-center mb-16 relative">
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
-            <Eye className="w-96 h-96 text-blue-500 animate-pulse animate-morphing-blob" />
+            <GraduationCap className="w-96 h-96 text-blue-500 animate-pulse animate-morphing-blob" />
           </div>
           
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent animate-gradient holographic">
-                Kya Scene Hai?
+                BeenThere
               </span>
               <br />
               <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 bg-clip-text text-transparent animate-gradient holographic">
-                In Your Dream Company
+                Learn from Experience
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed mb-8">
-              Discover the real scene behind tech interviews! Get authentic insights, preparation tips, 
-              and experiences from seniors across all colleges to navigate your career journey.
+              Discover authentic career insights from seniors who&#39;ve been there! Get real interview experiences, 
+              preparation tips, and career guidance from those who&#39;ve walked the path before you.
             </p>
 
             {/* Enhanced stats cards with dynamic data */}
@@ -230,32 +230,32 @@ export default function Home() {
               
               <h2 className="text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent holographic">
-                  Want to Share Your Scene?
+                  Share Your Journey
                 </span>
               </h2>
               
               <p className="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Help future batches by revealing the real scene behind your interview experience. 
-                Your insights could be the key to someone&#39;s success story.
+                Help future candidates by sharing your interview experiences and career insights. 
+                Your journey could be the guidance someone needs to succeed.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
                 <div className="group bg-gradient-to-br from-blue-50/80 to-blue-100/60 dark:from-blue-900/40 dark:to-blue-800/30 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-blue">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">📝</div>
                   <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Share Experience</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Reveal the real interview scene</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Tell your interview story</p>
                 </div>
                 
                 <div className="group bg-gradient-to-br from-purple-50/80 to-purple-100/60 dark:from-purple-900/40 dark:to-purple-800/30 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-purple">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">💡</div>
-                  <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Give Tips</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Help others prepare better</p>
+                  <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Share Insights</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Offer career guidance</p>
                 </div>
                 
                 <div className="group bg-gradient-to-br from-emerald-50/80 to-emerald-100/60 dark:from-emerald-900/40 dark:to-emerald-800/30 rounded-2xl p-6 border border-emerald-200/50 dark:border-emerald-700/50 hover:shadow-xl transition-all duration-500 hover:scale-105 card-surreal neon-green">
                   <div className="text-4xl mb-4 group-hover:animate-bounce">🤝</div>
-                  <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Mentor Juniors</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Guide the next batch</p>
+                  <p className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Mentor Others</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Guide the next generation</p>
                 </div>
               </div>
 
@@ -263,8 +263,8 @@ export default function Home() {
                 href="/contribute" 
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg text-lg"
               >
-                <Eye className="w-6 h-6" />
-                Share Your Scene
+                <GraduationCap className="w-6 h-6" />
+                Share Your Journey
               </Link>
             </div>
           </div>
