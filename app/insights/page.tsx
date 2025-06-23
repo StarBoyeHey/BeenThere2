@@ -5,6 +5,8 @@ import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
 import { 
   Lightbulb, 
   Users, 
@@ -22,9 +24,10 @@ import {
   ThumbsUp,
   Calendar,
   CheckCircle,
-  Target
+  Target,
+  Loader2
 } from 'lucide-react';
-import { generalInsights, getInsightsByCategory } from '@/data/insights';
+import { useInsights, useInsightsStats } from '@/hooks/useInsights';
 import Link from 'next/link';
 
 const categories = [
@@ -40,12 +43,19 @@ const categories = [
 export default function InsightsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
 
-  const filteredInsights = getInsightsByCategory(selectedCategory).filter(insight =>
-    insight.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    insight.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    insight.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+  const { insights, loading, error } = useInsights(selectedCategory, debouncedSearch);
+  const { stats, loading: statsLoading } = useInsightsStats();
+
+  // Debounce search
+  useState(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  });
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -55,6 +65,21 @@ export default function InsightsPage() {
       day: 'numeric' 
     });
   };
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
+        <Header />
+        <main className="container mx-auto px-4 py-8">
+          <div className="text-center py-20">
+            <div className="text-8xl mb-4">⚠️</div>
+            <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">Error Loading Insights</h3>
+            <p className="text-slate-600 dark:text-slate-400 text-lg">{error}</p>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
@@ -81,32 +106,50 @@ export default function InsightsPage() {
             </h1>
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Learn from those who&#39;ve been there! Get general career advice, industry insights, and life lessons 
-              from experienced professionals who&#39;ve walked the path before you.
+              Learn from those who've been there! Get general career advice, industry insights, and life lessons 
+              from experienced professionals who've walked the path before you.
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  {generalInsights.length}
-                </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Insights</div>
-              </div>
-              
-              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  {new Set(generalInsights.map(i => i.author)).size}
-                </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Contributors</div>
-              </div>
-              
-              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                  {generalInsights.reduce((acc, insight) => acc + insight.likes, 0)}
-                </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Total Likes</div>
-              </div>
+            {/* Dynamic Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+              {statsLoading ? (
+                Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                    <Skeleton className="h-8 w-16 mx-auto mb-2" />
+                    <Skeleton className="h-4 w-20 mx-auto" />
+                  </div>
+                ))
+              ) : (
+                <>
+                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                      {stats?.totalInsights || 0}
+                    </div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Insights</div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                      {stats?.totalAuthors || 0}
+                    </div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Contributors</div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                      {stats?.totalLikes || 0}
+                    </div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Total Likes</div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                      {stats?.totalViews || 0}
+                    </div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Total Views</div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -121,13 +164,18 @@ export default function InsightsPage() {
                 <div className="p-4">
                   <Search className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                 </div>
-                <input
+                <Input
                   type="text"
                   placeholder="Search insights, topics, or keywords..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 border-0 bg-transparent text-lg placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none h-16"
+                  className="flex-1 border-0 bg-transparent text-lg placeholder:text-slate-500 dark:placeholder:text-slate-400 focus-visible:ring-0 focus-visible:ring-offset-0 h-16"
                 />
+                {loading && (
+                  <div className="p-4">
+                    <Loader2 className="h-5 w-5 animate-spin text-emerald-600" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -160,14 +208,47 @@ export default function InsightsPage() {
 
         {/* Insights Grid */}
         <div className="space-y-8">
-          {filteredInsights.length === 0 ? (
+          {loading ? (
+            <div className="space-y-6">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i} className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-sm border border-white/30 dark:border-slate-600/30">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <Skeleton className="h-6 w-32 mb-3" />
+                        <Skeleton className="h-8 w-3/4 mb-4" />
+                        <div className="flex gap-4">
+                          <Skeleton className="h-4 w-24" />
+                          <Skeleton className="h-4 w-32" />
+                          <Skeleton className="h-4 w-20" />
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <Skeleton className="h-4 w-16" />
+                        <Skeleton className="h-4 w-20" />
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-4 w-full mb-2" />
+                    <Skeleton className="h-4 w-5/6 mb-4" />
+                    <div className="flex gap-2">
+                      <Skeleton className="h-6 w-16" />
+                      <Skeleton className="h-6 w-20" />
+                      <Skeleton className="h-6 w-18" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : insights.length === 0 ? (
             <div className="text-center py-20">
               <div className="text-8xl mb-4 animate-float">💡</div>
               <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">No insights found</h3>
               <p className="text-slate-600 dark:text-slate-400 text-lg">Try adjusting your search or category filters</p>
             </div>
           ) : (
-            filteredInsights.map((insight, index) => (
+            insights.map((insight, index) => (
               <Card key={insight.id} className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.01] bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-sm border border-white/30 dark:border-slate-600/30">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between flex-wrap gap-4">
@@ -190,16 +271,15 @@ export default function InsightsPage() {
                       
                       <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-4">
                         <div className="flex items-center gap-2">
-                          <User className="w-4 h-4" />
-                          <span className="font-medium">{insight.author}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Building className="w-4 h-4" />
-                          <span>{insight.authorRole} at {insight.authorCompany}</span>
+                          <div className="text-2xl">{insight.author.avatar}</div>
+                          <div>
+                            <span className="font-medium">{insight.author.name}</span>
+                            <div className="text-xs">{insight.author.role} at {insight.author.company}</div>
+                          </div>
                         </div>
                         <div className="flex items-center gap-2">
                           <GraduationCap className="w-4 h-4" />
-                          <span>Batch {insight.authorBatch}</span>
+                          <span>Batch {insight.author.batch}</span>
                         </div>
                       </div>
                     </div>
@@ -213,6 +293,10 @@ export default function InsightsPage() {
                         <div className="flex items-center gap-1">
                           <ThumbsUp className="w-4 h-4" />
                           <span>{insight.likes}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Eye className="w-4 h-4" />
+                          <span>{insight.views}</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">

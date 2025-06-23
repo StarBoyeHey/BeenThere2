@@ -1,9 +1,11 @@
-import { generalInsights } from '@/data/insights';
+'use client';
+
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { 
   User, 
   Building, 
@@ -16,9 +18,13 @@ import {
   ArrowLeft,
   Share2,
   BookOpen,
-  Lightbulb
+  Lightbulb,
+  Eye,
+  Loader2
 } from 'lucide-react';
+import { useInsight } from '@/hooks/useInsights';
 import Link from 'next/link';
+import { toast } from '@/hooks/use-toast';
 
 interface InsightPageProps {
   params: {
@@ -26,18 +32,37 @@ interface InsightPageProps {
   };
 }
 
-export async function generateStaticParams() {
-  return generalInsights.map((insight) => ({
-    id: insight.id,
-  }));
-}
-
 export default function InsightPage({ params }: InsightPageProps) {
-  const insight = generalInsights.find(i => i.id === params.id);
+  const { insight, loading, error, likeInsight } = useInsight(params.id);
 
-  if (!insight) {
-    notFound();
-  }
+  const handleLike = async () => {
+    await likeInsight();
+    toast({
+      title: 'Thanks for the like!',
+      description: 'Your appreciation helps us create better content.',
+    });
+  };
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: insight?.title,
+          text: insight?.title,
+          url: window.location.href,
+        });
+      } catch (err) {
+        // User cancelled sharing
+      }
+    } else {
+      // Fallback to copying URL
+      navigator.clipboard.writeText(window.location.href);
+      toast({
+        title: 'Link copied!',
+        description: 'The insight link has been copied to your clipboard.',
+      });
+    }
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -69,6 +94,93 @@ export default function InsightPage({ params }: InsightPageProps) {
       );
     }).filter(Boolean);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
+        <Header />
+        <main className="container mx-auto px-4 py-8">
+          <div className="mb-8">
+            <Skeleton className="h-6 w-32" />
+          </div>
+          
+          <Card className="mb-8 shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
+            <CardHeader className="pb-6">
+              <div className="flex items-start justify-between flex-wrap gap-4">
+                <div className="flex-1">
+                  <Skeleton className="h-6 w-32 mb-4" />
+                  <Skeleton className="h-12 w-3/4 mb-4" />
+                  <div className="flex gap-6">
+                    <Skeleton className="h-4 w-24" />
+                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="h-4 w-20" />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Skeleton className="h-8 w-24" />
+                  <Skeleton className="h-4 w-20" />
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="lg:col-span-3">
+              <Card className="shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
+                <CardContent className="p-8">
+                  <div className="space-y-4">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <Skeleton key={i} className="h-4 w-full" />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 space-y-6">
+                <Card className="shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
+                  <CardHeader>
+                    <Skeleton className="h-6 w-32" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {Array.from({ length: 4 }).map((_, i) => (
+                        <Skeleton key={i} className="h-4 w-full" />
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (error || !insight) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
+        <Header />
+        <main className="container mx-auto px-4 py-8">
+          <div className="text-center py-20">
+            <div className="text-8xl mb-4">❌</div>
+            <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">Insight Not Found</h3>
+            <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
+              {error || 'The insight you\'re looking for doesn\'t exist or has been removed.'}
+            </p>
+            <Link href="/insights">
+              <Button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Insights
+              </Button>
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
@@ -106,16 +218,15 @@ export default function InsightPage({ params }: InsightPageProps) {
                 
                 <div className="flex flex-wrap items-center gap-6 text-sm text-slate-600 dark:text-slate-400">
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    <span className="font-medium">{insight.author}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Building className="w-4 h-4" />
-                    <span>{insight.authorRole} at {insight.authorCompany}</span>
+                    <div className="text-3xl">{insight.author.avatar}</div>
+                    <div>
+                      <div className="font-medium">{insight.author.name}</div>
+                      <div className="text-xs">{insight.author.role} at {insight.author.company}</div>
+                    </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <GraduationCap className="w-4 h-4" />
-                    <span>Batch {insight.authorBatch}</span>
+                    <span>Batch {insight.author.batch}</span>
                   </div>
                 </div>
               </div>
@@ -130,15 +241,25 @@ export default function InsightPage({ params }: InsightPageProps) {
                     <ThumbsUp className="w-4 h-4" />
                     <span>{insight.likes}</span>
                   </div>
+                  <div className="flex items-center gap-1">
+                    <Eye className="w-4 h-4" />
+                    <span>{insight.views}</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
                   <Calendar className="w-3 h-3" />
                   <span>{formatDate(insight.publishedAt)}</span>
                 </div>
-                <Button variant="outline" size="sm" className="flex items-center gap-2">
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </Button>
+                <div className="flex gap-2">
+                  <Button onClick={handleLike} variant="outline" size="sm" className="flex items-center gap-2">
+                    <ThumbsUp className="w-4 h-4" />
+                    Like
+                  </Button>
+                  <Button onClick={handleShare} variant="outline" size="sm" className="flex items-center gap-2">
+                    <Share2 className="w-4 h-4" />
+                    Share
+                  </Button>
+                </div>
               </div>
             </div>
           </CardHeader>
@@ -199,22 +320,20 @@ export default function InsightPage({ params }: InsightPageProps) {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg">
-                        {insight.author.charAt(0)}
-                      </div>
+                      <div className="text-4xl">{insight.author.avatar}</div>
                       <div>
-                        <div className="font-semibold text-slate-900 dark:text-white">{insight.author}</div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">{insight.authorRole}</div>
+                        <div className="font-semibold text-slate-900 dark:text-white">{insight.author.name}</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-400">{insight.author.role}</div>
                       </div>
                     </div>
                     <div className="text-sm text-slate-600 dark:text-slate-400">
                       <div className="flex items-center gap-2 mb-1">
                         <Building className="w-4 h-4" />
-                        <span>{insight.authorCompany}</span>
+                        <span>{insight.author.company}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <GraduationCap className="w-4 h-4" />
-                        <span>Batch {insight.authorBatch}</span>
+                        <span>Batch {insight.author.batch}</span>
                       </div>
                     </div>
                   </div>
