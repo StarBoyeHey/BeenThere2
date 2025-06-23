@@ -166,14 +166,41 @@ Define specific, measurable goals: "Build a REST API with authentication" rather
 
 // Database operations
 export const insightsDB = {
-  // Get all published insights
+  // Synchronous methods for static export
+  getAllInsightsSync: (): DatabaseInsight[] => {
+    return insights.filter(insight => insight.status === 'published');
+  },
+
+  getInsightByIdSync: (id: string): DatabaseInsight | null => {
+    const insight = insights.find(insight => insight.id === id);
+    if (insight && insight.status === 'published') {
+      // Increment view count
+      insight.views += 1;
+      return insight;
+    }
+    return null;
+  },
+
+  getInsightsStatsSync: () => {
+    const publishedInsights = insights.filter(insight => insight.status === 'published');
+    return {
+      totalInsights: publishedInsights.length,
+      totalViews: publishedInsights.reduce((sum, insight) => sum + insight.views, 0),
+      totalLikes: publishedInsights.reduce((sum, insight) => sum + insight.likes, 0),
+      totalAuthors: new Set(publishedInsights.map(insight => insight.author.name)).size,
+      categoryCounts: publishedInsights.reduce((acc, insight) => {
+        acc[insight.category] = (acc[insight.category] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>)
+    };
+  },
+
+  // Async methods for backward compatibility (if needed)
   getAllInsights: async (): Promise<DatabaseInsight[]> => {
-    // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 100));
     return insights.filter(insight => insight.status === 'published');
   },
 
-  // Get insights by category
   getInsightsByCategory: async (category: string): Promise<DatabaseInsight[]> => {
     await new Promise(resolve => setTimeout(resolve, 100));
     if (category === 'all') {
@@ -184,19 +211,16 @@ export const insightsDB = {
     );
   },
 
-  // Get insight by ID
   getInsightById: async (id: string): Promise<DatabaseInsight | null> => {
     await new Promise(resolve => setTimeout(resolve, 100));
     const insight = insights.find(insight => insight.id === id);
     if (insight && insight.status === 'published') {
-      // Increment view count
       insight.views += 1;
       return insight;
     }
     return null;
   },
 
-  // Search insights
   searchInsights: async (query: string): Promise<DatabaseInsight[]> => {
     await new Promise(resolve => setTimeout(resolve, 100));
     const lowercaseQuery = query.toLowerCase();
@@ -211,7 +235,6 @@ export const insightsDB = {
     );
   },
 
-  // Like an insight
   likeInsight: async (id: string): Promise<boolean> => {
     await new Promise(resolve => setTimeout(resolve, 100));
     const insight = insights.find(insight => insight.id === id);
@@ -222,7 +245,6 @@ export const insightsDB = {
     return false;
   },
 
-  // Create new insight (for contributors)
   createInsight: async (insightData: Omit<DatabaseInsight, 'id' | 'likes' | 'views' | 'publishedAt'>): Promise<DatabaseInsight> => {
     await new Promise(resolve => setTimeout(resolve, 200));
     const newInsight: DatabaseInsight = {
@@ -236,7 +258,6 @@ export const insightsDB = {
     return newInsight;
   },
 
-  // Get insights statistics
   getInsightsStats: async () => {
     await new Promise(resolve => setTimeout(resolve, 50));
     const publishedInsights = insights.filter(insight => insight.status === 'published');

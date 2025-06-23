@@ -5,7 +5,6 @@ import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
 import { 
   User, 
   Building, 
@@ -19,12 +18,12 @@ import {
   Share2,
   BookOpen,
   Lightbulb,
-  Eye,
-  Loader2
+  Eye
 } from 'lucide-react';
-import { useInsight } from '@/hooks/useInsights';
+import { insightsDB } from '@/lib/db';
 import Link from 'next/link';
 import { toast } from '@/hooks/use-toast';
+import { useState } from 'react';
 
 interface InsightPageProps {
   params: {
@@ -33,10 +32,34 @@ interface InsightPageProps {
 }
 
 export default function InsightPage({ params }: InsightPageProps) {
-  const { insight, loading, error, likeInsight } = useInsight(params.id);
+  const insight = insightsDB.getInsightByIdSync(params.id);
+  const [likes, setLikes] = useState(insight?.likes || 0);
+
+  if (!insight) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
+        <Header />
+        <main className="container mx-auto px-4 py-8">
+          <div className="text-center py-20">
+            <div className="text-8xl mb-4">❌</div>
+            <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">Insight Not Found</h3>
+            <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
+              The insight you're looking for doesn't exist or has been removed.
+            </p>
+            <Link href="/insights">
+              <Button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Insights
+              </Button>
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   const handleLike = async () => {
-    await likeInsight();
+    setLikes(prev => prev + 1);
     toast({
       title: 'Thanks for the like!',
       description: 'Your appreciation helps us create better content.',
@@ -47,8 +70,8 @@ export default function InsightPage({ params }: InsightPageProps) {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: insight?.title,
-          text: insight?.title,
+          title: insight.title,
+          text: insight.title,
           url: window.location.href,
         });
       } catch (err) {
@@ -94,93 +117,6 @@ export default function InsightPage({ params }: InsightPageProps) {
       );
     }).filter(Boolean);
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
-        <Header />
-        <main className="container mx-auto px-4 py-8">
-          <div className="mb-8">
-            <Skeleton className="h-6 w-32" />
-          </div>
-          
-          <Card className="mb-8 shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
-            <CardHeader className="pb-6">
-              <div className="flex items-start justify-between flex-wrap gap-4">
-                <div className="flex-1">
-                  <Skeleton className="h-6 w-32 mb-4" />
-                  <Skeleton className="h-12 w-3/4 mb-4" />
-                  <div className="flex gap-6">
-                    <Skeleton className="h-4 w-24" />
-                    <Skeleton className="h-4 w-32" />
-                    <Skeleton className="h-4 w-20" />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <Skeleton className="h-8 w-24" />
-                  <Skeleton className="h-4 w-20" />
-                </div>
-              </div>
-            </CardHeader>
-          </Card>
-
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <div className="lg:col-span-3">
-              <Card className="shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
-                <CardContent className="p-8">
-                  <div className="space-y-4">
-                    {Array.from({ length: 6 }).map((_, i) => (
-                      <Skeleton key={i} className="h-4 w-full" />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                <Card className="shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
-                  <CardHeader>
-                    <Skeleton className="h-6 w-32" />
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      {Array.from({ length: 4 }).map((_, i) => (
-                        <Skeleton key={i} className="h-4 w-full" />
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  if (error || !insight) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
-        <Header />
-        <main className="container mx-auto px-4 py-8">
-          <div className="text-center py-20">
-            <div className="text-8xl mb-4">❌</div>
-            <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">Insight Not Found</h3>
-            <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
-              {error || 'The insight you\'re looking for doesn\'t exist or has been removed.'}
-            </p>
-            <Link href="/insights">
-              <Button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Insights
-              </Button>
-            </Link>
-          </div>
-        </main>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
@@ -239,7 +175,7 @@ export default function InsightPage({ params }: InsightPageProps) {
                   </div>
                   <div className="flex items-center gap-1">
                     <ThumbsUp className="w-4 h-4" />
-                    <span>{insight.likes}</span>
+                    <span>{likes}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Eye className="w-4 h-4" />

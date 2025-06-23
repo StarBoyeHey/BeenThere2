@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Skeleton } from '@/components/ui/skeleton';
 import { 
   Lightbulb, 
   Users, 
@@ -27,8 +26,8 @@ import {
   Target,
   Loader2
 } from 'lucide-react';
-import { useInsights, useInsightsStats } from '@/hooks/useInsights';
 import Link from 'next/link';
+import { insightsDB } from '@/lib/db';
 
 const categories = [
   { id: 'all', name: 'All Insights', icon: Eye, color: 'from-blue-500 to-cyan-500' },
@@ -43,19 +42,44 @@ const categories = [
 export default function InsightsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [insights, setInsights] = useState(insightsDB.getAllInsightsSync());
+  const [loading, setLoading] = useState(false);
 
-  const { insights, loading, error } = useInsights(selectedCategory, debouncedSearch);
-  const { stats, loading: statsLoading } = useInsightsStats();
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    filterInsights(selectedCategory, query);
+  };
 
-  // Debounce search
-  useState(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(searchQuery);
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    filterInsights(category, searchQuery);
+  };
+
+  const filterInsights = (category: string, search: string) => {
+    setLoading(true);
+    
+    setTimeout(() => {
+      let filtered = insightsDB.getAllInsightsSync();
+      
+      if (category !== 'all') {
+        filtered = filtered.filter(insight => insight.category === category);
+      }
+      
+      if (search) {
+        const lowercaseQuery = search.toLowerCase();
+        filtered = filtered.filter(insight => 
+          insight.title.toLowerCase().includes(lowercaseQuery) ||
+          insight.content.toLowerCase().includes(lowercaseQuery) ||
+          insight.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery)) ||
+          insight.author.name.toLowerCase().includes(lowercaseQuery) ||
+          insight.author.company.toLowerCase().includes(lowercaseQuery)
+        );
+      }
+      
+      setInsights(filtered);
+      setLoading(false);
     }, 300);
-
-    return () => clearTimeout(timer);
-  });
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -66,20 +90,7 @@ export default function InsightsPage() {
     });
   };
 
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
-        <Header />
-        <main className="container mx-auto px-4 py-8">
-          <div className="text-center py-20">
-            <div className="text-8xl mb-4">⚠️</div>
-            <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-4">Error Loading Insights</h3>
-            <p className="text-slate-600 dark:text-slate-400 text-lg">{error}</p>
-          </div>
-        </main>
-      </div>
-    );
-  }
+  const stats = insightsDB.getInsightsStatsSync();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
@@ -106,50 +117,39 @@ export default function InsightsPage() {
             </h1>
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Learn from those who&#39;ve been there! Get general career advice, industry insights, and life lessons 
-              from experienced professionals who&#39;ve walked the path before you.
+              Learn from those who've been there! Get general career advice, industry insights, and life lessons 
+              from experienced professionals who've walked the path before you.
             </p>
 
             {/* Dynamic Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              {statsLoading ? (
-                Array.from({ length: 4 }).map((_, i) => (
-                  <div key={i} className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                    <Skeleton className="h-8 w-16 mx-auto mb-2" />
-                    <Skeleton className="h-4 w-20 mx-auto" />
-                  </div>
-                ))
-              ) : (
-                <>
-                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                      {stats?.totalInsights || 0}
-                    </div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Insights</div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                      {stats?.totalAuthors || 0}
-                    </div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Contributors</div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                      {stats?.totalLikes || 0}
-                    </div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Total Likes</div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                      {stats?.totalViews || 0}
-                    </div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Total Views</div>
-                  </div>
-                </>
-              )}
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  {stats.totalInsights}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Insights</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  {stats.totalAuthors}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Contributors</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  {stats.totalLikes}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Total Likes</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                  {stats.totalViews}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Total Views</div>
+              </div>
             </div>
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function InsightsPage() {
                   type="text"
                   placeholder="Search insights, topics, or keywords..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => handleSearch(e.target.value)}
                   className="flex-1 border-0 bg-transparent text-lg placeholder:text-slate-500 dark:placeholder:text-slate-400 focus-visible:ring-0 focus-visible:ring-offset-0 h-16"
                 />
                 {loading && (
@@ -189,7 +189,7 @@ export default function InsightsPage() {
                 return (
                   <Button
                     key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
+                    onClick={() => handleCategoryChange(category.id)}
                     variant={isActive ? "default" : "outline"}
                     className={`flex items-center gap-2 transition-all duration-300 hover:scale-105 ${
                       isActive 
@@ -215,27 +215,27 @@ export default function InsightsPage() {
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <Skeleton className="h-6 w-32 mb-3" />
-                        <Skeleton className="h-8 w-3/4 mb-4" />
+                        <div className="h-6 w-32 bg-slate-200 dark:bg-slate-700 rounded mb-3 animate-pulse" />
+                        <div className="h-8 w-3/4 bg-slate-200 dark:bg-slate-700 rounded mb-4 animate-pulse" />
                         <div className="flex gap-4">
-                          <Skeleton className="h-4 w-24" />
-                          <Skeleton className="h-4 w-32" />
-                          <Skeleton className="h-4 w-20" />
+                          <div className="h-4 w-24 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+                          <div className="h-4 w-32 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+                          <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
                         </div>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <Skeleton className="h-4 w-16" />
-                        <Skeleton className="h-4 w-20" />
+                        <div className="h-4 w-16 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+                        <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <Skeleton className="h-4 w-full mb-2" />
-                    <Skeleton className="h-4 w-5/6 mb-4" />
+                    <div className="h-4 w-full bg-slate-200 dark:bg-slate-700 rounded mb-2 animate-pulse" />
+                    <div className="h-4 w-5/6 bg-slate-200 dark:bg-slate-700 rounded mb-4 animate-pulse" />
                     <div className="flex gap-2">
-                      <Skeleton className="h-6 w-16" />
-                      <Skeleton className="h-6 w-20" />
-                      <Skeleton className="h-6 w-18" />
+                      <div className="h-6 w-16 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+                      <div className="h-6 w-20 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+                      <div className="h-6 w-18 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
                     </div>
                   </CardContent>
                 </Card>
