@@ -26,7 +26,7 @@ export default function AuthPage() {
               </span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Choose how you want to be part of our community. Whether you're here to learn or share, 
+              Choose how you want to be part of our community. Whether you&#39;re here to learn or share, 
               we have the perfect account type for you.
             </p>
           </div>

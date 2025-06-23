@@ -181,11 +181,11 @@ export default function AboutPage() {
             <div className="max-w-5xl mx-auto mb-8">
               <p className="text-2xl md:text-3xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  Learn from Those Who've Been There
+                  Learn from Those Who&#39;ve Been There
                 </span>
               </p>
               <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-                The platform that connects you with authentic experiences, transforming the way students prepare for their careers by learning from those who've walked the path before them.
+                The platform that connects you with authentic experiences, transforming the way students prepare for their careers by learning from those who&#39;ve walked the path before them.
               </p>
             </div>
 
@@ -264,7 +264,7 @@ export default function AboutPage() {
                 </h2>
                 
                 <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-5xl mx-auto">
-                  To democratize access to authentic career insights by connecting students with those who've been there. 
+                  To democratize access to authentic career insights by connecting students with those who&#39;ve been there. 
                   We believe every student deserves to learn from real experiences - from IITs to tier-3 institutions 
                   and off-campus candidates. No more guessing, just real experiences from real people, creating a transparent 
                   ecosystem where knowledge flows freely across all educational backgrounds.
@@ -512,7 +512,7 @@ export default function AboutPage() {
                 <div className="bg-gradient-to-br from-red-50/80 to-red-100/60 dark:from-red-900/40 dark:to-red-800/30 rounded-2xl p-6 border border-red-200/50 dark:border-red-700/50">
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                     <Target className="w-6 h-6 text-red-600" />
-                    What We Don't Allow
+                    What We Don&#39;t Allow
                   </h3>
                   <ul className="space-y-3 text-slate-600 dark:text-slate-300">
                     <li className="flex items-start gap-2">
@@ -567,7 +567,7 @@ export default function AboutPage() {
               </h2>
               
               <p className="text-xl text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto">
-                Have questions, suggestions, or want to share your experience? We'd love to hear from you and help you on your journey!
+                Have questions, suggestions, or want to share your experience? We&#39;d love to hear from you and help you on your journey!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">

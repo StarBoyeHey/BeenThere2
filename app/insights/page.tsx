@@ -106,8 +106,8 @@ export default function InsightsPage() {
             </h1>
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Learn from those who've been there! Get general career advice, industry insights, and life lessons 
-              from experienced professionals who've walked the path before you.
+              Learn from those who&#39;ve been there! Get general career advice, industry insights, and life lessons 
+              from experienced professionals who&#39;ve walked the path before you.
             </p>
 
             {/* Dynamic Stats */}
