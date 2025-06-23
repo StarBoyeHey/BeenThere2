@@ -20,6 +20,14 @@ const resourceCategories = [
         tags: ['DSA', 'Striver', 'A2Z Sheet', 'Interview Prep']
       },
       {
+        name: 'NextRoundAI',
+        description: 'AI-powered interview preparation platform with personalized feedback and practice',
+        url: 'https://nextroundai.com',
+        type: 'Platform',
+        difficulty: 'All Levels',
+        tags: ['AI Interview Prep', 'Mock Interviews', 'Feedback', 'Practice']
+      },
+      {
         name: 'GeeksforGeeks DSA Self Paced',
         description: 'Comprehensive DSA course with practice problems and interview preparation',
         url: 'https://geeksforgeeks.org',
@@ -37,19 +45,19 @@ const resourceCategories = [
       },
       {
         name: 'LeetCode',
-        description: 'Practice coding problems with company-specific tags',
+        description: 'Practice coding problems with company-specific tags and contests',
         url: 'https://leetcode.com',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['DSA', 'Coding', 'Interview Prep']
+        tags: ['DSA', 'Coding', 'Interview Prep', 'Contests']
       },
       {
         name: 'Cracking the Coding Interview',
-        description: 'Essential book for technical interview preparation',
+        description: 'Essential book for technical interview preparation with 189 problems',
         url: '#',
         type: 'Book',
         difficulty: 'Intermediate',
-        tags: ['Interview', 'DSA', 'System Design']
+        tags: ['Interview', 'DSA', 'System Design', 'Book']
       },
       {
         name: 'AlgoExpert',
@@ -57,19 +65,19 @@ const resourceCategories = [
         url: 'https://algoexpert.io',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
-        tags: ['DSA', 'Video', 'Interview']
+        tags: ['DSA', 'Video', 'Interview', 'Explanations']
       },
       {
         name: 'HackerRank',
-        description: 'Coding challenges and skill assessments',
+        description: 'Coding challenges, skill assessments, and interview preparation',
         url: 'https://hackerrank.com',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Coding', 'Practice', 'Contests']
+        tags: ['Coding', 'Practice', 'Contests', 'Skills']
       },
       {
         name: 'CodeChef',
-        description: 'Competitive programming platform with contests',
+        description: 'Competitive programming platform with monthly contests',
         url: 'https://codechef.com',
         type: 'Platform',
         difficulty: 'All Levels',
@@ -77,7 +85,7 @@ const resourceCategories = [
       },
       {
         name: 'Codeforces',
-        description: 'Competitive programming contests and practice',
+        description: 'Premier competitive programming platform with rating system',
         url: 'https://codeforces.com',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
@@ -85,11 +93,19 @@ const resourceCategories = [
       },
       {
         name: 'AtCoder',
-        description: 'Japanese competitive programming platform with quality problems',
+        description: 'Japanese competitive programming platform with high-quality problems',
         url: 'https://atcoder.jp',
         type: 'Platform',
         difficulty: 'All Levels',
         tags: ['Competitive Programming', 'Quality Problems', 'Contests']
+      },
+      {
+        name: 'Pramp',
+        description: 'Free peer-to-peer mock interviews with real-time feedback',
+        url: 'https://pramp.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Mock Interviews', 'Peer Practice', 'Free', 'Real-time']
       }
     ]
   },
@@ -101,51 +117,67 @@ const resourceCategories = [
     resources: [
       {
         name: 'Grokking System Design Interview',
-        description: 'Comprehensive system design course with real examples',
+        description: 'Comprehensive system design course with real examples and case studies',
         url: 'https://educative.io',
         type: 'Course',
         difficulty: 'Intermediate to Advanced',
-        tags: ['System Design', 'Scalability', 'Architecture']
+        tags: ['System Design', 'Scalability', 'Architecture', 'Case Studies']
       },
       {
         name: 'System Design Primer',
-        description: 'Open-source guide to system design concepts',
+        description: 'Open-source guide to system design concepts with GitHub repository',
         url: 'https://github.com/donnemartin/system-design-primer',
         type: 'Repository',
         difficulty: 'Intermediate',
-        tags: ['System Design', 'Open Source', 'Concepts']
+        tags: ['System Design', 'Open Source', 'Concepts', 'GitHub']
       },
       {
         name: 'Designing Data-Intensive Applications',
-        description: 'Deep dive into modern data systems and architecture',
+        description: 'Deep dive into modern data systems and architecture patterns',
         url: '#',
         type: 'Book',
         difficulty: 'Advanced',
-        tags: ['Data Systems', 'Architecture', 'Scalability']
+        tags: ['Data Systems', 'Architecture', 'Scalability', 'Book']
       },
       {
         name: 'High Scalability',
-        description: 'Real-world system design case studies',
+        description: 'Real-world system design case studies from top companies',
         url: 'http://highscalability.com',
         type: 'Blog',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Case Studies', 'Scalability', 'Architecture']
+        tags: ['Case Studies', 'Scalability', 'Architecture', 'Real-world']
       },
       {
         name: 'ByteByteGo',
-        description: 'System design newsletter and visual explanations',
+        description: 'System design newsletter and visual explanations by Alex Xu',
         url: 'https://bytebytego.com',
         type: 'Newsletter',
         difficulty: 'Intermediate',
-        tags: ['System Design', 'Visual Learning', 'Newsletter']
+        tags: ['System Design', 'Visual Learning', 'Newsletter', 'Alex Xu']
       },
       {
         name: 'System Design Interview by Alex Xu',
-        description: 'Popular system design interview preparation book',
+        description: 'Popular system design interview preparation book with diagrams',
         url: '#',
         type: 'Book',
         difficulty: 'Intermediate',
-        tags: ['System Design', 'Interview', 'Preparation']
+        tags: ['System Design', 'Interview', 'Preparation', 'Diagrams']
+      },
+      {
+        name: 'Distributed Systems Course (MIT)',
+        description: 'MIT\'s distributed systems course with lectures and assignments',
+        url: 'https://pdos.csail.mit.edu/6.824/',
+        type: 'Course',
+        difficulty: 'Advanced',
+        tags: ['Distributed Systems', 'MIT', 'Academic', 'Theory']
+      },
+      {
+        name: 'AWS Architecture Center',
+        description: 'AWS reference architectures and best practices',
+        url: 'https://aws.amazon.com/architecture/',
+        type: 'Documentation',
+        difficulty: 'Intermediate',
+        tags: ['AWS', 'Cloud Architecture', 'Best Practices', 'Reference']
       }
     ]
   },
@@ -157,67 +189,83 @@ const resourceCategories = [
     resources: [
       {
         name: 'React Documentation',
-        description: 'Official React.js documentation and tutorials',
+        description: 'Official React.js documentation with interactive tutorials',
         url: 'https://react.dev',
         type: 'Documentation',
         difficulty: 'Beginner to Advanced',
-        tags: ['React', 'Frontend', 'JavaScript']
+        tags: ['React', 'Frontend', 'JavaScript', 'Official']
       },
       {
         name: 'Next.js Learn',
-        description: 'Interactive Next.js tutorial and documentation',
+        description: 'Interactive Next.js tutorial and comprehensive documentation',
         url: 'https://nextjs.org/learn',
         type: 'Course',
         difficulty: 'Intermediate',
-        tags: ['Next.js', 'React', 'Full Stack']
+        tags: ['Next.js', 'React', 'Full Stack', 'SSR']
       },
       {
         name: 'Vue.js Guide',
-        description: 'Progressive JavaScript framework documentation',
+        description: 'Progressive JavaScript framework documentation and ecosystem',
         url: 'https://vuejs.org/guide',
         type: 'Documentation',
         difficulty: 'Beginner to Advanced',
-        tags: ['Vue.js', 'Frontend', 'JavaScript']
+        tags: ['Vue.js', 'Frontend', 'JavaScript', 'Progressive']
       },
       {
         name: 'Tailwind CSS',
-        description: 'Utility-first CSS framework documentation',
+        description: 'Utility-first CSS framework documentation and components',
         url: 'https://tailwindcss.com/docs',
         type: 'Documentation',
         difficulty: 'Beginner',
-        tags: ['CSS', 'Styling', 'Framework']
+        tags: ['CSS', 'Styling', 'Framework', 'Utility-first']
       },
       {
         name: 'Frontend Masters',
-        description: 'Advanced frontend engineering courses',
+        description: 'Advanced frontend engineering courses from industry experts',
         url: 'https://frontendmasters.com',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Courses', 'Advanced', 'Frontend']
+        tags: ['Courses', 'Advanced', 'Frontend', 'Expert-led']
       },
       {
         name: 'Figma Academy',
-        description: 'Learn UI/UX design with Figma',
+        description: 'Learn UI/UX design with Figma tools and best practices',
         url: 'https://figma.com/academy',
         type: 'Course',
         difficulty: 'Beginner',
-        tags: ['Design', 'UI/UX', 'Figma']
+        tags: ['Design', 'UI/UX', 'Figma', 'Tools']
       },
       {
         name: 'Angular Documentation',
-        description: 'Comprehensive Angular framework guide',
+        description: 'Comprehensive Angular framework guide and CLI tools',
         url: 'https://angular.io/docs',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Angular', 'TypeScript', 'Framework']
+        tags: ['Angular', 'TypeScript', 'Framework', 'Google']
       },
       {
         name: 'Svelte Tutorial',
-        description: 'Modern reactive framework with great performance',
+        description: 'Modern reactive framework with great performance and small bundle size',
         url: 'https://svelte.dev/tutorial',
         type: 'Tutorial',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Svelte', 'Reactive', 'Performance']
+        tags: ['Svelte', 'Reactive', 'Performance', 'Modern']
+      },
+      {
+        name: 'MDN Web Docs',
+        description: 'Comprehensive web development documentation by Mozilla',
+        url: 'https://developer.mozilla.org',
+        type: 'Documentation',
+        difficulty: 'All Levels',
+        tags: ['Web Standards', 'HTML', 'CSS', 'JavaScript']
+      },
+      {
+        name: 'CSS-Tricks',
+        description: 'CSS techniques, tips, and frontend development articles',
+        url: 'https://css-tricks.com',
+        type: 'Blog',
+        difficulty: 'All Levels',
+        tags: ['CSS', 'Tips', 'Techniques', 'Articles']
       }
     ]
   },
@@ -229,67 +277,83 @@ const resourceCategories = [
     resources: [
       {
         name: 'Node.js Documentation',
-        description: 'Server-side JavaScript development',
+        description: 'Server-side JavaScript development with comprehensive guides',
         url: 'https://nodejs.org/docs',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Node.js', 'Backend', 'JavaScript']
+        tags: ['Node.js', 'Backend', 'JavaScript', 'Server']
       },
       {
         name: 'Express.js Guide',
-        description: 'Fast, unopinionated web framework for Node.js',
+        description: 'Fast, unopinionated web framework for Node.js applications',
         url: 'https://expressjs.com',
         type: 'Documentation',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Express.js', 'Node.js', 'API']
+        tags: ['Express.js', 'Node.js', 'API', 'Framework']
       },
       {
         name: 'Django Documentation',
-        description: 'High-level Python web framework',
+        description: 'High-level Python web framework for rapid development',
         url: 'https://docs.djangoproject.com',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Django', 'Python', 'Web Framework']
+        tags: ['Django', 'Python', 'Web Framework', 'ORM']
       },
       {
         name: 'Spring Boot',
-        description: 'Java-based framework for microservices',
+        description: 'Java-based framework for microservices and enterprise applications',
         url: 'https://spring.io/projects/spring-boot',
         type: 'Documentation',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Java', 'Spring', 'Microservices']
+        tags: ['Java', 'Spring', 'Microservices', 'Enterprise']
       },
       {
         name: 'FastAPI',
-        description: 'Modern, fast web framework for building APIs with Python',
+        description: 'Modern, fast web framework for building APIs with Python 3.7+',
         url: 'https://fastapi.tiangolo.com',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Python', 'API', 'FastAPI']
+        tags: ['Python', 'API', 'FastAPI', 'Modern']
       },
       {
         name: 'GraphQL',
-        description: 'Query language and runtime for APIs',
+        description: 'Query language and runtime for APIs with type system',
         url: 'https://graphql.org/learn',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['GraphQL', 'API', 'Query Language']
+        tags: ['GraphQL', 'API', 'Query Language', 'Type System']
       },
       {
         name: 'Ruby on Rails',
-        description: 'Web application framework written in Ruby',
+        description: 'Web application framework written in Ruby with conventions',
         url: 'https://rubyonrails.org',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['Ruby', 'Rails', 'Web Framework']
+        tags: ['Ruby', 'Rails', 'Web Framework', 'Convention']
       },
       {
         name: 'ASP.NET Core',
-        description: 'Cross-platform framework for building web applications',
+        description: 'Cross-platform framework for building modern web applications',
         url: 'https://docs.microsoft.com/aspnet/core',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['C#', '.NET', 'Microsoft']
+        tags: ['C#', '.NET', 'Microsoft', 'Cross-platform']
+      },
+      {
+        name: 'Postman Learning Center',
+        description: 'API development and testing tools with comprehensive tutorials',
+        url: 'https://learning.postman.com',
+        type: 'Platform',
+        difficulty: 'Beginner',
+        tags: ['API Testing', 'Postman', 'Tools', 'Development']
+      },
+      {
+        name: 'REST API Design Guide',
+        description: 'Best practices for designing RESTful APIs',
+        url: 'https://restfulapi.net',
+        type: 'Guide',
+        difficulty: 'Intermediate',
+        tags: ['REST API', 'Design', 'Best Practices', 'Architecture']
       }
     ]
   },
@@ -301,75 +365,75 @@ const resourceCategories = [
     resources: [
       {
         name: 'Docker Documentation',
-        description: 'Containerization platform and tools',
+        description: 'Containerization platform and tools for application deployment',
         url: 'https://docs.docker.com',
         type: 'Documentation',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Docker', 'Containers', 'DevOps']
+        tags: ['Docker', 'Containers', 'DevOps', 'Deployment']
       },
       {
         name: 'Kubernetes Documentation',
-        description: 'Container orchestration platform',
+        description: 'Container orchestration platform for managing containerized applications',
         url: 'https://kubernetes.io/docs',
         type: 'Documentation',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Kubernetes', 'Orchestration', 'DevOps']
+        tags: ['Kubernetes', 'Orchestration', 'DevOps', 'Containers']
       },
       {
         name: 'AWS Documentation',
-        description: 'Amazon Web Services cloud platform',
+        description: 'Amazon Web Services cloud platform with 200+ services',
         url: 'https://docs.aws.amazon.com',
         type: 'Documentation',
         difficulty: 'All Levels',
-        tags: ['AWS', 'Cloud', 'Infrastructure']
+        tags: ['AWS', 'Cloud', 'Infrastructure', 'Services']
       },
       {
         name: 'Terraform Documentation',
-        description: 'Infrastructure as Code tool',
+        description: 'Infrastructure as Code tool for building and managing infrastructure',
         url: 'https://terraform.io/docs',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Terraform', 'IaC', 'Infrastructure']
+        tags: ['Terraform', 'IaC', 'Infrastructure', 'Automation']
       },
       {
         name: 'Jenkins Documentation',
-        description: 'Open source automation server',
+        description: 'Open source automation server for CI/CD pipelines',
         url: 'https://jenkins.io/doc',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Jenkins', 'CI/CD', 'Automation']
+        tags: ['Jenkins', 'CI/CD', 'Automation', 'Pipeline']
       },
       {
         name: 'Azure DevOps',
-        description: 'Microsoft cloud DevOps services',
+        description: 'Microsoft cloud DevOps services for development teams',
         url: 'https://docs.microsoft.com/azure/devops',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Azure', 'DevOps', 'Microsoft']
+        tags: ['Azure', 'DevOps', 'Microsoft', 'Cloud']
       },
       {
         name: 'Google Cloud Platform',
-        description: 'Google\'s cloud computing services',
+        description: 'Google\'s cloud computing services and infrastructure',
         url: 'https://cloud.google.com/docs',
         type: 'Documentation',
         difficulty: 'All Levels',
-        tags: ['GCP', 'Cloud', 'Google']
+        tags: ['GCP', 'Cloud', 'Google', 'Infrastructure']
       },
       {
         name: 'Ansible Documentation',
-        description: 'IT automation and configuration management',
+        description: 'IT automation and configuration management platform',
         url: 'https://docs.ansible.com',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Ansible', 'Automation', 'Configuration']
+        tags: ['Ansible', 'Automation', 'Configuration', 'Management']
       },
       {
         name: 'GitLab CI/CD',
-        description: 'Continuous integration and deployment',
+        description: 'Continuous integration and deployment with GitLab',
         url: 'https://docs.gitlab.com/ee/ci',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['GitLab', 'CI/CD', 'DevOps']
+        tags: ['GitLab', 'CI/CD', 'DevOps', 'Pipeline']
       },
       {
         name: 'Prometheus Monitoring',
@@ -377,7 +441,15 @@ const resourceCategories = [
         url: 'https://prometheus.io/docs',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Monitoring', 'Prometheus', 'Observability']
+        tags: ['Monitoring', 'Prometheus', 'Observability', 'Metrics']
+      },
+      {
+        name: 'GitHub Actions',
+        description: 'CI/CD platform integrated with GitHub repositories',
+        url: 'https://docs.github.com/actions',
+        type: 'Documentation',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['GitHub', 'CI/CD', 'Automation', 'Workflow']
       }
     ]
   },
@@ -389,43 +461,43 @@ const resourceCategories = [
     resources: [
       {
         name: 'Andrew Ng ML Course',
-        description: 'Comprehensive machine learning course by Andrew Ng',
+        description: 'Comprehensive machine learning course by Andrew Ng on Coursera',
         url: 'https://coursera.org/learn/machine-learning',
         type: 'Course',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Machine Learning', 'Andrew Ng', 'Coursera']
+        tags: ['Machine Learning', 'Andrew Ng', 'Coursera', 'Fundamentals']
       },
       {
         name: 'Fast.ai',
-        description: 'Practical deep learning for coders',
+        description: 'Practical deep learning for coders with top-down approach',
         url: 'https://fast.ai',
         type: 'Course',
         difficulty: 'Intermediate',
-        tags: ['Deep Learning', 'Practical', 'Python']
+        tags: ['Deep Learning', 'Practical', 'Python', 'Top-down']
       },
       {
         name: 'Hugging Face',
-        description: 'Open source ML platform and model hub',
+        description: 'Open source ML platform and model hub for NLP and beyond',
         url: 'https://huggingface.co',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
-        tags: ['NLP', 'Transformers', 'Models']
+        tags: ['NLP', 'Transformers', 'Models', 'Open Source']
       },
       {
         name: 'OpenAI Documentation',
-        description: 'GPT and AI API documentation',
+        description: 'GPT and AI API documentation with examples and guides',
         url: 'https://platform.openai.com/docs',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['OpenAI', 'GPT', 'API']
+        tags: ['OpenAI', 'GPT', 'API', 'LLM']
       },
       {
         name: 'Kaggle Learn',
-        description: 'Free micro-courses on data science topics',
+        description: 'Free micro-courses on data science and machine learning topics',
         url: 'https://kaggle.com/learn',
         type: 'Course',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Data Science', 'Kaggle', 'Free']
+        tags: ['Data Science', 'Kaggle', 'Free', 'Micro-courses']
       },
       {
         name: 'Papers With Code',
@@ -433,55 +505,63 @@ const resourceCategories = [
         url: 'https://paperswithcode.com',
         type: 'Repository',
         difficulty: 'Advanced',
-        tags: ['Research', 'Papers', 'Code']
+        tags: ['Research', 'Papers', 'Code', 'State-of-art']
       },
       {
         name: 'LangChain',
-        description: 'Framework for developing LLM applications',
+        description: 'Framework for developing applications with language models',
         url: 'https://langchain.com',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['LLM', 'Framework', 'AI Apps']
+        tags: ['LLM', 'Framework', 'AI Apps', 'Python']
       },
       {
         name: 'DeepLearning.AI',
-        description: 'Specialized courses in deep learning and AI',
+        description: 'Specialized courses in deep learning and AI by Andrew Ng',
         url: 'https://deeplearning.ai',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Deep Learning', 'AI', 'Specialization']
+        tags: ['Deep Learning', 'AI', 'Specialization', 'Andrew Ng']
       },
       {
         name: 'TensorFlow',
-        description: 'Open source machine learning framework',
+        description: 'Open source machine learning framework by Google',
         url: 'https://tensorflow.org',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['TensorFlow', 'ML Framework', 'Google']
+        tags: ['TensorFlow', 'ML Framework', 'Google', 'Python']
       },
       {
         name: 'PyTorch',
-        description: 'Dynamic neural network framework',
+        description: 'Dynamic neural network framework with Python-first approach',
         url: 'https://pytorch.org',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['PyTorch', 'Neural Networks', 'Facebook']
+        tags: ['PyTorch', 'Neural Networks', 'Facebook', 'Dynamic']
       },
       {
         name: 'Anthropic Claude',
-        description: 'AI assistant and API documentation',
+        description: 'AI assistant and API documentation for Claude models',
         url: 'https://anthropic.com',
         type: 'Platform',
         difficulty: 'Intermediate',
-        tags: ['Claude', 'AI Assistant', 'API']
+        tags: ['Claude', 'AI Assistant', 'API', 'Anthropic']
       },
       {
         name: 'Stability AI',
-        description: 'Generative AI models and tools',
+        description: 'Generative AI models and tools for image and text generation',
         url: 'https://stability.ai',
         type: 'Platform',
         difficulty: 'Intermediate',
-        tags: ['Generative AI', 'Stable Diffusion', 'Models']
+        tags: ['Generative AI', 'Stable Diffusion', 'Models', 'Image Generation']
+      },
+      {
+        name: 'Google AI Education',
+        description: 'Free AI and ML courses from Google with hands-on labs',
+        url: 'https://ai.google/education',
+        type: 'Course',
+        difficulty: 'All Levels',
+        tags: ['Google AI', 'Education', 'Free', 'Hands-on']
       }
     ]
   },
@@ -493,83 +573,91 @@ const resourceCategories = [
     resources: [
       {
         name: 'Pandas Documentation',
-        description: 'Python data manipulation and analysis library',
+        description: 'Python data manipulation and analysis library with comprehensive guides',
         url: 'https://pandas.pydata.org/docs',
         type: 'Documentation',
         difficulty: 'Beginner to Advanced',
-        tags: ['Python', 'Data Analysis', 'Pandas']
+        tags: ['Python', 'Data Analysis', 'Pandas', 'DataFrames']
       },
       {
         name: 'Tableau Learning',
-        description: 'Data visualization and business intelligence',
+        description: 'Data visualization and business intelligence platform training',
         url: 'https://tableau.com/learn',
         type: 'Course',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Visualization', 'BI', 'Tableau']
+        tags: ['Visualization', 'BI', 'Tableau', 'Dashboard']
       },
       {
         name: 'Power BI Learning',
-        description: 'Microsoft business analytics solution',
+        description: 'Microsoft business analytics solution with interactive visualizations',
         url: 'https://docs.microsoft.com/power-bi',
         type: 'Documentation',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Power BI', 'Microsoft', 'Analytics']
+        tags: ['Power BI', 'Microsoft', 'Analytics', 'Business Intelligence']
       },
       {
         name: 'SQL for Data Science',
-        description: 'Database querying for data analysis',
+        description: 'Database querying for data analysis with practical examples',
         url: 'https://mode.com/sql-tutorial',
         type: 'Tutorial',
         difficulty: 'Beginner',
-        tags: ['SQL', 'Database', 'Data Analysis']
+        tags: ['SQL', 'Database', 'Data Analysis', 'Queries']
       },
       {
         name: 'R for Data Science',
-        description: 'Comprehensive guide to R programming',
+        description: 'Comprehensive guide to R programming for data science',
         url: 'https://r4ds.had.co.nz',
         type: 'Book',
         difficulty: 'Beginner to Intermediate',
-        tags: ['R', 'Statistics', 'Data Science']
+        tags: ['R', 'Statistics', 'Data Science', 'Programming']
       },
       {
         name: 'Apache Spark',
-        description: 'Unified analytics engine for big data processing',
+        description: 'Unified analytics engine for big data processing and ML',
         url: 'https://spark.apache.org/docs/latest',
         type: 'Documentation',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Big Data', 'Spark', 'Analytics']
+        tags: ['Big Data', 'Spark', 'Analytics', 'Distributed']
       },
       {
         name: 'Jupyter Notebooks',
-        description: 'Interactive computing environment for data science',
+        description: 'Interactive computing environment for data science and research',
         url: 'https://jupyter.org',
         type: 'Tool',
         difficulty: 'Beginner',
-        tags: ['Jupyter', 'Interactive', 'Data Science']
+        tags: ['Jupyter', 'Interactive', 'Data Science', 'Notebooks']
       },
       {
         name: 'Plotly',
-        description: 'Interactive data visualization library',
+        description: 'Interactive data visualization library for Python, R, and JavaScript',
         url: 'https://plotly.com',
         type: 'Library',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Visualization', 'Interactive', 'Plotly']
+        tags: ['Visualization', 'Interactive', 'Plotly', 'Charts']
       },
       {
         name: 'Databricks',
-        description: 'Unified analytics platform for big data and ML',
+        description: 'Unified analytics platform for big data and machine learning',
         url: 'https://databricks.com',
         type: 'Platform',
         difficulty: 'Intermediate',
-        tags: ['Big Data', 'ML', 'Analytics']
+        tags: ['Big Data', 'ML', 'Analytics', 'Cloud']
       },
       {
         name: 'Snowflake',
-        description: 'Cloud data platform for analytics',
+        description: 'Cloud data platform for analytics and data warehousing',
         url: 'https://snowflake.com',
         type: 'Platform',
         difficulty: 'Intermediate',
-        tags: ['Cloud', 'Data Warehouse', 'Analytics']
+        tags: ['Cloud', 'Data Warehouse', 'Analytics', 'SQL']
+      },
+      {
+        name: 'NumPy Documentation',
+        description: 'Fundamental package for scientific computing with Python',
+        url: 'https://numpy.org/doc',
+        type: 'Documentation',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Python', 'NumPy', 'Scientific Computing', 'Arrays']
       }
     ]
   },
@@ -581,43 +669,43 @@ const resourceCategories = [
     resources: [
       {
         name: 'Google Data Analytics Certificate',
-        description: 'Professional certificate program for data analytics',
+        description: 'Professional certificate program for data analytics career preparation',
         url: 'https://coursera.org/professional-certificates/google-data-analytics',
         type: 'Certificate',
         difficulty: 'Beginner',
-        tags: ['Google', 'Certificate', 'Data Analytics']
+        tags: ['Google', 'Certificate', 'Data Analytics', 'Career Prep']
       },
       {
         name: 'Excel for Data Analysis',
-        description: 'Master Excel for data analysis and visualization',
+        description: 'Master Excel for data analysis, pivot tables, and visualization',
         url: 'https://support.microsoft.com/excel',
         type: 'Tutorial',
         difficulty: 'Beginner',
-        tags: ['Excel', 'Data Analysis', 'Microsoft']
+        tags: ['Excel', 'Data Analysis', 'Microsoft', 'Pivot Tables']
       },
       {
         name: 'SQL for Data Analysts',
-        description: 'Complete SQL course for data analysis',
+        description: 'Complete SQL course specifically designed for data analysis',
         url: 'https://sqlbolt.com',
         type: 'Course',
         difficulty: 'Beginner',
-        tags: ['SQL', 'Data Analysis', 'Database']
+        tags: ['SQL', 'Data Analysis', 'Database', 'Queries']
       },
       {
         name: 'Tableau Public',
-        description: 'Free data visualization tool and community',
+        description: 'Free data visualization tool and community for sharing insights',
         url: 'https://public.tableau.com',
         type: 'Tool',
         difficulty: 'Beginner',
-        tags: ['Tableau', 'Visualization', 'Free']
+        tags: ['Tableau', 'Visualization', 'Free', 'Community']
       },
       {
         name: 'Python for Data Analysis',
-        description: 'Learn Python specifically for data analysis',
+        description: 'Learn Python specifically for data analysis with pandas',
         url: 'https://wesmckinney.com/book',
         type: 'Book',
         difficulty: 'Intermediate',
-        tags: ['Python', 'Data Analysis', 'Pandas']
+        tags: ['Python', 'Data Analysis', 'Pandas', 'Book']
       },
       {
         name: 'Statistics for Data Science',
@@ -625,23 +713,31 @@ const resourceCategories = [
         url: 'https://khan-academy.org/math/statistics-probability',
         type: 'Course',
         difficulty: 'Beginner',
-        tags: ['Statistics', 'Probability', 'Math']
+        tags: ['Statistics', 'Probability', 'Math', 'Fundamentals']
       },
       {
         name: 'Looker Studio (Google Data Studio)',
-        description: 'Free data visualization and reporting tool',
+        description: 'Free data visualization and reporting tool by Google',
         url: 'https://datastudio.google.com',
         type: 'Tool',
         difficulty: 'Beginner',
-        tags: ['Google', 'Visualization', 'Reporting']
+        tags: ['Google', 'Visualization', 'Reporting', 'Free']
       },
       {
         name: 'Microsoft Power Platform',
-        description: 'Low-code platform for data analysis and automation',
+        description: 'Low-code platform for data analysis and business automation',
         url: 'https://powerplatform.microsoft.com',
         type: 'Platform',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Microsoft', 'Low-code', 'Analytics']
+        tags: ['Microsoft', 'Low-code', 'Analytics', 'Automation']
+      },
+      {
+        name: 'Alteryx Designer',
+        description: 'Self-service data analytics platform for data preparation',
+        url: 'https://alteryx.com',
+        type: 'Platform',
+        difficulty: 'Intermediate',
+        tags: ['Data Preparation', 'Analytics', 'Self-service', 'ETL']
       }
     ]
   },
@@ -653,83 +749,91 @@ const resourceCategories = [
     resources: [
       {
         name: 'OWASP Top 10',
-        description: 'Top 10 web application security risks',
+        description: 'Top 10 web application security risks and mitigation strategies',
         url: 'https://owasp.org/www-project-top-ten',
         type: 'Guide',
         difficulty: 'Intermediate',
-        tags: ['Web Security', 'OWASP', 'Vulnerabilities']
+        tags: ['Web Security', 'OWASP', 'Vulnerabilities', 'Best Practices']
       },
       {
         name: 'Cybrary',
-        description: 'Free cybersecurity training platform',
+        description: 'Free cybersecurity training platform with career paths',
         url: 'https://cybrary.it',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Training', 'Certification', 'Free']
+        tags: ['Training', 'Certification', 'Free', 'Career Paths']
       },
       {
         name: 'TryHackMe',
-        description: 'Hands-on cybersecurity learning platform',
+        description: 'Hands-on cybersecurity learning platform with guided paths',
         url: 'https://tryhackme.com',
         type: 'Platform',
         difficulty: 'Beginner to Advanced',
-        tags: ['Hands-on', 'CTF', 'Learning']
+        tags: ['Hands-on', 'CTF', 'Learning', 'Guided']
       },
       {
         name: 'HackTheBox',
-        description: 'Penetration testing labs and challenges',
+        description: 'Penetration testing labs and challenges for skill development',
         url: 'https://hackthebox.com',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Penetration Testing', 'Labs', 'CTF']
+        tags: ['Penetration Testing', 'Labs', 'CTF', 'Challenges']
       },
       {
         name: 'SANS Training',
-        description: 'Professional cybersecurity training',
+        description: 'Professional cybersecurity training and certification programs',
         url: 'https://sans.org',
         type: 'Training',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Professional', 'Certification', 'SANS']
+        tags: ['Professional', 'Certification', 'SANS', 'Industry Standard']
       },
       {
         name: 'Metasploit',
-        description: 'Penetration testing framework',
+        description: 'Penetration testing framework for security assessment',
         url: 'https://metasploit.com',
         type: 'Tool',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Penetration Testing', 'Framework', 'Tool']
+        tags: ['Penetration Testing', 'Framework', 'Tool', 'Exploitation']
       },
       {
         name: 'Burp Suite',
-        description: 'Web application security testing platform',
+        description: 'Web application security testing platform and proxy',
         url: 'https://portswigger.net/burp',
         type: 'Tool',
         difficulty: 'Intermediate',
-        tags: ['Web Security', 'Testing', 'Tool']
+        tags: ['Web Security', 'Testing', 'Tool', 'Proxy']
       },
       {
         name: 'Wireshark',
-        description: 'Network protocol analyzer',
+        description: 'Network protocol analyzer for traffic analysis and debugging',
         url: 'https://wireshark.org',
         type: 'Tool',
         difficulty: 'Intermediate',
-        tags: ['Network', 'Analysis', 'Protocol']
+        tags: ['Network', 'Analysis', 'Protocol', 'Traffic']
       },
       {
         name: 'Kali Linux',
-        description: 'Penetration testing and security auditing platform',
+        description: 'Penetration testing and security auditing Linux distribution',
         url: 'https://kali.org',
         type: 'Platform',
         difficulty: 'Intermediate',
-        tags: ['Linux', 'Penetration Testing', 'Security']
+        tags: ['Linux', 'Penetration Testing', 'Security', 'Distribution']
       },
       {
         name: 'CompTIA Security+',
-        description: 'Entry-level cybersecurity certification',
+        description: 'Entry-level cybersecurity certification and study materials',
         url: 'https://comptia.org/certifications/security',
         type: 'Certification',
         difficulty: 'Beginner to Intermediate',
-        tags: ['CompTIA', 'Certification', 'Security']
+        tags: ['CompTIA', 'Certification', 'Security', 'Entry-level']
+      },
+      {
+        name: 'NIST Cybersecurity Framework',
+        description: 'Framework for improving critical infrastructure cybersecurity',
+        url: 'https://nist.gov/cyberframework',
+        type: 'Framework',
+        difficulty: 'Intermediate',
+        tags: ['NIST', 'Framework', 'Standards', 'Governance']
       }
     ]
   },
@@ -741,59 +845,59 @@ const resourceCategories = [
     resources: [
       {
         name: 'React Native',
-        description: 'Cross-platform mobile development with React',
+        description: 'Cross-platform mobile development using React and JavaScript',
         url: 'https://reactnative.dev',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['React Native', 'Cross-platform', 'Mobile']
+        tags: ['React Native', 'Cross-platform', 'Mobile', 'JavaScript']
       },
       {
         name: 'Flutter Documentation',
-        description: 'Google\'s UI toolkit for mobile, web, and desktop',
+        description: 'Google\'s UI toolkit for mobile, web, and desktop applications',
         url: 'https://flutter.dev/docs',
         type: 'Documentation',
         difficulty: 'Beginner to Advanced',
-        tags: ['Flutter', 'Dart', 'Cross-platform']
+        tags: ['Flutter', 'Dart', 'Cross-platform', 'Google']
       },
       {
         name: 'Swift Documentation',
-        description: 'Apple\'s programming language for iOS development',
+        description: 'Apple\'s programming language for iOS and macOS development',
         url: 'https://swift.org/documentation',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Swift', 'iOS', 'Apple']
+        tags: ['Swift', 'iOS', 'Apple', 'Native']
       },
       {
         name: 'Android Developers',
-        description: 'Official Android development documentation',
+        description: 'Official Android development documentation and resources',
         url: 'https://developer.android.com',
         type: 'Documentation',
         difficulty: 'Beginner to Advanced',
-        tags: ['Android', 'Kotlin', 'Java']
+        tags: ['Android', 'Kotlin', 'Java', 'Google']
       },
       {
         name: 'Ionic Framework',
-        description: 'Cross-platform mobile app development',
+        description: 'Cross-platform mobile app development with web technologies',
         url: 'https://ionicframework.com/docs',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['Ionic', 'Cross-platform', 'Web Technologies']
+        tags: ['Ionic', 'Cross-platform', 'Web Technologies', 'Hybrid']
       },
       {
         name: 'Xamarin',
-        description: 'Microsoft\'s cross-platform mobile development',
+        description: 'Microsoft\'s cross-platform mobile development solution',
         url: 'https://docs.microsoft.com/xamarin',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['Xamarin', 'Microsoft', 'Cross-platform']
+        tags: ['Xamarin', 'Microsoft', 'Cross-platform', 'C#']
       },
       {
         name: 'Kotlin Multiplatform',
-        description: 'Share code between Android and iOS',
+        description: 'Share code between Android and iOS using Kotlin',
         url: 'https://kotlinlang.org/lp/mobile',
         type: 'Framework',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Kotlin', 'Multiplatform', 'JetBrains']
+        tags: ['Kotlin', 'Multiplatform', 'JetBrains', 'Code Sharing']
       },
       {
         name: 'Firebase',
@@ -801,7 +905,15 @@ const resourceCategories = [
         url: 'https://firebase.google.com/docs',
         type: 'Platform',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Firebase', 'Backend', 'Google']
+        tags: ['Firebase', 'Backend', 'Google', 'BaaS']
+      },
+      {
+        name: 'Expo',
+        description: 'Platform for universal React applications with managed workflow',
+        url: 'https://docs.expo.dev',
+        type: 'Platform',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Expo', 'React Native', 'Universal', 'Managed']
       }
     ]
   },
@@ -813,11 +925,11 @@ const resourceCategories = [
     resources: [
       {
         name: 'Ethereum Documentation',
-        description: 'Decentralized platform for smart contracts',
+        description: 'Decentralized platform for smart contracts and DApps',
         url: 'https://ethereum.org/developers',
         type: 'Documentation',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Ethereum', 'Smart Contracts', 'Blockchain']
+        tags: ['Ethereum', 'Smart Contracts', 'Blockchain', 'DApps']
       },
       {
         name: 'Solidity Documentation',
@@ -825,47 +937,55 @@ const resourceCategories = [
         url: 'https://docs.soliditylang.org',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Solidity', 'Smart Contracts', 'Programming']
+        tags: ['Solidity', 'Smart Contracts', 'Programming', 'Ethereum']
       },
       {
         name: 'Web3.js',
-        description: 'JavaScript library for interacting with Ethereum',
+        description: 'JavaScript library for interacting with Ethereum blockchain',
         url: 'https://web3js.readthedocs.io',
         type: 'Library',
         difficulty: 'Intermediate',
-        tags: ['Web3', 'JavaScript', 'Ethereum']
+        tags: ['Web3', 'JavaScript', 'Ethereum', 'Library']
       },
       {
         name: 'OpenZeppelin',
-        description: 'Secure smart contract development framework',
+        description: 'Secure smart contract development framework and libraries',
         url: 'https://openzeppelin.com/contracts',
         type: 'Framework',
         difficulty: 'Intermediate',
-        tags: ['Security', 'Smart Contracts', 'Framework']
+        tags: ['Security', 'Smart Contracts', 'Framework', 'Libraries']
       },
       {
         name: 'Hardhat',
-        description: 'Ethereum development environment',
+        description: 'Ethereum development environment for testing and deployment',
         url: 'https://hardhat.org/docs',
         type: 'Tool',
         difficulty: 'Intermediate',
-        tags: ['Development Environment', 'Ethereum', 'Testing']
+        tags: ['Development Environment', 'Ethereum', 'Testing', 'Deployment']
       },
       {
         name: 'Polygon Documentation',
-        description: 'Ethereum scaling and infrastructure development',
+        description: 'Ethereum scaling and infrastructure development platform',
         url: 'https://docs.polygon.technology',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Polygon', 'Scaling', 'Layer 2']
+        tags: ['Polygon', 'Scaling', 'Layer 2', 'Infrastructure']
       },
       {
         name: 'Chainlink',
-        description: 'Decentralized oracle networks',
+        description: 'Decentralized oracle networks for smart contracts',
         url: 'https://docs.chain.link',
         type: 'Documentation',
         difficulty: 'Intermediate',
-        tags: ['Oracles', 'Chainlink', 'Data']
+        tags: ['Oracles', 'Chainlink', 'Data', 'Smart Contracts']
+      },
+      {
+        name: 'Truffle Suite',
+        description: 'Development tools for Ethereum smart contracts',
+        url: 'https://trufflesuite.com/docs',
+        type: 'Tool',
+        difficulty: 'Intermediate',
+        tags: ['Development Tools', 'Ethereum', 'Smart Contracts', 'Testing']
       }
     ]
   },
@@ -877,59 +997,59 @@ const resourceCategories = [
     resources: [
       {
         name: 'Coursera',
-        description: 'University-level courses from top institutions',
+        description: 'University-level courses from top institutions worldwide',
         url: 'https://coursera.org',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Courses', 'Certificates', 'University']
+        tags: ['Courses', 'Certificates', 'University', 'Academic']
       },
       {
         name: 'edX',
-        description: 'Free online courses from Harvard, MIT, and more',
+        description: 'Free online courses from Harvard, MIT, and other top universities',
         url: 'https://edx.org',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Free', 'University', 'Certificates']
+        tags: ['Free', 'University', 'Certificates', 'Academic']
       },
       {
         name: 'Udemy',
-        description: 'Practical courses on programming and technology',
+        description: 'Practical courses on programming and technology skills',
         url: 'https://udemy.com',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Practical', 'Programming', 'Technology']
+        tags: ['Practical', 'Programming', 'Technology', 'Skills']
       },
       {
         name: 'Pluralsight',
-        description: 'Technology skills platform for developers',
+        description: 'Technology skills platform for developers and IT professionals',
         url: 'https://pluralsight.com',
         type: 'Platform',
         difficulty: 'Intermediate to Advanced',
-        tags: ['Technology', 'Skills', 'Professional']
+        tags: ['Technology', 'Skills', 'Professional', 'Assessment']
       },
       {
         name: 'LinkedIn Learning',
-        description: 'Professional development and skill building',
+        description: 'Professional development and skill building courses',
         url: 'https://linkedin.com/learning',
         type: 'Platform',
         difficulty: 'All Levels',
-        tags: ['Professional', 'Skills', 'Networking']
+        tags: ['Professional', 'Skills', 'Networking', 'Career']
       },
       {
         name: 'YouTube Tech Channels',
-        description: 'Free educational content from tech creators',
+        description: 'Free educational content from tech creators and experts',
         url: '#',
         type: 'Video',
         difficulty: 'All Levels',
-        tags: ['Free', 'Video', 'Tutorials']
+        tags: ['Free', 'Video', 'Tutorials', 'Community']
       },
       {
         name: 'freeCodeCamp',
-        description: 'Free coding bootcamp with certifications',
+        description: 'Free coding bootcamp with certifications and projects',
         url: 'https://freecodecamp.org',
         type: 'Platform',
         difficulty: 'Beginner to Intermediate',
-        tags: ['Free', 'Coding', 'Certification']
+        tags: ['Free', 'Coding', 'Certification', 'Projects']
       },
       {
         name: 'Khan Academy',
@@ -937,7 +1057,23 @@ const resourceCategories = [
         url: 'https://khanacademy.org',
         type: 'Platform',
         difficulty: 'Beginner',
-        tags: ['Free', 'Education', 'Computer Science']
+        tags: ['Free', 'Education', 'Computer Science', 'Fundamentals']
+      },
+      {
+        name: 'Codecademy',
+        description: 'Interactive coding lessons and career paths',
+        url: 'https://codecademy.com',
+        type: 'Platform',
+        difficulty: 'Beginner to Intermediate',
+        tags: ['Interactive', 'Coding', 'Career Paths', 'Hands-on']
+      },
+      {
+        name: 'Udacity',
+        description: 'Nanodegree programs for in-demand tech skills',
+        url: 'https://udacity.com',
+        type: 'Platform',
+        difficulty: 'Intermediate to Advanced',
+        tags: ['Nanodegree', 'Tech Skills', 'Industry Projects', 'Mentorship']
       }
     ]
   }
@@ -1007,23 +1143,60 @@ export default function ResourcesPage() {
       
       <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
-              <BookOpen className="w-12 h-12 text-blue-600 dark:text-blue-400" />
-            </div>
+        <div className="text-center mb-16 relative">
+          <div className="absolute inset-0 flex items-center justify-center opacity-10">
+            <BookOpen className="w-96 h-96 text-blue-500 animate-pulse" />
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-              Learning Resources
-            </span>
-          </h1>
-          
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive collection of the latest resources across all tech domains - from AI/ML to cybersecurity, 
-            frontend to blockchain. Stay ahead with cutting-edge learning materials and reveal the scene in your field.
-          </p>
+          <div className="relative z-10">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+                <BookOpen className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+              </div>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
+                Learning Resources
+              </span>
+            </h1>
+            
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed mb-8">
+              Comprehensive collection of the latest resources across all tech domains - from AI/ML to cybersecurity, 
+              frontend to blockchain. Stay ahead with cutting-edge learning materials and reveal the scene in your field.
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  {resourceCategories.length}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Categories</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  {resourceCategories.reduce((acc, cat) => acc + cat.resources.length, 0)}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Resources</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  Latest
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">2024 Updated</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-800/90 dark:to-slate-700/70 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40 shadow-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                  Free
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Many Options</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Resource Categories */}
@@ -1047,6 +1220,11 @@ export default function ResourcesPage() {
                       <p className="text-slate-600 dark:text-slate-300">
                         {category.description}
                       </p>
+                    </div>
+                    <div className="ml-auto">
+                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
+                        {category.resources.length} Resources
+                      </Badge>
                     </div>
                   </div>
 
@@ -1082,11 +1260,16 @@ export default function ResourcesPage() {
                             
                             {/* Tags */}
                             <div className="flex flex-wrap gap-1">
-                              {resource.tags.map((tag, tagIndex) => (
+                              {resource.tags.slice(0, 3).map((tag, tagIndex) => (
                                 <Badge key={tagIndex} variant="outline" className="text-xs bg-slate-50 dark:bg-slate-800">
                                   {tag}
                                 </Badge>
                               ))}
+                              {resource.tags.length > 3 && (
+                                <Badge variant="outline" className="text-xs bg-slate-50 dark:bg-slate-800">
+                                  +{resource.tags.length - 3}
+                                </Badge>
+                              )}
                             </div>
                             
                             {/* Link */}
